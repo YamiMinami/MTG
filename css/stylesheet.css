@@ -16,3 +16,52 @@ body {
     width: 100vw;
     grid-template-rows: 5% auto auto;
 }
+
+header {
+    grid-area: Header;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+    padding: 5px 0 5px 0;
+    width: 100%;
+    background-color: #644f3a;
+}
+
+.navbar ul {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.navbar a {
+    font-family: "Work Sans", sans-serif;
+    color:  #e8c08c;
+    text-decoration: none;
+    padding: 7px 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 20px;
+    transition: text-decoration 300ms ease-in-out;
+}
+
+.navbar li {
+    margin: 0 30px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+main {
+    grid-area: Main;
+}
+
+footer {
+    grid-area: Footer;
+}
