@@ -9,12 +9,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-areas:
-        "Header Header Header"
-        "Main Main Main"
-        "Footer Footer Footer";
+        "Aside Header Header"
+        "Aside Main Main"
+        "Aside Footer Footer";
     height: 100vh;
     width: 100vw;
-    grid-template-rows: 5% auto auto;
+    grid-template-rows: auto auto auto;
 }
 
 header {
@@ -60,6 +60,9 @@ header {
 
 main {
     grid-area: Main;
+}
+aside {
+    grid-area: Aside;
 }
 
 footer {
