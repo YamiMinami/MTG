@@ -1,8 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 :root {
+    /*Fonts voor Titels, tussentittels*/
+    --font-title: "Rye", serif;
+
+    /*Font voor paragraven*/
+    --font-p: "Tinos", serif;
+
+    /*Voor buttons*/
+    --primary-red: #d3301d;
+    --secondary-red: #87060a;
+
+    /*Voor aside achtergrondkleur icons*/
+    --primary-brown: #48302e;
+    --secondary-brown: #322725;
+
+    /*Accentuatie*/
+    --primary-gold: #efcd69;
+    --secondary-gold: #b7864b;
+
+    /*Paragraven font sizes*/
     --p-sm: 0.875rem;
     --p-md: 1rem;
     --p-lg: 1.125rem;
     --p-xl: 1.3125rem;
+
+    /*Header font sizes*/
+    --h1: 2.5rem;
+    --h2: 2.25rem;
+    --h3: 2rem;
+    --h4: 1.75rem;
+    --h5: 1.5rem;
 }
 
 * {
