@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
       pageDots: false,
       prevNextButtons: false,
       autoPlay: 5000,
-      draggable: false,
+      draggable: true,
       selectedAttraction: 0.01,
       friction: 0.25,
     });
