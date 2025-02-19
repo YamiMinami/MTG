@@ -1,0 +1,9 @@
+:root {
+    p-small: 0.875rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
