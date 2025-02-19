@@ -1,5 +1,8 @@
 :root {
-    p-small: 0.875rem;
+    --p-sm: 0.875rem;
+    --p-md: 1rem;
+    --p-lg: 1.125rem;
+    --p-xl: 1.3125rem;
 }
 
 * {
