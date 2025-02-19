@@ -7,23 +7,43 @@
     <script src="https://kit.fontawesome.com/7450ea0e8a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
-<header>
-
-</header>
 <main>
+    <div class="main-carousel">
+        <div class="carousel-cell" style="background-image: url(assets/fortnite.jpg);">FORTNITE</div>
+        <div class="carousel-cell" style="background-image: url(assets/LOTR.jpg);">LORD OF THE RINGS</div>
+        <div class="carousel-cell" style="background-image: url(assets/Lego.jpg);">LEGO</div>
+        <div class="carousel-cell" style="background-image: url(assets/Magic.jpg);">MAGIC THE GATHERING</div>
+        <div class="carousel-cell" style="background-image: url(assets/pokemon.jpg);">POKEMON</div>
+        <div class="carousel-cell" style="background-image: url(assets/fifa.jpg);">FIFA</div>
+      </div>
+
+    <div class="carousel-nav">
+        <div class="carousel-cell" style="background-image: url(assets/fortnite.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(assets/LOTR.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(assets/Lego.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(assets/Magic.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(assets/pokemon.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(assets/fifa.jpg);"></div>
+    </div>
 
 </main>
-<aside>
+<aside class="index-navbar">
+    <p id="icon"><i class="fa-solid fa-gamepad"> GameHub</i></p>
     <nav>
-        <ul>
-            
-        </ul>
+        <form action="#">
+            <label for="Username">Username</label>
+            <input type="text" required>
+            <label for="Password">Password</label>
+            <input type="password" required>
+            <a href="">Register</a>
+        </form>
+        <button>Submit</button>
     </nav>
 </aside>
-<footer>
-
-</footer>
 </body>
 </html>
