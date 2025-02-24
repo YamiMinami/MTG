@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,47 +12,50 @@
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="js/script.js"></script>
 </head>
+
 <body>
-<main>
-    <div class="main-carousel">
-        <div class="carousel-cell" style="background-image: url(assets/fortnite.jpg);">FORTNITE</div>
-        <div class="carousel-cell" style="background-image: url(assets/LOTR.jpg);">LORD OF THE RINGS</div>
-        <div class="carousel-cell" style="background-image: url(assets/Lego.jpg);">LEGO</div>
-        <div class="carousel-cell" style="background-image: url(assets/Magic.jpg);">MAGIC THE GATHERING</div>
-        <div class="carousel-cell" style="background-image: url(assets/pokemon.jpg);">POKEMON</div>
-        <div class="carousel-cell" style="background-image: url(assets/fifa.jpg);">FIFA</div>
-      </div>
+    <main>
+        <div class="main-carousel">
+            <div class="carousel-cell" style="background-image: url(assets/fortnite.jpg);">FORTNITE</div>
+            <div class="carousel-cell" style="background-image: url(assets/LOTR.jpg);">LORD OF THE RINGS</div>
+            <div class="carousel-cell" style="background-image: url(assets/Lego.jpg);">LEGO</div>
+            <div class="carousel-cell" style="background-image: url(assets/Magic.jpg);">MAGIC THE GATHERING</div>
+            <div class="carousel-cell" style="background-image: url(assets/pokemon.jpg);">POKEMON</div>
+            <div class="carousel-cell" style="background-image: url(assets/fifa.jpg);">FIFA</div>
+        </div>
 
-    <div class="carousel-nav">
-        <div class="carousel-cell" style="background-image: url(assets/fortnite.jpg);"></div>
-        <div class="carousel-cell" style="background-image: url(assets/LOTR.jpg);"></div>
-        <div class="carousel-cell" style="background-image: url(assets/Lego.jpg);"></div>
-        <div class="carousel-cell" style="background-image: url(assets/Magic.jpg);"></div>
-        <div class="carousel-cell" style="background-image: url(assets/pokemon.jpg);"></div>
-        <div class="carousel-cell" style="background-image: url(assets/fifa.jpg);"></div>
-    </div>
+        <div class="carousel-nav">
+            <div class="carousel-cell" style="background-image: url(assets/fortnite.jpg);"></div>
+            <div class="carousel-cell" style="background-image: url(assets/LOTR.jpg);"></div>
+            <div class="carousel-cell" style="background-image: url(assets/Lego.jpg);"></div>
+            <div class="carousel-cell" style="background-image: url(assets/Magic.jpg);"></div>
+            <div class="carousel-cell" style="background-image: url(assets/pokemon.jpg);"></div>
+            <div class="carousel-cell" style="background-image: url(assets/fifa.jpg);"></div>
+        </div>
 
-</main>
-<aside class="index-navbar">
-    <p id="icon"><i class="fa-solid fa-gamepad"> GameHub</i></p>
-    <nav>
-        <form id="index-login" class="form" action="#">
-            <label for="Username">Gebruikersnaam</label>
-            <input type="text" required>
-            <label for="Password">Wachtwoord</label>
-            <input type="password" required>
-            <p class="index-switch-animation">Registreer <a id="index-register-a" href="#">hier</a></p>
-        </form>
-        <button>Inloggen</button>
-        <form id="index-register" class="form" action="#">
-            <label for="Username">Gebruikersnaam</label>
-            <input type="text" required>
-            <label for="Password">Wachtwoord</label>
-            <input type="password" required>
-            <p class="index-switch-animation">Log <a id="index-register-a" href="#">hier</a> in</p>
-        </form>
-        <button>Inloggen</button>
-    </nav>
-</aside>
+    </main>
+    <aside class="index-navbar">
+        <p id="icon"><i class="fa-solid fa-gamepad"> GameHub</i></p>
+        <section id="index-form-wrapper">
+            <form id="index-login" class="form" action="#">
+                <label for="Username">Gebruikersnaam</label>
+                <input type="text" required>
+                <label for="Password">Wachtwoord</label>
+                <input type="password" required>
+                <p class="index-switch-animation">Registreer <a id="index-register-a" href="#">hier</a></p>
+                <button>Log in</button>
+            </form>
+            <form id="index-register" class="form" action="#">
+                <label for="Username">Gebruikersnaam</label>
+                <input type="text" required>
+                <label for="Password">Wachtwoord</label>
+                <input type="password" required>
+                <p class="index-switch-animation">Log <a href="#">hier</a> in</p>
+                <button>Registreer</button>
+            </form>
+        </section>
+    </aside>
+    <script src="js/index-animatie.js"></script>
 </body>
+
 </html>
