@@ -35,14 +35,22 @@
 <aside class="index-navbar">
     <p id="icon"><i class="fa-solid fa-gamepad"> GameHub</i></p>
     <nav>
-        <form action="#">
-            <label for="Username">Username</label>
+        <form id="index-login" class="form" action="#">
+            <label for="Username">Gebruikersnaam</label>
             <input type="text" required>
-            <label for="Password">Password</label>
+            <label for="Password">Wachtwoord</label>
             <input type="password" required>
-            <a href="">Register</a>
+            <p class="index-switch-animation">Registreer <a id="index-register-a" href="#">hier</a></p>
         </form>
-        <button>Submit</button>
+        <button>Inloggen</button>
+        <form id="index-register" class="form" action="#">
+            <label for="Username">Gebruikersnaam</label>
+            <input type="text" required>
+            <label for="Password">Wachtwoord</label>
+            <input type="password" required>
+            <p class="index-switch-animation">Log <a id="index-register-a" href="#">hier</a> in</p>
+        </form>
+        <button>Inloggen</button>
     </nav>
 </aside>
 </body>

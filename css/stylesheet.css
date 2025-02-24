@@ -71,14 +71,12 @@ form input {
     border-radius: 5px;
 }
 
-.index-navbar a {
-    margin-top: 10px;
+#index-register-a {
     color: white;
-    font-size: 14px;
-    text-align: center;
+}
+.index-switch-animation{
     text-align: left;
 }
-
 button {
     border-radius: 25px;
     background-color: #61a1a7;
