@@ -91,7 +91,7 @@ body {
 
 .index-switch-animation a {
     color: white;
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: 600;
     transition: color 0.2;
 }
