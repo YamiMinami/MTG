@@ -177,15 +177,18 @@ hr {
   align-items: center;
   background-color: var(--primary-brown);
 }
-.deck-mana {
+.deck-type {
   padding: 10px;
   border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
 #deck-search {
+    padding: 10px;
   margin-left: 10px;
   margin-right: auto;
   width: 150px;
-  height: 50px;
+  height: 25px;
   border-radius: 15px;
 }
 #deck-manabar {
@@ -196,4 +199,40 @@ hr {
     gap: 20px;
     align-items: center;
     justify-content: center;
+}
+#White{
+    background-image: url(../assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#Blue{
+    background-image: url(../assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#Black{
+    background-image: url(../assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#Red{
+    background-image: url(../assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#Green{
+    background-image: url(../assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#None{
+    background-image: url(../assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent\ \(1\).png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
