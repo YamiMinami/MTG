@@ -1,51 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Deckbuilder</title>
-    <script src="https://kit.fontawesome.com/7450ea0e8a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/stylesheet.css">
-    <link rel="stylesheet" href="css/reset.css">
-</head>
-<body>
-<header>
-    <h1><a><i class="fa-solid fa-gamepad"></i></a></h1>
-    <nav>
+    <script
+      src="https://kit.fontawesome.com/7450ea0e8a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/mtg.css" />
+  </head>
+  <body>
+    <aside>
+      <nav>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="collection.html.html">Collection</a></li>
-            <li><a href="deckbuilder.html">Deckbuilder</a></li>
+          <li>
+            <a href="home.html"><img src="assets/mtg.png" alt="mtg" /></a>
+          </li>
+          <li>
+            <hr />
+            <a href=""><img src="assets/play.png" alt="" /></a>
+            <p>Speel</p>
+          </li>
+          <li>
+            <hr />
+            <a href="collection.html"
+              ><img src="assets/collection.png" alt=""
+            /></a>
+            <p>Collectie</p>
+          </li>
+          <li>
+            <hr />
+            <a href="deckbuilder.html"><img src="assets/card.png" alt="" /></a>
+            <p>Decks</p>
+          </li>
         </ul>
-    </nav>
-</header>
-<aside>
-
-</aside>
-<main>
-<section class="deckColection">
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-</section>
-<div class="toolBar">
-    <button>-</button>
-    <p>
-        <span>previous</span>
-        <span></span>
-        <span>next</span>
-    </p>
-    <button>+</button>
-</div>
-
-</main>
-<footer>
-
-</footer>
-</body>
+      </nav>
+    </aside>
+    <main>
+      <section class="deck-filter">
+        <input id="deck-search" type="search" placeholder="search..." />
+        <section id="deck-manabar">
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        <button class="deck-mana"></button>
+        </section>
+      </section>
+      <section class="deck-Colection">
+        <div class="deck"></div>
+        <div class="deck"></div>
+        <div class="deck"></div>
+        <div class="deck"></div>
+        <div class="deck"></div>
+        <div class="deck"></div>
+        <div class="deck"></div>
+        <div class="deck"></div>
+      </section>
+      <section class="deck-toolBar">
+        <button class="deck-buttons">-</button>
+        <section id="deck-page">
+        <article id="deck-previose">previose</article>
+        <article id="deck-page-counter">1</article>
+        <article id="deck-next">next</article>
+        </section>
+        <button class="deck-buttons">+</button>
+      </section>
+    </main>
+  </body>
 </html>
