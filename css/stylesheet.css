@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,59 +10,190 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-areas:
-        "Header Header Header"
-        "Main Main Main"
-        "Footer Footer Footer";
+        "Aside Main"
+        "Aside Main"
+        "Aside Main";
     height: 100vh;
     width: 100vw;
-    grid-template-rows: 5% auto auto;
+    grid-template-rows: auto auto;
+    grid-template-columns: 20% auto;
 }
 
-header {
-    grid-area: Header;
-}
+/* Index Navbar */
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-flow: row wrap;
-    padding: 5px 0 5px 0;
-    width: 100%;
-    background-color: #644f3a;
-}
-
-.navbar ul {
-    display: flex;
-    flex-flow: row wrap;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-}
-
-.navbar a {
+.index-navbar {
+    background-image: linear-gradient(to bottom, #020024 0%, #090979 35%, #00d4ff 90%);
+    color: white;
     font-family: "Work Sans", sans-serif;
-    color:  #e8c08c;
-    text-decoration: none;
-    padding: 7px 10px;
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 20px;
-    transition: text-decoration 300ms ease-in-out;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.navbar li {
-    margin: 0 30px;
+#icon {
+    font-size: 34px;
+    margin-bottom: 20px;
+    margin-top: 1em;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 40%;
+}
+
+form label {
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.index-navbar a {
+    margin-top: 10px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    text-align: left;
+}
+
+button {
+    border-radius: 25px;
+    background-color: #61a1a7;
+    width: 80%;
+    border: none;
+    color: white;
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    margin-top: 8%;
+    height: 32px;
+}
+
+button:hover {
+    background-color: rgba(	97, 161, 167, 0.6);
 }
 
 main {
     grid-area: Main;
+    background-image: radial-gradient(circle, #4dd8ff 50%, black 100%);
 }
 
-footer {
-    grid-area: Footer;
+/* flickity */
+
+.carousel-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 95%;
+    height: 700px;
+    border-radius: 15px;
+    margin-right: 20px;
+    background-size: cover;
+    background-position: center center;
+    margin-top: 3%;
+}
+
+.carousel-cell h1 {
+    margin-bottom: 20px;
+    font-size: 8rem;
+    color: white;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.carousel-cell button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    width: 25%;
+    height: 6%;
+    margin-bottom: 4rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.carousel-cell button:hover {
+    background-color: rgba(97, 161, 167, 0.8);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-cell button a {
+    color: white;
+    text-decoration: none;
+    font-family: "Work Sans", sans-serif;
+}
+
+
+.carousel-cell:before {
+    display: block;
+    text-align: center;
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
+
+.carousel-nav {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .carousel-nav .carousel-cell {
+    width: 120px; 
+    height: 75px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  
+  .carousel-nav .is-selected {
+    opacity: 1;
+    border: 2px solid white;
+  }
+  
+aside {
+    grid-area: Aside;
+}
+
+button {
+    border-radius: 15px;
+    background-color: #61a1a7;
+    width: 80%;
+    border: none;
+    color: white;
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    margin-top: 8%;
 }
