@@ -81,4 +81,23 @@ main {
 
 #home-header {
     display: flex;
+    margin: 1rem 1rem 0rem 1rem;
+}
+
+#home-header img {
+    width: 100px;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+
+#home-header article {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+#home-header h4 {
+    font-family: var(--font-title);
+    font-size: var(--h4);
+    margin-top: 2rem;
 }
