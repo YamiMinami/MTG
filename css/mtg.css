@@ -54,19 +54,27 @@ body {
 
 aside {
     grid-area: Aside;
-    background-color: var(--primary-brown);
+    background-image: radial-gradient(circle, var(--primary-brown) 0%, var(--secondary-brown) 100%);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav img {
     display: block;
-    width: 200px;
+    width: 170px;
     height: auto;
     margin-bottom: 1rem;
     margin-top: 2rem;
 }
 
+nav li {
+    text-align: center;
+    color: white;
+    list-style-type: none;
+    font-family: var(--font-p);
+}
 main {
     grid-area: Main;
 }
