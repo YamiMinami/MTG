@@ -148,8 +148,8 @@ hr {
 }
 .deck-toolBar {
   height: 50px;
-  margin-top: 50px;
-  width: 80%;
+  width:auto;
+  margin: auto 50px auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
