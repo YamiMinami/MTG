@@ -78,3 +78,7 @@ nav li {
 main {
     grid-area: Main;
 }
+
+#home-header {
+    display: flex;
+}
