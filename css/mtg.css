@@ -175,7 +175,7 @@ hr {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: var(--primary-brown);
+  background-color: var(--secondary-brown);
 }
 .deck-type {
   padding: 10px;
