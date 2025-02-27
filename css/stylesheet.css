@@ -20,6 +20,66 @@ body {
     grid-template-columns: 20% auto;
 }
 
+main.active, aside.active{
+    filter:blur(20px);
+    pointer-events: none;
+    user-select: none;
+    transition: 0.25s -webkit-filter linear;
+}
+
+#index-popup-container{
+    position:fixed;
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 600px;
+    height: 250px;
+    padding: 50px;
+    background: rgb(45, 90, 173);
+    text-align: left;
+    opacity: 0;
+    transition: 0.5s;
+    border-radius: 1em;
+    color: #f1f2f4;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#index-popup-container, #index-popup-contents{
+    display: flex;
+}
+#index-popup-container a{
+    padding: 8px 15px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #111;
+    border: 1px solid #F65656;
+    border-radius: 5px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 18px;
+}
+#index-popup-container a:hover{
+    background-color: rgba(49, 43, 43, 0.9);
+    transition: all 0.2s ease-in-out;
+}
+#index-popup-container h2{
+    font-size: 2rem;
+}
+#index-popup-container.active{
+    top:50%;
+    opacity: 1;
+    transition: 0.5s;
+}
+#index-popup-icon{
+    font-size: 50px;
+    color: #F65656;
+}
+#index-popup-rightitems{
+    margin-left: 30px;
+}
 /* Index Navbar */
 
 .index-navbar {
