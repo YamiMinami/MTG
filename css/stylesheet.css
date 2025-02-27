@@ -45,8 +45,8 @@ body {
     align-items: center;
     width: 80%;
     max-width: 300px;
-    margin-top:40%;
-    height: 33%;
+    margin-top: 30%;
+    height: 37%;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -89,7 +89,7 @@ body {
 }
 
 .index-switch-animation {
-    text-align: left;
+    text-align: center;
 }
 
 .index-switch-animation a {
@@ -112,7 +112,7 @@ button {
     color: white;
     font-family: "Work Sans", sans-serif;
     font-size: 18px;
-    margin-top: 8%;
+    margin-top: 29px;
 }
 
 button:hover {
@@ -167,6 +167,7 @@ main {
 aside {
     grid-area: Aside;
 }
-.index-h2{
+
+.index-h2 {
     margin-bottom: 7%;
 }
