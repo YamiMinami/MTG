@@ -45,7 +45,7 @@ body {
     align-items: center;
     width: 80%;
     margin-top: 30%;
-    height: 37%;
+    height: 34%;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
@@ -55,6 +55,7 @@ body {
 .form {
     /*background: rgba(255, 255, 255, 0.1);*/
     padding: 30px;
+    width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -88,7 +89,7 @@ body {
 }
 
 .index-h2 {
-    margin-bottom: 12.5%;
+    margin-bottom: 3%;
 
 }
 
