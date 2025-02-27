@@ -23,7 +23,7 @@ body {
 /* Index Navbar */
 
 .index-navbar {
-    background-color: #174553;
+    background-image: linear-gradient(to bottom, #020024 0%, #090979 35%, #00d4ff 90%);
     color: white;
     font-family: "Work Sans", sans-serif;
     text-align: center;
@@ -50,6 +50,11 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    width: 100%;
+}
+
+form {
+    backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -119,12 +124,17 @@ button:hover {
 
 main {
     grid-area: Main;
-    background-color: #61a1a7;
+    background-image: radial-gradient(circle, #4dd8ff 50%, black 100%);
 }
 
 /* flickity */
 
 .carousel-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
     width: 95%;
     height: 700px;
     border-radius: 15px;
@@ -133,6 +143,43 @@ main {
     background-position: center center;
     margin-top: 3%;
 }
+
+.carousel-cell h1 {
+    margin-bottom: 20px;
+    font-size: 8rem;
+    color: white;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.carousel-cell button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: steelblue;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    width: 25%;
+    height: 6%;
+    margin-bottom: 4rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.carousel-cell button:hover {
+    background-color: rgba(97, 161, 167, 0.8);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-cell button a {
+    color: white;
+    text-decoration: none;
+    font-family: "Work Sans", sans-serif;
+}
+
 
 .carousel-cell:before {
     display: block;
