@@ -236,3 +236,38 @@ hr {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.add-to-deckcollection{
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  padding: 50px;
+  border-radius: 15px;
+  width: 40%;
+  height: 50%;
+  top: 25%;
+  left: 25%;
+  z-index: 10;
+  background-color: #322725;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+.color-choise{
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+#add-info-deck{
+  gap: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.add-to-deckcollection.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(50%, 50%) scale(1);
+}
+

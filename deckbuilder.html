@@ -8,10 +8,16 @@
       src="https://kit.fontawesome.com/7450ea0e8a.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://kit.fontawesome.com/3de6987673.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3de6987673.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/mtg.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <aside>
@@ -44,14 +50,15 @@
       <section id="deck-filter">
         <input id="deck-search" type="search" placeholder="search..." />
         <section id="deck-manabar">
-        <button id="White" class="deck-type"></button>
-        <button id="Blue" class="deck-type"></button>
-        <button id="Black" class="deck-type"></button>
-        <button id="Red" class="deck-type"></button>
-        <button id="Green" class="deck-type"></button>
-        <button id="None" class="deck-type"></button>
+          <button id="White" class="deck-type"></button>
+          <button id="Blue" class="deck-type"></button>
+          <button id="Black" class="deck-type"></button>
+          <button id="Red" class="deck-type"></button>
+          <button id="Green" class="deck-type"></button>
+          <button id="None" class="deck-type"></button>
         </section>
       </section>
+
       <section id="deck-Colection">
         <div class="deck"></div>
         <div class="deck"></div>
@@ -63,14 +70,43 @@
         <div class="deck"></div>
       </section>
       <section id="deck-toolBar">
-        <button class="deck-buttons"><i class="fa-solid fa-trash"></i></button>
+        <button id="delete-deck-button" class="deck-buttons">
+          <i class="fa-solid fa-trash"></i>
+        </button>
         <section id="deck-page">
-        <article id="deck-previose">previose</article>
-        <article id="deck-page-counter">1</article>
-        <article id="deck-next">next</article>
+          <article id="deck-previose">previose</article>
+          <article id="deck-page-counter">1</article>
+          <article id="deck-next">next</article>
         </section>
-        <button class="deck-buttons">+</button>
+        <button id="add-deck-button" class="deck-buttons">+</button>
       </section>
     </main>
+    <section class="add-to-deckcollection">
+      <form id="add-info-deck" action="#">
+        <h1><strong>add deck</strong></h1>
+        <label for="name-deck"><strong>deck name</strong></label>
+        <input type="text" id="name-deck" name="name-deck" required />
+        <label for="color-type">
+          <input type="checkbox" name="color-type" id="" value="White" /><img class="color-choise"
+            src="assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png"
+            alt="" />
+          <input type="checkbox" name="color-type" id="" value="Blue" /><img class="color-choise"
+            src="assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png"
+            alt="" />
+          <input type="checkbox" name="color-type" id="" value="Black" /><img class="color-choise"
+            src="assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png"
+            alt="" />
+          <input type="checkbox" name="color-type" id="" value="Red" /><img class="color-choise"
+            src="assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png"
+            alt="" />
+          <input type="checkbox" name="color-type" id="" value="Green" /><img class="color-choise"
+            src="assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png"
+            alt="" />
+          <input type="checkbox" name="color-type" id="" value="None" /><img class="color-choise"
+            src="assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent (1).png"
+            alt=""
+        /></label>
+      </form>
+    </section>
   </body>
 </html>
