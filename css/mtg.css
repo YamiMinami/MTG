@@ -245,9 +245,11 @@ hr {
     background-size: cover;
 }
 .add-to-deckcollection{
+  display: flex;
+  justify-content: flex-end;
   position: fixed;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  /* visibility: hidden; */
   padding: 50px;
   border-radius: 15px;
   width: 40%;
@@ -256,8 +258,8 @@ hr {
   left: 25%;
   z-index: 10;
   background-color: #322725;
-  transform: translate(-50%, -50%) scale(0.8);
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  /* transform: translate(-50%, -50%) scale(0.8);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; */
 }
 .color-choise{
   align-items: center;
@@ -267,7 +269,7 @@ hr {
   border-radius: 50%;
 }
 #add-info-deck{
-  gap: 100px;
+  gap: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
