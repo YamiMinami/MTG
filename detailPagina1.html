@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Collection</title>
+    <title>NAAM VAN KAART</title>
     <script src="https://kit.fontawesome.com/7450ea0e8a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/collecionstyle.css" />
     <link rel="stylesheet" href="css/mtg.css" />
@@ -36,35 +36,20 @@
             </ul>
         </nav>
     </aside>
-    <main id="main-cardCollection">
-        <section id="main-searchBar">
-            <input type="text" placeholder="Zoek een kaart" name="Zoeken">
-        </section>
-        <section id="main-cardCollection">
-            <a href="detail.html?id=1" class="card">Kaart 1</a>
-            <div class="card">Kaart 2</div>
-            <div class="card">Kaart 2</div>
-            <div class="card">Kaart 3</div>
-            <div class="card">Kaart 14</div>
-            <div class="card">Kaart 15</div>
-            <div class="card">Kaart 16</div>
-            <div class="card">Kaart 17</div>
-            <div class="card">Kaart 18</div>
-            <div class="card">Kaart 19</div>
-        </section>
+    <main class="detail-main">
+        <a href="collection.html" class="detail-terugKnop">⬅ Terug</a>
+        <h1 class="detail-titel">Naam Kaart</h1>
+        <img src="kaart-placeholder.jpg" alt="Kaart afbeelding" class="detail-foto">
+        <article class="detail-opsomming">
+            <p class="detail-tekst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod.</p>
+            <p><strong>Detail 1:</strong> Lorem</p>
+            <p><strong>Detail 2:</strong> Lorem</p>
+            <p><strong>Detail 3:</strong> Lorem</p>
+            <p><strong>Huidige deck(s):</strong> Deck 1, Deck 2</p>
+            <button class="detail-toevoegenDeck">Toevoegen aan deck</button>
+        </article>
     </main>
-    <footer>
-        <section class="pageNumeration">
-            <a href="#">&laquo; Previous</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">...</a>
-            <a href="#">67</a>
-            <a href="#">68</a>
-            <a href="#">Next &raquo;</a>
-        </section>
-    </footer>
+
 </body>
 
 </html>
