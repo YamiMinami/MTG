@@ -9,26 +9,40 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/collecionstyle.css" />
+    <link rel="stylesheet" href="css/mtg.css" />
     <link rel="stylesheet" href="css/reset.css" />
   </head>
 
   <body>
-    <header>
-      <h1>
-        <a><i class="fa-solid fa-gamepad"></i></a>
-      </h1>
+    <aside>
       <nav>
         <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="collection.html.html">Collection</a></li>
-          <li><a href="deckbuilder.html">Deckbuilder</a></li>
+          <li>
+            <a href="home.html"><img src="assets/mtg.png" alt="mtg" /></a>
+          </li>
+          <li>
+            <hr />
+            <a href=""><img src="assets/play.png" alt="" /></a>
+            <p>Speel</p>
+          </li>
+          <li>
+            <hr />
+            <a href="collection.html"
+              ><img src="assets/collection.png" alt=""
+            /></a>
+            <p>Collectie</p>
+          </li>
+          <li>
+            <hr />
+            <a href="deckbuilder.html"><img src="assets/card.png" alt="" /></a>
+            <p>Decks</p>
+          </li>
         </ul>
       </nav>
-    </header>
+    </aside>
     <section class="search-container">
       <input type="text" placeholder="Zoek Kaart 1..." />
     </section>
-    <aside></aside>
     <main class="cardCollection">
       <div class="card">Kaart 1</div>
       <div class="card">Kaart 2</div>
@@ -41,16 +55,17 @@
       <div class="card">Kaart 18</div>
       <div class="card">Kaart 19</div>
     </main>
-    <section class="pageNumeration">
-      <a href="#">&laquo; Previous</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">...</a>
-      <a href="#">67</a>
-      <a href="#">68</a>
-      <a href="#">Next &raquo;</a>
-    </section>
-    <footer></footer>
+    <footer>
+      <section class="pageNumeration">
+        <a href="#">&laquo; Previous</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">...</a>
+        <a href="#">67</a>
+        <a href="#">68</a>
+        <a href="#">Next &raquo;</a>
+      </section>
+    </footer>
   </body>
 </html>
