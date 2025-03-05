@@ -145,6 +145,14 @@ hr {
   align-items: center;
   flex-wrap: wrap;
   gap: 100px;
+ 
+
+}
+.deck-main{
+   background-image: url(../assets/wallpaper.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #deck-toolBar {
   height: 50px;
