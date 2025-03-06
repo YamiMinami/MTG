@@ -31,6 +31,7 @@ input[type="text"] {
   flex-direction: column;
   transition: all .2s ease-in-out;
   text-decoration: none;
+  color: #b7864b;
 }
 .card:hover{
 transform: scale(1.2);
@@ -48,12 +49,12 @@ footer{
   margin: 0 5px;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #b7864b;
+  border: 1px solid #d3301d;
   border-radius: 5px;
   color: black;
 }
 .pageNumeration a.active {
-  background-color: #322725;
+  background-color: #87060a;
   color: white;
 }
 
@@ -92,14 +93,16 @@ footer{
   grid-column: 2/3;
 }
 .detail-toevoegenDeck {
-  background-color: #322725;
+  background-color: #d3301d;
   color: #fff;
   padding: 10px;
   margin-top: 5rem;
-  border: 2px solid #b7864b;
+  border: 2px solid #87060a;
   cursor: pointer;
   width: 150px;
   height: 50px;
   grid-column: 2/3;
+  border-radius: 10px;
+  box-shadow: #87060a 3px 3px 10px;
 }
 
