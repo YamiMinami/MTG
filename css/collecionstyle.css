@@ -29,6 +29,12 @@ input[type="text"] {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+}
+.card:hover{
+transform: scale(1.2);
+box-shadow: 7px 7px 20px #322725 ;
 }
 footer{
   width: 95vw;
