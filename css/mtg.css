@@ -249,7 +249,7 @@ hr {
   justify-content: flex-end;
   position: fixed;
   opacity: 1;
-  /* visibility: hidden; */
+  visibility: hidden;
   padding: 50px;
   border-radius: 15px;
   width: 40%;
