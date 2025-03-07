@@ -13,8 +13,8 @@ input[type="text"] {
   border-radius: 5px;
 }
 #main-cardCollection {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+flex-wrap: wrap;
   gap: 25px;
   max-width: 1400px;
   margin: 1rem auto;
@@ -26,6 +26,7 @@ input[type="text"] {
   border: 2px solid #b7864b;
   border-radius: 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -37,13 +38,12 @@ input[type="text"] {
 transform: scale(1.2);
 box-shadow: 7px 7px 20px #322725 ;
 }
-footer{
+.pageNumeration {
+  margin-top: 20px;
+  grid-row: 3/4;
   width: 95vw;
   padding: 1rem 0 1rem 0;
   text-align: center;
-}
-.pageNumeration {
-  margin-top: 20px;
 }
 .pageNumeration a {
   margin: 0 5px;
