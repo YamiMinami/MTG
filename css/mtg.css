@@ -266,18 +266,21 @@ hr {
   align-items: center;
   gap: 25px;
   position: absolute;
-  opacity: 1;
-  /* visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   padding: 25px;
   border-radius: 15px;
   width: 40%;
   height: 50%;
-  top: 25%;
-  left: 35%;
   z-index: 10;
-  background-color: #322725;
-  /* transform: translate(-50%, -50%) scale(0.8);
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out; */
+  background-image: linear-gradient(
+    to bottom,
+    var(--secondary-brown),
+    var(--primary-brown),
+    var(--secondary-brown)
+  );
+  transform: translate(60%, -100%) scale(0.8);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 .color-choise {
   align-items: center;
@@ -296,7 +299,8 @@ hr {
 .add-to-deckcollection.show {
   opacity: 1;
   visibility: visible;
-  transform: translate(50%, 50%) scale(1);
+  
+  transform: translate(60%, -100%) scale(1);
 }
 #deck1 {
   background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162326.png);
