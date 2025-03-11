@@ -94,6 +94,11 @@ box-shadow: 7px 7px 20px #322725 ;
 }
 
 /* DETAILPAGINA */
+/*.detail-body{
+  display: grid;
+  grid-template-areas: 'aside main'
+                        'aside main article';
+}
 .detail-main {
   display: grid;
   grid-template-columns: 1fr, 1fr;
@@ -137,5 +142,13 @@ box-shadow: 7px 7px 20px #322725 ;
   grid-column: 2/3;
   border-radius: 10px;
   box-shadow: #87060a 3px 3px 10px;
+}*/
+
+.detail-main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: .2fr 1fr;
+  margin: 1rem 2rem 1rem 2rem;
 }
+
 
