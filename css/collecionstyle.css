@@ -16,8 +16,8 @@ input[type="text"] {
 #main-cardCollection {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
-  max-width: 800px;
+  gap: 65px;
+  width: 800px;
   margin: 1rem auto;
   justify-items: center;
 }
@@ -40,8 +40,7 @@ box-shadow: 7px 7px 20px #322725 ;
 }
 .pageNumeration {
   margin-top: 20px;
-  grid-row: 3/4;
-  width: 95vw;
+  width: 500px;
   padding: 1rem 0 1rem 0;
   text-align: center;
 }
@@ -94,32 +93,30 @@ box-shadow: 7px 7px 20px #322725 ;
 }
 
 /* DETAILPAGINA */
-/*.detail-body{
-  display: grid;
-  grid-template-areas: 'aside main'
-                        'aside main article';
-}
 .detail-main {
-  display: grid;
-  grid-template-columns: 1fr, 1fr;
   margin: 2rem 0 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
   text-align: left;
   gap: 3rem;
 }
 .detail-terugKnop{
-  display: block;
-  grid-column: 1/2;
+  width: 150px;
   text-decoration: none;
   font-size: 20px;
+  border: #322725 1px solid;
   text-align: left;
   height: 50px;
 }
 .detail-titel{
-  grid-column: 2/3;
+  display: flex;
+  width: 300px;
+  border: #322725 1px solid;
+  height: 75px;
 }
 .detail-foto {
-  width: 275px;
-  height: 350px;
+  width: 475px;
+  height: 650px;
   border: 1px solid #b7864b;
   display: block;
   grid-column: 1/2;
@@ -128,7 +125,7 @@ box-shadow: 7px 7px 20px #322725 ;
   margin-bottom: 2rem;
 }
 .detail-opsomming{
-  grid-column: 2/3;
+  grid-column: section;
 }
 .detail-toevoegenDeck {
   background-color: #d3301d;
@@ -142,13 +139,6 @@ box-shadow: 7px 7px 20px #322725 ;
   grid-column: 2/3;
   border-radius: 10px;
   box-shadow: #87060a 3px 3px 10px;
-}*/
-
-.detail-main{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: .2fr 1fr;
-  margin: 1rem 2rem 1rem 2rem;
 }
 
 
