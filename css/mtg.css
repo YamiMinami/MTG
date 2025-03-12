@@ -1,129 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Rye&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rye&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 :root {
-    /*Fonts voor Titels, tussentittels*/
-    --font-title: "Rye", serif;
+  /*Fonts voor Titels, tussentittels*/
+  --font-title: "Rye", serif;
 
-    /*Font voor paragraven*/
-    --font-p: "Tinos", serif;
+  /*Font voor paragraven*/
+  --font-p: "Tinos", serif;
 
-    /*Voor buttons*/
-    --primary-red: #d3301d;
-    --secondary-red: #87060a;
+  /*Voor buttons*/
+  --primary-red: #d3301d;
+  --secondary-red: #87060a;
 
-    /*Voor aside achtergrondkleur icons*/
-    --primary-brown: #48302e;
-    --secondary-brown: #322725;
+  /*Voor aside achtergrondkleur icons*/
+  --primary-brown: #48302e;
+  --secondary-brown: #322725;
 
-    /*Accentuatie*/
-    --primary-gold: #efcd69;
-    --secondary-gold: #b7864b;
+  /*Accentuatie*/
+  --primary-gold: #efcd69;
+  --secondary-gold: #b7864b;
 
-    /*Paragraven font sizes*/
-    --p-sm: 0.875rem;
-    --p-md: 1rem;
-    --p-lg: 1.125rem;
-    --p-xl: 1.3125rem;
+  /*Paragraven font sizes*/
+  --p-sm: 0.875rem;
+  --p-md: 1rem;
+  --p-lg: 1.125rem;
+  --p-xl: 1.3125rem;
 
-    /*Header font sizes*/
-    --h1: 2.5rem;
-    --h2: 2.25rem;
-    --h3: 2rem;
-    --h4: 1.75rem;
-    --h5: 1.5rem;
+  /*Header font sizes*/
+  --h1: 2.5rem;
+  --h2: 2.25rem;
+  --h3: 2rem;
+  --h4: 1.75rem;
+  --h5: 1.5rem;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: grid;
-    grid-template-areas:
-        "Aside Main"
-        "Aside Main"
-        "Aside Main";
-    height: 100vh;
-    width: 99.3vw;
-    grid-template-rows: auto auto;
-    grid-template-columns: 12% auto;
+  display: grid;
+  grid-template-areas:
+    "Aside Main"
+    "Aside Main"
+    "Aside Main";
+  height: 100vh;
+  width: fit-content;
+  grid-template-rows: auto auto;
+  grid-template-columns: 12% auto;
 }
 
-
-
 aside {
-    grid-area: Aside;
-    background-image: radial-gradient(circle, var(--primary-brown) 0%, var(--secondary-brown) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-right: 2px solid;
-    border-image: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold), var(--primary-gold), var(--secondary-gold)) 2;
+  grid-area: Aside;
+  background-image: radial-gradient(
+    circle,
+    var(--primary-brown) 0%,
+    var(--secondary-brown) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 2px solid;
+  border-image: linear-gradient(
+      to bottom,
+      var(--primary-gold),
+      var(--secondary-gold),
+      var(--primary-gold),
+      var(--secondary-gold)
+    )
+    2;
 }
 
 nav img {
-    display: block;
-    width: 170px;
-    height: auto;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
+  display: block;
+  width: 170px;
+  height: auto;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 nav li {
-    text-align: center;
-    color: white;
-    list-style-type: none;
-    font-family: var(--font-p);
+  text-align: center;
+  color: white;
+  list-style-type: none;
+  font-family: var(--font-p);
 }
 main {
-    grid-area: Main;
+  grid-area: Main;
 }
 
 .background-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../assets/homebackground.jpg");
-    background-size: cover;
-    background-position: center;
-    filter: brightness(60%);
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/homebackground.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(60%);
+  z-index: -1;
 }
 
 hr {
-    border: none;
-    background-color: rgba(153, 153, 153, 0.2);
-    margin-top: 1rem;
-    height: 2px;
+  border: none;
+  background-color: rgba(153, 153, 153, 0.2);
+  margin-top: 1rem;
+  height: 2px;
 }
 
 #home-header {
-    display: flex;
-    margin: 1rem 1rem 0rem 3rem;
-    backdrop-filter: blur(10px) contrast(80%);
-    border-radius: 50px;
-    width: 400px;
+  display: flex;
+  margin: 1rem 1rem 0rem 3rem;
+  backdrop-filter: blur(10px) contrast(80%);
+  border-radius: 50px;
+  width: 400px;
 }
 
 #home-header img {
-    width: 100px;
-    border-radius: 50px;
-    border: 1px solid black;
+  width: 100px;
+  border-radius: 50px;
+  border: 1px solid black;
 }
 
 #home-header article {
-    display: flex;
-    justify-content: space-around;
-    gap: 2rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
 }
 
 #home-header h4 {
-    font-family: var(--font-title);
-    font-size: var(--h4);
-    margin-top: 2rem;
-    color: white;
+  font-family: var(--font-title);
+  font-size: var(--h4);
+  margin-top: 2rem;
+  color: white;
 }

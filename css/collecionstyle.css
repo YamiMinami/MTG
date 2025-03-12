@@ -3,7 +3,7 @@ body {
   margin: 0;
   text-align: center;
 }
-#main-searchBar{
+#main-searchBar {
   padding: 1rem;
   margin: 0 auto;
 }
@@ -30,13 +30,13 @@ input[type="text"] {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   text-decoration: none;
   color: #b7864b;
 }
-.card:hover{
-transform: scale(1.2);
-box-shadow: 7px 7px 20px #322725 ;
+.card:hover {
+  transform: scale(1.2);
+  box-shadow: 7px 7px 20px #322725;
 }
 .pageNumeration {
   margin-top: 20px;
@@ -141,24 +141,13 @@ box-shadow: 7px 7px 20px #322725 ;
   box-shadow: #87060a 3px 3px 10px;
 }*/
 
-
-.detail-main {
-  width: 80%;
-  padding: 20px;
+.detail-container {
   display: flex;
+  flex: 1 1;
   flex-direction: column;
-  align-items: center;
 }
 
 .detail-terugKnop {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.2s;
 }
 
 .detail-terugKnop:hover {
@@ -166,10 +155,6 @@ box-shadow: 7px 7px 20px #322725 ;
 }
 
 .detail-titel {
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
 }
 
 .detail-foto {
@@ -182,13 +167,9 @@ box-shadow: 7px 7px 20px #322725 ;
 }
 
 .detail-opsomming {
-  margin-bottom: 20px;
-  text-align: left;
 }
 
 .detail-tekst {
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 .detail-opsomming p {
@@ -196,15 +177,6 @@ box-shadow: 7px 7px 20px #322725 ;
 }
 
 .detail-toevoegenDeck {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .detail-toevoegenDeck:hover {
