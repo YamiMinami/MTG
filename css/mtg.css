@@ -152,6 +152,9 @@ hr {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #deck-toolBar {
   height: 50px;
@@ -162,8 +165,9 @@ hr {
   align-items: center;
 }
 #add-deck-button {
+  font-family: var(--font-p);
   border-radius: 15px;
-  width: 100px;
+  width: 130px;
   height: 50px;
   margin-right: 20px;
 }
@@ -174,6 +178,7 @@ hr {
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
   text-align: center;
+  font-family: var(--font-p);
 
 }
 .deck:hover {
@@ -277,7 +282,7 @@ hr {
 
 .deck img {
   max-width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 18px;
 
 }
