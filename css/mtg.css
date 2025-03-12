@@ -173,6 +173,8 @@ hr {
   height: 285px;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
+  text-align: center;
+
 }
 .deck:hover {
   transform: scale(1.1);
