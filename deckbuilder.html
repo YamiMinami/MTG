@@ -1,51 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Deckbuilder</title>
-    <script src="https://kit.fontawesome.com/7450ea0e8a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/stylesheet.css">
-    <link rel="stylesheet" href="css/reset.css">
-</head>
-<body>
-<header>
-    <h1><a><i class="fa-solid fa-gamepad"></i></a></h1>
-    <nav>
+    <script
+      src="https://kit.fontawesome.com/7450ea0e8a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/3de6987673.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/mtg.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="js/deck-javascript.js" defer></script>
+  </head>
+  <body>
+    <aside>
+      <nav>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="collection.html.html">Collection</a></li>
-            <li><a href="deckbuilder.html">Deckbuilder</a></li>
+          <li>
+            <a href="home.html"><img src="assets/mtg.png" alt="mtg" /></a>
+          </li>
+          <li>
+            <hr />
+            <a href=""><img src="assets/play.png" alt="" /></a>
+            <p>Speel</p>
+          </li>
+          <li>
+            <hr />
+            <a href="collection.html"
+              ><img src="assets/collection.png" alt=""
+            /></a>
+            <p>Collectie</p>
+          </li>
+          <li>
+            <hr />
+            <a href="deckbuilder.html"><img src="assets/card.png" alt="" /></a>
+            <p>Decks</p>
+          </li>
         </ul>
-    </nav>
-</header>
-<aside>
+      </nav>
+    </aside>
+    <main class="deck-main">
+      <section id="deck-filter">
+        <input id="deck-search" type="search" placeholder="search..." />
+        <section id="deck-manabar">
+          <button id="White" class="deck-type"><img src="/assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png" alt=""  ></button>
+          <button id="Blue" class="deck-type"><img src="/assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png" alt="" ></button>
+          <button id="Black" class="deck-type"><img src="/assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png" alt="" ></button>
+          <button id="Red" class="deck-type"><img src="/assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png" alt="" ></button>
+          <button id="Green" class="deck-type"><img src="/assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png" alt="" ></button>
+          <button id="None" class="deck-type"><img src="/assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent (1).png" alt="" ></button>
+        </section>
+        <button id="add-deck-button" class="deck-buttons">
+          <strong>deck toevoegen</strong>
+        </button>
+      </section>
 
-</aside>
-<main>
-<section class="deckColection">
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-    <div class="deck"></div>
-</section>
-<div class="toolBar">
-    <button>-</button>
-    <p>
-        <span>previous</span>
-        <span></span>
-        <span>next</span>
-    </p>
-    <button>+</button>
-</div>
+      <section id="deck-Colection">
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162326.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+        <article  class="deck"><img src="/assets/Schermafbeelding 2025-03-07 162332.png" alt=""><h2>deck name</h2></article>
+      </section>
 
-</main>
-<footer>
+      <section id="deck-toolBar">
+        <section id="deck-page">
+          <article id="deck-previose">previose</article>
+          <article id="deck-page-counter">1</article>
+          <article id="deck-next">next</article>
+        </section>
+      </section>
 
-</footer>
-</body>
+      <section class="add-to-deckcollection">
+        <button id="close-button"><i class="fa-solid fa-xmark"></i></button>
+        <!-- <button id="delete-deck-button" class="deck-buttons">
+          <i class="fa-solid fa-trash"></i> -->
+        </button>
+        <article id="deck-image">
+          <div id="deck1" class="deck"></div>
+        </article>
+        <form id="add-info-deck" action="#">
+          <h1><strong>add deck</strong></h1>
+          <label for="name-deck"
+            ><strong>deck name</strong>
+            <input type="text" id="name-deck" name="name-deck" required
+          /></label>
+
+          <label for="color-type">
+            <input type="checkbox" name="color-type" id="" value="White" /><img
+              class="color-choise"
+              src="assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png"
+              alt="" />
+            <input type="checkbox" name="color-type" id="" value="Blue" /><img
+              class="color-choise"
+              src="assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png"
+              alt="" />
+            <input type="checkbox" name="color-type" id="" value="Black" /><img
+              class="color-choise"
+              src="assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png"
+              alt="" />
+            <input type="checkbox" name="color-type" id="" value="Red" /><img
+              class="color-choise"
+              src="assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png"
+              alt="" />
+            <input type="checkbox" name="color-type" id="" value="Green" /><img
+              class="color-choise"
+              src="assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png"
+              alt="" />
+            <input type="checkbox" name="color-type" id="" value="None" /><img
+              class="color-choise"
+              src="assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent (1).png"
+              alt=""
+          /></label>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>
