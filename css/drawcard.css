@@ -1,4 +1,5 @@
 .dropdown {
+    width: 20%;
     min-width: 15em;
     position: relative;
     margin: 2em;
@@ -18,16 +19,18 @@
     border-radius: 0.5em;
     padding: 1em;
     cursor: pointer;
-    transition: backgroud 0.3s;
 }
-.select-clicked{
+
+.select-clicked {
     border: 2px #26489a solid;
     box-shadow: 0 0 0.8em #26489a;
 }
-.select:hover{
-    background-color: #323741;
+
+.select:hover {
+    background: #323741;
 }
-.caret{
+
+.caret {
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -35,32 +38,49 @@
     border-top: 6px solid #fff;
     transition: 0.3s;
 }
-.caret-rotate{
+
+.caret-rotate {
     transform: rotate(180deg);
 }
-.menu{
-    list-style:none;
+
+.menu {
+    list-style: none;
     padding: 0.2em 0.5em;
     background: #323741;
-    border:1px #363a43 solid;
-    box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
     border-radius: 0.5em;
-    color: #0fa5b5;
+    color: #9fa5b5;
     position: absolute;
-    top: 3em;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 5px;
+    min-width: 15em;
     opacity: 0;
     display: none;
-    transform: 0.2s;
     z-index: 1;
+    width: 100%;
 }
-.menu li{
+
+.menu li {
     padding: 0.7em 0.5em;
     margin: 0.3em 0;
     border-radius: 0.5em;
-    cursor:pointer;
+    cursor: pointer;
 }
-.menu:hover{
 
+.menu li:hover {
+    background: #2a2d35;
+}
+
+.active {
+    background: #23242a;
+}
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+
+#drawcard-dropdown, .drawcard-draw {
+    height: 50%;
+    padding: 100px;
 }
