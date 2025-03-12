@@ -1,3 +1,6 @@
+body{
+    cursor: url('../assets/cursor.png'), auto;
+}
 main {
     background-image: url("../assets/wallpaper.jpg");
     background-size: cover;
@@ -18,7 +21,7 @@ main {
 }
 
 .select {
-    background: #2a2f3b;
+    background: #d3301d;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -35,7 +38,7 @@ main {
 }
 
 .select:hover {
-    background: #323741;
+    background: #87060a;
 }
 
 .caret {
@@ -54,11 +57,11 @@ main {
 .menu {
     list-style: none;
     padding: 0.2em 0.5em;
-    background: #323741;
+    background: #d3301d;
     border: 1px #363a43 solid;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
     border-radius: 0.5em;
-    color: #9fa5b5;
+    color: #fff;
     position: absolute;
     margin-top: 5px;
     min-width: 15em;
@@ -76,7 +79,7 @@ main {
 }
 
 .menu li:hover {
-    background: #2a2d35;
+    background: #87060a;
 }
 
 .active {
@@ -97,15 +100,34 @@ main {
 }
 
 #drawcard-draw {
-    height: 75vh;
     display: flex;
-    justify-content: center;
+    flex: 1 1;
+}
+#drawcard-draw article {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+#drawcard-draw article img{
+    display:block;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    margin: auto;
 }
 
-#drawcard-draw img {
-    max-width: 300px;
-    min-width: 150px;
-    height: 450px;
+#drawcard-draw article button{
+    background-color: #d3301d;
+    display: block;
+    margin: auto;
+    width: 50%;
+    padding: 30px;
+    border-radius: 15px;
+}
+#drawcard-draw article button:hover{
+    opacity: 0.9;
+    cursor: pointer;
 }
 
 #drawcard-deck {
