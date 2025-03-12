@@ -277,8 +277,7 @@ hr {
   max-width: 100%;
   object-fit: cover;
   border-radius: 18px;
-  
-  
+
 }
 #delete-deck-button {
   grid-column: 2/3;
