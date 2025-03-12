@@ -168,10 +168,9 @@ hr {
   margin-right: 20px;
 }
 .deck {
-  border-style: solid;
-  border-width: 2px;
+  border: 2px solid black;
   width: 200px;
-  height: 250px;
+  height: 285px;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
 }
@@ -273,59 +272,12 @@ hr {
 
   transform: translate(60%, -100%) scale(1);
 }
-#deck1 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162326.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck2 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162332.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck3 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162339.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck4 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162347.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck5 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162353.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck6 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162359.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck7 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162326.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck8 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162332.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 .deck img {
   max-width: 100%;
   object-fit: cover;
   border-radius: 18px;
-  height: 249px;
+  
   
 }
 #delete-deck-button {
