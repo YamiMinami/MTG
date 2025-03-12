@@ -205,6 +205,61 @@ hr {
     border-radius: 15px;
 }
 
+#detail-container {
+    background-image: url("../assets/wallpaper.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+
+    width: 100%;
+
+    justify-content: space-between;
+    align-content: center;
+    flex: 1 1;
+}
+
+#detail-container section {
+    width: 50%;
+    margin: 1.5em;
+}
+
+#detail-container section article button {
+    color: white;
+    background-color: white;
+    background-image: linear-gradient(to bottom, var(--secondary-brown), var(--primary-brown));
+
+    font-family: var(--font-p);
+    font-size: var(--p-lg);
+
+    padding: 5px 25px 5px 25px;
+
+    margin-bottom: 2em;
+
+    border-image: linear-gradient(to right, var(--primary-gold), var(--secondary-gold))2;
+}
+
+#detail-container section article img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    margin: auto;
+    border-radius: 25px;
+    border: 2px solid yellow;
+}
+
+#detail-cardinfo {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+}
+
+
+
 /* css deckbuilder page */
 
 #deck-Colection {
