@@ -125,7 +125,7 @@ main {
   background-size: cover;
   background-position: center;
 
-  filter: brightness(60%);
+  filter: brightness(80%);
   z-index: -1;
 }
 
@@ -143,7 +143,7 @@ hr {
 #home-header {
   display: flex;
   margin: 1rem 1rem 0rem 3rem;
-  backdrop-filter: blur(10px) contrast(80%);
+  backdrop-filter: blur(10px) contrast(90%);
   border-radius: 50px;
   width: 400px;
 }
@@ -191,19 +191,22 @@ hr {
     grid-template-rows: repeat(2, 1fr);
 
     justify-items: center;
-    align-items: center; 
+    align-items: center;
 
+    padding: 4em;
+    gap: 2em;
 }
 
-#main-card-container article {
-    background-color: white;
+#main-card-container article img {
+    display: block;
 
-    width: 150px;
-    height: 250px;
+    max-width: 100%;
+    height: auto;
 
-    border: 1px solid black;
     border-radius: 15px;
 }
+
+/* detail pagina */
 
 #detail-container {
     background-image: url("../assets/wallpaper.jpg");
@@ -214,6 +217,7 @@ hr {
     display: flex;
 
     width: 100%;
+    height: 100%;
 
     justify-content: space-between;
     align-content: center;
@@ -231,7 +235,7 @@ hr {
     background-image: linear-gradient(to bottom, var(--secondary-brown), var(--primary-brown));
 
     font-family: var(--font-p);
-    font-size: var(--p-lg);
+    font-size: var(--p-xl);
 
     padding: 5px 25px 5px 25px;
 
@@ -245,6 +249,7 @@ hr {
 
     max-width: 100%;
     height: auto;
+    width: 550px;
 
     margin: auto;
     border-radius: 25px;
@@ -256,6 +261,19 @@ hr {
     flex-direction: column;
 
     justify-content: space-evenly;
+
+    padding: 1em;
+}
+
+#detail-cardinfo article h1 {
+    font-family: var(--font-p);
+    font-size: var(--h1);
+}
+
+#detail-cardinfo article p, #detail-cardinfo article ul li {
+    font-family: var(--font-p);
+    font-size: var(--p-xl);
+    list-style-type: none;
 }
 
 
