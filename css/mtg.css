@@ -287,7 +287,6 @@ hr {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 100px;
 }
 .deck-main {
@@ -295,6 +294,9 @@ hr {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #deck-toolBar {
   height: 50px;
@@ -305,25 +307,27 @@ hr {
   align-items: center;
 }
 #add-deck-button {
+  font-family: var(--font-p);
   border-radius: 15px;
-  width: 100px;
+  width: 130px;
   height: 50px;
   margin-right: 20px;
 }
 .deck {
-  border-style: solid;
-  border-width: 2px;
+  border: 2px solid black;
   width: 200px;
-  height: 250px;
+  height: 285px;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
+  text-align: center;
+  font-family: var(--font-p);
+
 }
 .deck:hover {
   transform: scale(1.1);
 }
 #deck-filter {
   display: flex;
-
   height: 75px;
   width: 90%;
   justify-content: center;
@@ -341,11 +345,19 @@ hr {
   border: 1px solid var(--primary-gold);
 }
 .deck-type {
-  padding: 10px;
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  justify-content: center;
+  align-items: center;
 }
+.deck-type img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 #deck-search {
   padding: 10px;
   margin-left: 10px;
@@ -364,42 +376,7 @@ hr {
   align-items: center;
   justify-content: center;
 }
-#White {
-  background-image: url(../assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Blue {
-  background-image: url(../assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Black {
-  background-image: url(../assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Red {
-  background-image: url(../assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#Green {
-  background-image: url(../assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#None {
-  background-image: url(../assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent\ \(1\).png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 .add-to-deckcollection {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -441,56 +418,15 @@ hr {
 .add-to-deckcollection.show {
   opacity: 1;
   visibility: visible;
-  
+
   transform: translate(60%, -100%) scale(1);
 }
-#deck1 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162326.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck2 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162332.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck3 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162339.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck4 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162347.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck5 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162353.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck6 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162359.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck7 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162326.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#deck8 {
-  background-image: url(../assets/Schermafbeelding\ 2025-03-07\ 162332.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+.deck img {
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 18px;
+
 }
 #delete-deck-button {
   grid-column: 2/3;
@@ -506,5 +442,4 @@ hr {
   border-radius: 50%;
   margin-left: auto;
   border-style: none;
- 
 }
