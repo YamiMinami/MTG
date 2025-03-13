@@ -179,6 +179,8 @@ hr {
     
     display: flex;
     flex-direction: column;
+
+    padding: 0 3em 0 3em
 }
 
 #main-card-container {
@@ -193,7 +195,6 @@ hr {
     justify-items: center;
     align-items: center;
 
-    padding: 4em;
     gap: 2em;
 }
 
@@ -280,24 +281,71 @@ hr {
 
 /* css deckbuilder page */
 
-#deck-Colection {
-  padding: 100px;
+#deck-container {
+    background-image: url(../assets/wallpaper.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    flex-direction: column;
+    justify-content: space-around;
+
+    padding: 0 3em 0 3em;
+    margin: 0;
+}
+
+#deck-collection {
   display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  width: 100%;
+  height: 100%;
+
   justify-content: center;
   align-items: center;
-  gap: 100px;
+
+  gap: 2em
 }
-.deck-main {
-  background-image: url(../assets/wallpaper.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+#deck-collection article img {
+    display: block;
+
+    max-height: 100%;
+    width: 205.65px;
+    height: 286.44px;
+
+    object-fit: cover;
+    border-radius: 15px;
+    margin: auto;
+
+    margin-bottom: 0.5em;
 }
+
+#deck-collection article {
+    font-family: var(--font-p);
+    font-size: var(--p-xl);
+
+    text-align: center;
+
+}
+
+.pages {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 2em;
+
+    font-family: var(--font-p);
+    font-size: var(--p-xl);
+}
+
 #deck-toolBar {
   height: 50px;
   width: auto;
@@ -313,33 +361,29 @@ hr {
   height: 50px;
   margin-right: 20px;
 }
-.deck {
-  border: 2px solid black;
-  width: 200px;
-  height: 285px;
-  border-radius: 20px;
-  transition: all 0.2s ease-in-out;
-  text-align: center;
-  font-family: var(--font-p);
 
-}
 .deck:hover {
   transform: scale(1.1);
 }
-#deck-filter {
+
+#deck-bar {
   display: flex;
-  height: 75px;
-  width: 90%;
-  justify-content: center;
+
+  height: 4.5em;
+  width: 100%;
+  margin-bottom: 2em;
+
+  justify-content: space-between;
   align-items: center;
+
+
   background-image: linear-gradient(
     to bottom,
     var(--secondary-brown),
     var(--primary-brown),
     var(--secondary-brown)
   );
-  margin-left: 5%;
-  margin-right: 5%;
+
   margin-top: 1em;
   border-radius: 15px;
   border: 1px solid var(--primary-gold);
@@ -361,15 +405,12 @@ hr {
 #deck-search {
   padding: 10px;
   margin-left: 10px;
-  width: 250px;
+  width: 200px;
   height: 30px;
   border-radius: 15px;
   border: 1px solid var(--secondary-gold);
 }
-#deck-manabar {
-  padding-right: 20px;
-  margin: auto;
-}
+
 #deck-page {
   display: flex;
   gap: 20px;
