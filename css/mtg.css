@@ -56,9 +56,8 @@ aside {
     grid-area: Aside;
     background-image: radial-gradient(circle, var(--primary-brown) 0%, var(--secondary-brown) 100%);
     display: flex;
-    width: 12vw;
     min-width: 100px;
-    height: 100vh;
+    height: 100%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -86,6 +85,7 @@ nav li {
     list-style-type: none;
     width: 100%;
     font-family: var(--font-p);
+    font-size: var(--p-xl);
 }
 
 nav {
@@ -124,6 +124,7 @@ main {
   background-image: url("../assets/homebackground.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 
   filter: brightness(80%);
   z-index: -1;
@@ -317,8 +318,7 @@ hr {
     display: block;
 
     max-width: 100%;
-    height: 355px;
-    width: 270px;
+    height: auto;
 
 
     object-fit: cover;
