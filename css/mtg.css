@@ -316,9 +316,10 @@ hr {
 #deck-collection article img {
     display: block;
 
-    max-height: 100%;
-    width: 205.65px;
-    height: 286.44px;
+    max-width: 100%;
+    height: 355px;
+    width: 270px;
+
 
     object-fit: cover;
     border-radius: 15px;
