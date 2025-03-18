@@ -20,6 +20,7 @@ body {
     grid-template-columns: 20% auto;
 }
 
+/*dit is bedoeld voor de popups enkel.*/
 main.active, aside.active{
     filter:blur(20px);
     pointer-events: none;
@@ -82,6 +83,8 @@ main.active, aside.active{
 #index-popup-rightitems{
     margin-left: 30px;
 }
+
+
 /* Index Navbar */
 
 .index-navbar {
