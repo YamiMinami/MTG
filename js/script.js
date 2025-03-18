@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var mainCarousel = new Flickity('.main-carousel', {
+    var mainCarousel = new Flickity('#main-carousel', {
       contain: true,
       wrapAround: true,
       pageDots: false,
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     var navCarousel = new Flickity('.carousel-nav', {
-      asNavFor: '.main-carousel', 
+      asNavFor: '#main-carousel', 
       contain: true,
       pageDots: false,
       prevNextButtons: false,
