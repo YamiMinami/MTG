@@ -485,3 +485,23 @@ hr {
   margin-left: auto;
   border-style: none;
 }
+
+
+
+
+
+
+/* iPad Pro (max-width: 1366px) - Landscape Fix */
+@media screen and (max-width: 1366px) and (orientation: landscape) {
+  #main-card-container, #deck-collection {
+    grid-template-columns: repeat(3, 1fr); /* Meer kaarten per rij */
+    grid-template-rows: repeat(5, 1fr); /* Meer rijen */
+    gap: 20px; /* Grotere afstand tussen kaarten */
+  }
+
+  #main-card-container img, #deck-collection img {
+    width: 150px; /* Grotere kaarten */
+    height: auto;
+  }
+}
+
