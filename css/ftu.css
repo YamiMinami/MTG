@@ -1,27 +1,10 @@
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
-    width: 100vw;
     color:white;
 }
-
-main {
-    background-image: url("../assets/ftu.png");
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*mtg gekleurd maken*/
+.magic-title {
+    color: #efcd69; /* Vervang dit met de gewenste kleur */
+    font-weight: bold;
 }
 
 /* Welkom container */
@@ -31,9 +14,10 @@ main {
     text-align: center;
     margin-bottom: 40px;
     border: 2px solid #efcd69;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px) contrast(80%);
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px) contrast(100%);
     padding: 50px;
+    margin: auto;
 }
 
 #ftu-welcome-container h1 {
@@ -43,6 +27,26 @@ main {
 
 #ftu-welcome-container p {
     font-size: 18px;
+}
+
+/*BLUR*/
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    display: none;
+}
+#ftu-welcome-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 /* Avatar selectie sectie */
@@ -134,4 +138,18 @@ input {
 #ftu-play-icon:hover {
     transform: scale(1.1);
     transition: 0.2s;
+}
+
+/*exiticon*/
+#icon-exit {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+#icon-exit:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
 }
