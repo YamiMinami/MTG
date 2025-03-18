@@ -44,8 +44,10 @@ body {
     "Aside Main"
     "Aside Main"
     "Aside Main";
+
   height: 100vh;
   width: 100vw;
+
   grid-template-rows: auto auto;
   grid-template-columns: 12% auto;
 }
@@ -58,6 +60,8 @@ aside {
     var(--secondary-brown) 100%
   );
   display: flex;
+  min-width: 100px;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -74,52 +78,91 @@ aside {
 
 nav img {
   display: block;
-  width: 170px;
+  max-width: 95%;
   height: auto;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 nav li {
   text-align: center;
   color: white;
   list-style-type: none;
+  width: 100%;
   font-family: var(--font-p);
+  font-size: var(--p-xl);
 }
+
+nav {
+  margin: 0.5em 0 0.5em 0;
+}
+
+nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+nav a img {
+  transition: transform 0.2s ease-in-out;
+}
+
+nav a:hover img {
+  transform: scale(1.1);
+}
+
 main {
   grid-area: Main;
 }
 
 .background-layer {
   position: absolute;
+
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100%;
+
   background-image: url("../assets/homebackground.jpg");
   background-size: cover;
   background-position: center;
-  filter: brightness(60%);
+  background-repeat: no-repeat;
+
+  filter: brightness(80%);
   z-index: -1;
 }
 
 hr {
   border: none;
   background-color: rgba(153, 153, 153, 0.2);
-  margin-top: 1rem;
+
   height: 2px;
+
+  margin-top: 1rem;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 #home-header {
   display: flex;
   margin: 1rem 1rem 0rem 3rem;
-  backdrop-filter: blur(10px) contrast(80%);
+  backdrop-filter: blur(10px) contrast(90%);
   border-radius: 50px;
   width: 400px;
 }
 
 #home-header img {
   width: 100px;
+
   border-radius: 50px;
   border: 1px solid black;
 }
@@ -133,29 +176,194 @@ hr {
 #home-header h4 {
   font-family: var(--font-title);
   font-size: var(--h4);
+
   margin-top: 2rem;
   color: white;
 }
 
-/* css deckbuilder page */
-#deck-Colection {
-  padding: 100px;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
+/* Collection */
+
+#main-container {
+  background-image: url(../assets/wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 3em 0 3em;
 }
-.deck-main {
+
+#main-card-container {
+  display: grid;
+
+  width: 100%;
+  height: 100%;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  justify-items: center;
+  align-items: center;
+
+  gap: 2em;
+}
+
+#main-card-container article img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+
+  border-radius: 15px;
+}
+
+/* detail pagina */
+
+#detail-container {
+  background-image: url("../assets/wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: space-between;
+  align-content: center;
+  flex: 1 1;
+}
+
+#detail-container section {
+  width: 50%;
+  margin: 1.5em;
+}
+
+#detail-container section article button {
+  color: white;
+  background-color: white;
+  background-image: linear-gradient(
+    to bottom,
+    var(--secondary-brown),
+    var(--primary-brown)
+  );
+
+  font-family: var(--font-p);
+  font-size: var(--p-xl);
+
+  padding: 5px 25px 5px 25px;
+
+  margin-bottom: 2em;
+
+  border-image: linear-gradient(
+      to right,
+      var(--primary-gold),
+      var(--secondary-gold)
+    )
+    2;
+}
+
+#detail-container section article img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+  width: 550px;
+
+  margin: auto;
+  border-radius: 25px;
+  border: 2px solid yellow;
+}
+
+#detail-cardinfo {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
+
+  padding: 1em;
+}
+
+#detail-cardinfo article h1 {
+  font-family: var(--font-p);
+  font-size: var(--h1);
+}
+
+#detail-cardinfo article p,
+#detail-cardinfo article ul li {
+  font-family: var(--font-p);
+  font-size: var(--p-xl);
+  list-style-type: none;
+}
+
+/* css deckbuilder page */
+
+#deck-container {
   background-image: url(../assets/wallpaper.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
   display: flex;
+  width: 100%;
+  height: 100%;
+
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  padding: 0 3em 0 3em;
+  margin: 0;
 }
+
+#deck-collection {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 2em;
+}
+
+#deck-collection article img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+
+  object-fit: cover;
+  border-radius: 15px;
+  margin: auto;
+
+  margin-bottom: 0.5em;
+}
+
+#deck-collection article {
+  font-family: var(--font-p);
+  font-size: var(--p-xl);
+
+  text-align: center;
+}
+
+.pages {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 2em;
+
+  font-family: var(--font-p);
+  font-size: var(--p-xl);
+}
+
 #deck-toolBar {
   height: 50px;
   width: auto;
@@ -171,32 +379,28 @@ hr {
   height: 50px;
   margin-right: 20px;
 }
-.deck {
-  border: 2px solid black;
-  width: 200px;
-  height: 285px;
-  border-radius: 20px;
-  transition: all 0.2s ease-in-out;
-  text-align: center;
-  font-family: var(--font-p);
-}
+
 .deck:hover {
   transform: scale(1.1);
 }
-#deck-filter {
+
+#deck-bar {
   display: flex;
-  height: 75px;
-  width: 90%;
-  justify-content: center;
+
+  height: 4.5em;
+  width: 100%;
+  margin-bottom: 2em;
+
+  justify-content: space-between;
   align-items: center;
+
   background-image: linear-gradient(
     to bottom,
     var(--secondary-brown),
     var(--primary-brown),
     var(--secondary-brown)
   );
-  margin-left: 5%;
-  margin-right: 5%;
+
   margin-top: 1em;
   border-radius: 15px;
   border: 1px solid var(--primary-gold);
@@ -218,15 +422,12 @@ hr {
 #deck-search {
   padding: 10px;
   margin-left: 10px;
-  width: 250px;
+  width: 200px;
   height: 30px;
   border-radius: 15px;
   border: 1px solid var(--secondary-gold);
 }
-#deck-manabar {
-  padding-right: 20px;
-  margin: auto;
-}
+
 #deck-page {
   display: flex;
   gap: 20px;
