@@ -34,7 +34,7 @@ main.active, aside.active{
     top:40%;
     left:50%;
     transform:translate(-50%,-50%);
-    width: 100%;
+    width: 95%;
     height: 100%;
     max-width: 600px;
     max-height: 250px;
