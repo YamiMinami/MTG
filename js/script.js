@@ -20,5 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
       selectedAttraction: 0.01,
       friction: 0.25,
     });
-  });
+});
+
+
+
   
