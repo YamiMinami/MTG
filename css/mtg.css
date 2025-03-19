@@ -242,7 +242,7 @@ hr {
   margin: 1.5em;
 }
 
-button {
+#detail-container section button {
   color: white;
   background-color: white;
   background-image: linear-gradient(
