@@ -1,8 +1,8 @@
 body{
-    cursor: url('../assets/cursor.png'), auto;
+    cursor: url('../../../assets/cursor.png'), auto;
 }
 main {
-    background-image: url("../assets/wallpaper.jpg");
+    background-image: url("../../../assets/wallpaper.jpg");
     background-size: cover;
     background-position: center;
     width: 88vw;

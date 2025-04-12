@@ -1,12 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index</title>
+    <script src="https://kit.fontawesome.com/7450ea0e8a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
+
 <body>
-    <%= message %>
+<main>
+    <div id="main-carousel">
+        <div class="carousel-cell" style="background-image: url(../public/assets/fortnite.jpg);">
+            <h1>Fortnite</h1>
+            <button>
+                <a href="#" onclick="toggle()">Speel Nu</a>
+            </button>
+        </div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/LOTR.jpg);">
+            <h1>Lord Of The Rings</h1>
+            <button>
+                <a href="#" onclick="toggle()">Speel Nu</a>
+            </button>
+        </div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/Lego.jpg);">
+            <h1>Lego</h1>
+            <button>
+                <a href="#" onclick="toggle()">Speel Nu</a>
+            </button>
+        </div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/Magic.jpg);">
+            <h1>Magic The Gathering</h1>
+            <button>
+                <a href="/home">Speel Nu</a>
+            </button>
+        </div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/pokemon.jpg);">
+            <h1>Pokemon</h1>
+            <button>
+                <a href="#" onclick="toggle()">Speel Nu</a>
+            </button>
+        </div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/fifa.jpg);">
+            <h1>Fifa</h1>
+            <button>
+                <a href="#" onclick="toggle()">Speel Nu</a>
+            </button>
+        </div>
+    </div>
+    <div class="carousel-nav">
+        <div class="carousel-cell" style="background-image: url(../public/assets/fortnite.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/LOTR.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/Lego.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/Magic.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/pokemon.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(../public/assets/fifa.jpg);"></div>
+    </div>
+</main>
+<aside class="index-navbar">
+    <p id="icon"><i class="fa-solid fa-gamepad"> GameHub</i></p>
+    <section id="index-form-wrapper">
+        <form id="index-login" class="form" action="#">
+            <h2 class="index-h2">Login</h2>
+            <label for="Username">Gebruikersnaam</label>
+            <input type="text" required>
+            <label for="Password">Wachtwoord</label>
+            <input type="password" required>
+            <p class="index-switch-animation">Registreer <a id="index-register-a" href="#">hier</a></p>
+            <button>Log in</button>
+        </form>
+        <form id="index-register" class="form" action="#">
+            <h2 class="index-h2">Registreer</h2>
+            <label for="Username">Gebruikersnaam</label>
+            <input type="text" required>
+            <label for="Password">Wachtwoord</label>
+            <input type="password" required>
+            <p class="index-switch-animation">Log <a href="#">hier</a> in</p>
+            <button>Registreer</button>
+        </form>
+    </section>
+</aside>
+<div id="index-popup-container">
+    <section id="index-popup-contents">
+        <i id="index-popup-icon" class="fa-solid fa-triangle-exclamation"></i>
+        <section id="index-popup-rightitems">
+            <h2>Ooops!</h2>
+            <p>Je kan hier niet aan deelnemen, probeer een andere spel.</p>
+            <a href="#" onclick="toggle()">Sluit</a>
+        </section>
+    </section>
+
+</div>
+<script src="js/index-animatie.js"></script>
+<script src="js/blur.js"></script>
 </body>
+
 </html>
