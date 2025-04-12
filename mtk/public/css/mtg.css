@@ -121,7 +121,7 @@ main {
   width: 100%;
   height: 100%;
 
-  background-image: url("../../../assets/homebackground.jpg");
+  background-image: url("../assets/homebackground.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -170,7 +170,7 @@ hr {
 /* Collection */
 
 #main-container {
-    background-image: url(../../../assets/wallpaper.jpg);
+    background-image: url(../assets/wallpaper.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -208,7 +208,7 @@ hr {
 /* detail pagina */
 
 #detail-container {
-    background-image: url("../../../assets/wallpaper.jpg");
+    background-image: url("../assets/wallpaper.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -280,7 +280,7 @@ hr {
 /* css deckbuilder page */
 
 #deck-container {
-    background-image: url(../../../assets/wallpaper.jpg);
+    background-image: url(../assets/wallpaper.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

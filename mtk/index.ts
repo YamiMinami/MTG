@@ -4,7 +4,7 @@ import path from "path";
 
 dotenv.config();
 
-const app : Express = express();
+const app: Express = express();
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -15,10 +15,31 @@ app.set("views", path.join(__dirname, "views"));
 app.set("port", process.env.PORT ?? 3000);
 
 app.get("/", (req, res) => {
-    res.render("index", {
-        title: "Hello World",
-        message: "Hello World"
-    })
+    res.render("index");
+});
+
+app.get("/detail", (req, res) => {
+    res.render("detail");
+});
+
+app.get("/home", (req, res) => {
+    res.render("home");
+});
+
+app.get("/drawcard", (req, res) => {
+    res.render("drawcard");
+});
+
+app.get("/deckbuilder", (req, res) => {
+    res.render("deckbuilder");
+});
+
+app.get("/collection", (req, res) => {
+    res.render("collection");
+});
+
+app.get("/first-time-user", (req, res) => {
+    res.render("first-time-user");
 });
 
 app.listen(app.get("port"), () => {
