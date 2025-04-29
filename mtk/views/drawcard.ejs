@@ -1,6 +1,6 @@
 <%- include("partials/header") %>
 <body>
-<main>
+<main id="drawcard-main">
     <section id="drawcard-dropdown">
         <div class="dropdown">
             <div class="select">
@@ -15,15 +15,19 @@
             </ul>
         </div>
     </section>
+    <section id="deck-track-section">
+        <input type="text" id="deck-name" placeholder="Enter deck name" />
+        <button id="track-deck">Track</button>
+    </section>
     <section id="drawcard-draw">
         <article>
-            <img id="drawcard-deck" src="mtk/public/assets/latest.png" alt="MTG Card Back">
+            <img id="drawcard-deck" src="/assets/latest.png" alt="MTG Card Back">
         </article>
         <article>
             <button>Trek kaart</button>
         </article>
         <article>
-            <img id="drawcard-card" src="mtk/public/assets/card1.jpg" alt="card">
+            <img id="drawcard-card" src="/assets/card1.jpg" alt="card">
         </article>
     </section>
 </main>
