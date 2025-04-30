@@ -1,0 +1,61 @@
+<%- include("partials/header") %>
+<body>
+<%- include("partials/aside") %>
+<main id="main-container">
+
+    <section id="deck-bar">
+        <input id="deck-search" type="search" placeholder="search..." />
+        <article>
+          <button id="White" class="deck-type"></button>
+          <button id="Blue" class="deck-type"></button>
+          <button id="Black" class="deck-type"></button>
+          <button id="Red" class="deck-type"></button>
+          <button id="Green" class="deck-type"></button>
+          <button id="None" class="deck-type"></button>
+        </article>
+
+      </section>
+
+    <section id="main-card-container">
+        <% cards.forEach(card => { 
+            const imgUrl = card.image_uris?.png
+            || card.card_faces?.[0]?.image_uris?.png
+       %>
+         <article>
+           <img src="<%= imgUrl %>" alt="<%= card.name %>">
+         </article>
+       <% }) %>
+    </section>
+
+    <section class="pages">
+        <form method="get" class="pagination-form">
+            <button
+              type="submit"
+              name="page"
+              value="<%= currentPage - 1 %>"
+              class="pagination-button"
+              <% if (currentPage <= 1) { %> disabled <% } %>
+            >
+              Terug
+            </button>
+          </form>
+        
+          <button type="button" class="pagination-info" disabled>
+            Pagina <%= currentPage %> van <%= totalPages %>
+          </button>
+        
+          <form method="get" class="pagination-form">
+            <button
+              type="submit"
+              name="page"
+              value="<%= currentPage + 1 %>"
+              class="pagination-button"
+              <% if (currentPage >= totalPages) { %> disabled <% } %>
+            >
+              Volgende
+            </button>
+          </form>
+    </section>
+</main>
+</body>
+</html>
