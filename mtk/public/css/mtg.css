@@ -30,12 +30,16 @@
   --h3: 2rem;
   --h4: 1.75rem;
   --h5: 1.5rem;
+
+  /*Cursor*/
+  cursor: url("../assets/cursor.cur") 0 0, auto;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  cursor: url("../assets/cursor.cur") 0 0, auto;
 }
 body {
   display: grid;
@@ -104,6 +108,7 @@ nav a img {
 
 nav a:hover img {
     transform: scale(1.1);
+    cursor: url("../assets/pointer.cur"), auto;
 }
 
 main {
@@ -348,7 +353,7 @@ hr {
   border: 1px solid #333;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;
   font-size: 1rem;
 }
 
@@ -573,7 +578,7 @@ hr {
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;
   transition: transform 0.3s ease-in-out;
   border: 4px solid;
   color: transparent;
@@ -650,7 +655,7 @@ input {
   right: 20px;
   font-size: 50px;
   color: white;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;;
 }
 #icon-exit:hover{
   transform: scale(1.2);
@@ -658,9 +663,6 @@ input {
 }
 
 /* Drawcard css */
-#dc-body{
-  cursor: url("../assets/cursor.cur") 0 0, auto;
-}
 #dc-main {
   background-image: url("../assets/wallpaper.jpg");
   background-size: cover;
@@ -723,7 +725,7 @@ input {
   padding: 0.7em 0.5em;
   margin: 0.3em 0;
   border-radius: 0.5em;
-  /*cursor: pointer;*/
+  cursor: url("../assets/pointer.cur"), auto;;
 }
 
 .menu li:hover {
@@ -775,7 +777,7 @@ input {
 }
 .index-aside-button:hover{
   opacity: 0.9;
-  cursor: pointer
+  cursor: url("../assets/pointer.cur"), auto;
 }
 
 #dc-deck {
