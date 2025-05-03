@@ -30,14 +30,17 @@
   --h3: 2rem;
   --h4: 1.75rem;
   --h5: 1.5rem;
+
+  /*Cursor*/
+  cursor: url("../assets/cursor.cur") 0 0, auto;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  cursor: url("../assets/cursor.cur") 0 0, auto;
 }
-
 body {
   display: grid;
   grid-template-areas:
@@ -51,7 +54,6 @@ body {
   grid-template-rows: auto auto;
   grid-template-columns: 12% auto;
 }
-
 aside {
   grid-area: Aside;
   background-image: radial-gradient(
@@ -116,7 +118,8 @@ nav a img {
 }
 
 nav a:hover img {
-  transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: url("../assets/pointer.cur"), auto;
 }
 
 main {
@@ -352,20 +355,10 @@ hr {
 
 .pages {
   display: flex;
-<<<<<<< HEAD:css/mtg.css
-
-  justify-content: space-between;
-
-  margin: 2em;
-
-  font-family: var(--font-p);
-  font-size: var(--p-xl);
-=======
   justify-content: center;
   align-items: center;
   gap: 1rem;
   margin: 2rem 0;
->>>>>>> 87d987a7514c7a8f2f5c2b44d240e09bb241d63a:mtk/public/css/mtg.css
 }
 
 .pagination-form {
@@ -377,7 +370,7 @@ hr {
   border: 1px solid #333;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;
   font-size: 1rem;
 }
 
@@ -530,7 +523,7 @@ hr {
   margin-left: auto;
   border-style: none;
 }
-<<<<<<< HEAD:css/mtg.css
+
 
 /* iPad Pro (max-width: 1366px) - Landscape Fix */
 @media screen and (max-width: 1366px) and (orientation: landscape) {
@@ -577,7 +570,7 @@ hr {
     font-size: 7px;
   }
 }
-=======
+
 /*FIRST TIME USER POPUP STYLINGS*/
 /* Welkom container */
 .magic-title {
@@ -648,7 +641,7 @@ hr {
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;
   transition: transform 0.3s ease-in-out;
   border: 4px solid;
   color: transparent;
@@ -725,7 +718,7 @@ input {
   right: 20px;
   font-size: 50px;
   color: white;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;;
 }
 #icon-exit:hover{
   transform: scale(1.2);
@@ -733,10 +726,7 @@ input {
 }
 
 /* Drawcard css */
-body{
-  cursor: url('../assets/cursor.png'), auto;
-}
-#drawcard-main {
+#dc-main {
   background-image: url("../assets/wallpaper.jpg");
   background-size: cover;
   background-position: center;
@@ -745,10 +735,9 @@ body{
 }
 
 .dropdown {
-  width: 20%;
-  min-width: 15em;
+  width: 50%;
   position: relative;
-  margin: 2em;
+  margin-left: 25%;
 }
 
 .dropdown * {
@@ -756,25 +745,15 @@ body{
 }
 
 .select {
-  background: #d3301d;
-  color: #fff;
+  background: var(--primary-brown);
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 2px #2a2f3b solid;
   border-radius: 0.5em;
   padding: 1em;
-  cursor: pointer;
 }
 
-.select-clicked {
-  border: 2px #26489a solid;
-  box-shadow: 0 0 0.8em #26489a;
-}
-
-.select:hover {
-  background: #87060a;
-}
 
 .caret {
   width: 0;
@@ -792,14 +771,13 @@ body{
 .menu {
   list-style: none;
   padding: 0.2em 0.5em;
-  background: #d3301d;
+  background: var(--primary-brown);
   border: 1px #363a43 solid;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
   color: #fff;
   position: absolute;
   margin-top: 5px;
-  min-width: 15em;
   opacity: 0;
   display: none;
   z-index: 1;
@@ -810,11 +788,11 @@ body{
   padding: 0.7em 0.5em;
   margin: 0.3em 0;
   border-radius: 0.5em;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;;
 }
 
 .menu li:hover {
-  background: #87060a;
+  background: var(--secondary-brown);
 }
 .menu .active {
   background: #23242a;
@@ -825,82 +803,89 @@ body{
   opacity: 1;
 }
 
-#drawcard-dropdown {
+#dc-dropdown {
   padding-top: 5%;
-  height: 25vh;
   display: flex;
   justify-content: center;
   margin-right: 68%;
+  margin-bottom: 10px;
 }
 
-#drawcard-draw {
+#dc-draw {
   display: flex;
   flex: 1 1;
 }
-#drawcard-draw article {
+#dc-draw article {
   width: 50%;
   display: flex;
   align-items: center;
 }
-#drawcard-draw article img{
+#dc-draw img{
   display:block;
   max-width: 400px;
   width: 100%;
   height: auto;
   border-radius: 25px;
   margin: auto;
+  caret-color: transparent;
 }
 
-#drawcard-draw article button{
-  background-color: #d3301d;
+#dc-draw button{
+  background-color: var(--primary-brown);
   display: block;
   margin: auto;
   width: 50%;
   padding: 30px;
   border-radius: 15px;
 }
-#drawcard-draw article button:hover, .index-aside-button:hover{
+.index-aside-button:hover{
   opacity: 0.9;
-  cursor: pointer;
+  cursor: url("../assets/pointer.cur"), auto;
 }
 
-#drawcard-deck {
+#dc-deck {
   margin-right: 50%;
 }
-#drawcard-dropdown {
+#dc-dropdown {
     display: block;
     position: relative;
     width: 100%;
+    cursor: url("../assets/pointer.cur") 0 0, auto;
 }
-
-#deck-track-section {
+/*Drawcard card inputfield & trackbutton*/
+#dc-card-track {
     display: flex;
-    justify-content: flex-start;  /* Aligns the text box and button to the left */
     align-items: center;
     gap: 10px;
-    margin-top: 1em;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 5%;
 }
 
-#deck-track-section input {
-    padding: 10px;
-    width: 200px;
+#dc-card-track input {
+    padding: 1em;
+    width: 100%;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 1rem;
 }
 
-#deck-track-section button {
-    padding: 10px 20px;
-    background-color: #d3301d;
+#dc-card-track button {
+    padding: 1em 1.5em;
+    background-color: var(--primary-brown);
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#deck-track-section button:hover {
-    background-color: #87060a;
+#dc-card-track button, .select, #dc-draw button{
+  transition: background-color 0.3s ease;
+  caret-color: transparent;
+  color: white;
 }
->>>>>>> 87d987a7514c7a8f2f5c2b44d240e09bb241d63a:mtk/public/css/mtg.css
+#dc-card-track button:hover, .select:hover, #dc-draw button:hover, .menu li:hover {
+    background-color: var(--secondary-brown);
+    cursor: url("../assets/pointer.cur"), auto;
+}
+
