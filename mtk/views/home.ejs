@@ -1,29 +1,6 @@
 <%- include("partials/header") %>
 <body>
-<aside>
-    <nav>
-        <ul>
-            <li>
-                <a href="#"><img src="assets/mtg.png" alt="mtg"></a>
-            </li>
-            <li>
-                <hr>
-                <a href="drawcard.html"><img src="assets/play.png" alt=""></a>
-                <p>Speel</p>
-            </li>
-            <li>
-                <hr>
-                <a href="collection.html"><img src="assets/collection.png" alt=""></a>
-                <p>Collectie</p>
-            </li>
-            <li>
-                <hr>
-                <a href="deckbuilder.html"><img src="assets/card.png" alt=""></a>
-                <p>Decks</p>
-            </li>
-        </ul>
-    </nav>
-</aside>
+<%- include("partials/aside") %>
 <main>
     <div class="background-layer"></div>
     <section id="home-header">
@@ -36,7 +13,7 @@
     <div id="overlay"></div>
     <section id="ftu-welcome-container" class="popup">
         <article>
-            <h1>Welkom bij <span class="magic-title">Magic: The Gathering</span></h1>
+            <h1><span class="magic-title">Magic The Gathering</span></h1>
             <h2>Kies een avatar</h2>
         </article>
         <article id="ftu-avatars-container">
@@ -54,7 +31,7 @@
             <label for="avatar6" class="ftu-avatar" style="background-image: url('../assets/avatar6.png');"></label>
         </article>
         <article id="ftu-form">
-            <h2>Kies een Naam: </h2>
+            <h2>Kies een Naam </h2>
             <form id="ftu-gebruikersnaam" action="#">
                 <input type="text" required>
                 <a href="#"><i id="ftu-play-icon" class="fa-solid fa-gamepad"></i></a>
