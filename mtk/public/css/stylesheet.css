@@ -171,25 +171,23 @@ main.active, aside.active{
 }
 
 .index-switch-animation a:hover {
-    color: #1574c3;
+    color: #a0d4ff;
 }
 
 
-button {
+.index-aside-button {
     width: 100%;
-    height: 32px;
     border-radius: 5px;
     background-color: #61a1a7;
     border: none;
     color: white;
     font-family: "Work Sans", sans-serif;
     font-size: 18px;
-    margin-top: 29px;
+    margin-bottom: 30px;
+    padding: 8px;
+    transition: all 0.3s ease-in-out;
 }
 
-button:hover {
-    background-color: rgba(97, 161, 167, 0.6);
-}
 
 main {
     grid-area: Main;
@@ -238,7 +236,7 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
-.carousel-cell button:hover {
+.carousel-cell button:hover, .index-aside-button:hover {
     background-color: rgba(97, 161, 167, 0.8);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
 }
@@ -280,300 +278,4 @@ main {
 
 aside {
     grid-area: Aside;
-}
-
-/* FTU.css */
-
-body {
-    color:white;
-}
-/*mtg gekleurd maken*/
-.magic-title {
-    color: #efcd69; /* Vervang dit met de gewenste kleur */
-    font-weight: bold;
-}
-
-/* Welkom container */
-#ftu-welcome-container {
-    width: 60%;
-    height: auto;
-    text-align: center;
-    margin-bottom: 40px;
-    border: 2px solid #efcd69;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px) contrast(100%);
-    padding: 50px;
-    margin: auto;
-}
-
-#ftu-welcome-container h1 {
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-#ftu-welcome-container p {
-    font-size: 18px;
-}
-
-/*BLUR*/
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
-    z-index: 10;
-    display: none;
-}
-#ftu-welcome-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-/* Avatar selectie sectie */
-#ftu-avatars-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-/* Verborgen checkboxes voor avatars */
-#ftu-avatars-container input{
-    display: none;
-}
-
-/* Avatar styling */
-.ftu-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    border: 4px solid;
-    color: transparent;
-}
-.ftu-avatar:focus {
-    outline: none;
-}
-.ftu-avatar:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Active geselecteerde avatar styling */
-#ftu-avatars-container input:checked + .ftu-avatar {
-    border-color: #efcd69; 
-    transform: scale(1.15);
-}
-
-/*Form styling*/
-#ftu-form {
-    margin-top: 5%;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-}
-
-button {
-    width: 100px;
-    height: 32px;
-    border-radius: 5px;
-    background-color: #b7864b;
-    border: none;
-    color: white;
-    font-size: 18px;
-    margin-top: 30px;
-    align-self: center;
-}
-button:hover {
-    background-color: rgba(134, 107, 17, 0.6);
-}
-
-input {
-    width: 80%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-#ftu-gebruikersnaam {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 400px;
-}
-#ftu-play-icon {
-    font-size: 50px;
-    color: #efcd69;
-    border: transparent;
-    caret-color: transparent;
-}
-
-#ftu-play-icon:hover {
-    transform: scale(1.1);
-    transition: 0.2s;
-}
-
-/*exiticon*/
-#icon-exit {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-    font-size: 50px;
-    color: white;
-    cursor: pointer;
-}
-#icon-exit:hover{
-    transform: scale(1.2);
-    transition: 0.5s;
-}
-
-/* Drawcard css */
-
-body{
-    cursor: url('../assets/cursor.png'), auto;
-}
-main {
-    background-image: url("../assets/wallpaper.jpg");
-    background-size: cover;
-    background-position: center;
-    width: 88vw;
-    height: 100vh;
-}
-
-.dropdown {
-    width: 55%;
-    min-width: 15em;
-    position: relative;
-    margin: 2em;
-}
-
-.dropdown * {
-    box-sizing: border-box;
-}
-
-.select {
-    background: #d3301d;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px #2a2f3b solid;
-    border-radius: 0.5em;
-    padding: 1em;
-    cursor: pointer;
-}
-
-.select-clicked {
-    border: 2px #26489a solid;
-    box-shadow: 0 0 0.8em #26489a;
-}
-
-.select:hover {
-    background: #87060a;
-}
-
-.caret {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
-    transition: 0.3s;
-}
-
-.caret-rotate {
-    transform: rotate(180deg);
-}
-
-.menu {
-    list-style: none;
-    padding: 0.2em 0.5em;
-    background: #d3301d;
-    border: 1px #363a43 solid;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-    border-radius: 0.5em;
-    color: #fff;
-    position: absolute;
-    margin-top: 5px;
-    min-width: 15em;
-    opacity: 0;
-    display: none;
-    z-index: 1;
-    width: 100%;
-}
-
-.menu li {
-    padding: 0.7em 0.5em;
-    margin: 0.3em 0;
-    border-radius: 0.5em;
-    cursor: pointer;
-}
-
-.menu li:hover {
-    background: #87060a;
-}
-
-.active {
-    background: #23242a;
-}
-
-.menu-open {
-    display: block;
-    opacity: 1;
-}
-
-#drawcard-dropdown {
-    padding-top: 5%;
-    height: 25vh;
-    display: flex;
-    justify-content: center;
-    margin-right: 68%;
-}
-
-#drawcard-draw {
-    display: flex;
-    flex: 1 1;
-}
-#drawcard-draw article {
-    width: 50%;
-    display: flex;
-    align-items: center;
-}
-#drawcard-draw article img{
-    display:block;
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    border-radius: 25px;
-    margin: auto;
-}
-
-#drawcard-draw article button{
-    background-color: #d3301d;
-    display: block;
-    margin: auto;
-    width: 50%;
-    padding: 30px;
-    border-radius: 15px;
-}
-#drawcard-draw article button:hover{
-    opacity: 0.9;
-    cursor: pointer;
-}
-
-#drawcard-deck {
-    margin-right: 50%;
 }
