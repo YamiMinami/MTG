@@ -2,8 +2,9 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { Card } from "./interfaces";
+import { MongoClient } from "mongodb";
+import { connect } from "./database";
 
-dotenv.config();
 
 const app: Express = express();
 
@@ -64,6 +65,7 @@ app.get("/first-time-user", (req, res) => {
     res.render("first-time-user");
 });
 
-app.listen(app.get("port"), () => {
+app.listen(app.get("port"), async() => {
+    await connect();
     console.log("Server started on http://localhost:" + app.get("port"));
 });
