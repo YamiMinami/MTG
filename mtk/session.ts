@@ -1,8 +1,8 @@
-console.log("session.ts loaded");  // Add this line
+console.log("session.ts loaded");
 
 import { MONGODB_URI } from "./database";
 import session, { MemoryStore } from "express-session";
-import { FlashMessage, User } from "./types";
+import { FlashMessage, User } from "./interfaces";
 import mongoDbSession from "connect-mongodb-session";
 const MongoDBStore = mongoDbSession(session);
 

@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import { login, userCollection } from "../database";
 import { secureMiddleware } from "../middleware/secureMiddleware";
-import { User } from "../types";
+import { User } from "../interfaces";
 
 export function loginRouter() {
     const router = express.Router();
