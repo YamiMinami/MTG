@@ -458,49 +458,56 @@ hr {
   justify-content: center;
 }
 
-.add-to-deckcollection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.1fr 1fr;
-  justify-items: center;
-  align-items: center;
-  gap: 25px;
+.popup {
   position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  padding: 25px;
-  border-radius: 15px;
-  width: 40%;
-  height: 50%;
-  z-index: 10;
-  background-image: linear-gradient(
-    to bottom,
-    var(--secondary-brown),
-    var(--primary-brown),
-    var(--secondary-brown)
-  );
-  transform: translate(60%, -100%) scale(0.8);
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 20px;
 }
-.color-choise {
-  align-items: center;
-  justify-content: center;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
+
+.popup.hidden {
+  display: none;
 }
-#add-info-deck {
-  gap: 50px;
+
+.popup-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  gap: 15px;
 }
-.add-to-deckcollection.show {
-  opacity: 1;
-  visibility: visible;
 
-  transform: translate(60%, -100%) scale(1);
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.image-options {
+  display: flex;
+  gap: 10px;
+}
+
+.image-options img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.image-options input[type="radio"]:checked + label img {
+  border-color: #007bff;
 }
 
 .deck img {
@@ -523,84 +530,6 @@ hr {
   margin-left: auto;
   border-style: none;
 }
-<<<<<<< HEAD
-@media (max-width: 1024px) {
-    #deck-collection {
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 1.5em; 
-    }
-
-    #deck-bar {
-        flex-direction: column; 
-        height: auto;
-        padding: 1em;
-    }
-
-    #deck-search {
-        width: 100%; 
-        margin: 0.5em 0;
-    }
-}
-
-
-@media (max-width: 768px) {
-    #deck-collection {
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 1em; 
-    }
-
-    #deck-container {
-        padding: 1em; 
-    }
-
-    #deck-bar {
-        flex-direction: column; 
-        align-items: center;
-        gap: 1em;
-    }
-
-    #add-deck-button {
-        width: 100%;
-        margin: 0.5em 0;
-    }
-    #deck-search {
-        width: 100%; 
-        margin: 0.5em 0;
-    }
-
-    .deck-type {
-        height: 40px; 
-        width: 40px;
-    }
-
-    #deck-page {
-        flex-direction: column; 
-        gap: 0.5em;
-    }
-}
-
-
-@media (max-width: 480px) {
-    #deck-collection {
-        grid-template-columns: 1fr; 
-    }
-
-    #deck-bar {
-        flex-direction: column;
-        gap: 0.5em;
-    }
-
-    #add-deck-button {
-        font-size: var(--p-md); 
-        height: 40px;
-    }
-
-    #deck-search {
-        font-size: var(--p-md); 
-        height: 25px;
-    }
-}
-=======
 
 
 /* iPad Pro (max-width: 1366px) - Landscape Fix */
@@ -967,4 +896,3 @@ input {
     cursor: url("../assets/pointer.cur"), auto;
 }
 
->>>>>>> 487f5975a95df6777256b8ae99e9790e0bbd16b0

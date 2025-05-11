@@ -7,3 +7,10 @@ export interface Card {
       png?: string;             
     };
   }
+
+export interface Decks {
+    id: string;                   
+    name: string;             
+    cards: Card[][];
+                 
+  }
