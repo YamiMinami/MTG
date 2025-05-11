@@ -99,52 +99,30 @@
         <article>Pagina 2</article>
         <article>Volgende</article>
       </section>
-
-
-
-      <section class="add-to-deckcollection">
-        <button id="close-button"><i class="fa-solid fa-xmark"></i></button>
-        <!-- <button id="delete-deck-button" class="deck-buttons">
-          <i class="fa-solid fa-trash"></i> -->
-        </button>
-        <article id="deck-image">
-          <div id="deck1" class="deck"></div>
-        </article>
-        <form id="add-info-deck" action="#">
-          <h1><strong>add deck</strong></h1>
-          <label for="name-deck"
-            ><strong>deck naam</strong>
-            <input type="text" id="name-deck" name="name-deck" required/>
+      <section id="create-deck-popup" class="popup hidden">
+        <div class="popup-content">
+        <button id="close-popup" class="close-button"><i class="fa-solid fa-xmark"></i></button>
+        <h1>Maak een nieuw deck</h1>
+        <form id="create-deck-form">
+          <label for="deck-name">
+          <strong>Deck Naam:</strong>
+          <input type="text" id="deck-name" name="deck-name" placeholder="Voer een naam in..." required />
           </label>
-
-          <label for="color-type">
-            <input type="checkbox" name="color-type" id="" value="White" /><img
-              class="color-choise"
-              src="mtk/public/assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png"
-              alt="" />
-            <input type="checkbox" name="color-type" id="" value="Blue" /><img
-              class="color-choise"
-              src="mtk/public/assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png"
-              alt="" />
-            <input type="checkbox" name="color-type" id="" value="Black" /><img
-              class="color-choise"
-              src="mtk/public/assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png"
-              alt="" />
-            <input type="checkbox" name="color-type" id="" value="Red" /><img
-              class="color-choise"
-              src="mtk/public/assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png"
-              alt="" />
-            <input type="checkbox" name="color-type" id="" value="Green" /><img
-              class="color-choise"
-              src="mtk/public/assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png"
-              alt="" />
-            <input type="checkbox" name="color-type" id="" value="None" /><img
-              class="color-choise"
-              src="mtk/public/assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent (1).png"
-              alt=""
-          /></label>
-        </form>
-      </section>
+          <label for="deck-image">
+          <strong>Kies een afbeelding:</strong>
+          <div class="image-options">
+            <input type="radio" id="image1" name="deck-image" value="innistrad.jpg" required />
+            <label for="image1"><img src="/assets/Innistrad.jpg" alt="Innistrad" /></label>
+            <input type="radio" id="image2" name="deck-image" value="dominaria.jpg" />
+            <label for="image2"><img src="/assets/dominaria.jpg" alt="Dominaria" /></label>
+            <input type="radio" id="image3" name="deck-image" value="theros.jpg" />
+            <label for="image3"><img src="/assets/theros.jpg" alt="Theros" /></label>
+        </div>
+      </label>
+      <button type="submit" id="save-deck-button" class="deck-buttons">Opslaan</button>
+    </form>
+  </div>
+</section>
     </main>
   </body>
 </html>
