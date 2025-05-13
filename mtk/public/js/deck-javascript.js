@@ -19,3 +19,16 @@ if (addButtondeck && popup) {
     }
   });
 }
+
+console.log("Mana button script geladen");
+
+document.querySelectorAll('.deck-type').forEach(button => {
+  button.addEventListener('click', () => {
+    const manaColor = button.id;
+    console.log(`Button clicked: ${manaColor}`);
+    const params = new URLSearchParams(window.location.search);
+    params.set('mana', manaColor);
+    window.location.search = params.toString(); // force reload
+  });
+});
+

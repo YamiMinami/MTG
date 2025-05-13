@@ -49,17 +49,32 @@ app.get("/deckbuilder", (req, res) => {
 });
 
 app.get("/collection", (req, res) => {
-    const perPage = 10;
-    const page = parseInt(req.query.page as string) || 1;
-    const totalPages = Math.ceil(cards.length / perPage);
-    const pageCards = cards.slice((page - 1) * perPage, page * perPage);
-  
-    res.render("collection", {
-      cards: pageCards,
-      currentPage: page,
-      totalPages,
-    });
+  const perPage = 10;
+  const page = parseInt(req.query.page as string) || 1;
+  const manaFilter = req.query.mana as string;
+  const validColors = ['W', 'U', 'B', 'R', 'G'];
+
+  let filteredCards = cards;
+
+  if (manaFilter && manaFilter !== "None") {
+    const manaLetter = manaFilter[0].toUpperCase();
+    if (validColors.includes(manaLetter)) {
+      filteredCards = cards.filter(card =>
+        card.color_identity?.includes(manaLetter)
+      );
+    }
+  }
+
+  const totalPages = Math.ceil(filteredCards.length / perPage);
+  const pageCards = filteredCards.slice((page - 1) * perPage, page * perPage);
+
+  res.render("collection", {
+    cards: pageCards,
+    currentPage: page,
+    totalPages,
+    manaFilter
   });
+});
 
 app.get("/first-time-user", (req, res) => {
     res.render("first-time-user");
