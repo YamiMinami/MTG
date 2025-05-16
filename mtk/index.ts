@@ -22,7 +22,7 @@ let cards: Card[] = [];
     try {
         const response = await fetch('https://raw.githubusercontent.com/s117507/WebOntwikkeling_Project/main/250Cards.json');
         cards = await response.json(); 
-        console.log(cards[0].name); // should now correctly log the first card's name
+        console.log(cards[0].name); 
     } catch (error: any) {
         console.log("Error fetching cards:", error);
     }
