@@ -9,21 +9,29 @@
             </button>
         </article>
         <article>
-            <img src="https://cards.scryfall.io/large/front/6/d/6da045f8-6278-4c84-9d39-025adf0789c1.jpg?1562404626">
+            <img src="<%= card.image_uris?.large ||
+                  card.card_faces?.[0]?.image_uris?.large ||
+                  '/assets/default-card.png' %>"
+            alt="<%= card.name %>">
         </article>
     </section>
     <section id="detail-cardinfo">
         <article>
-            <h1>Naam Kaart</h1>
+            <h1><%= card.name %></h1>
         </article>
         <article>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </article>
         <article>
             <ul>
-                <li>Detail 1: Lorem Ipsum</li>
-                <li>Detail 2: Lorem Ipsum</li>
-                <li>Detail 3: Lorem Ipsum</li>
+                <li><strong>Type:</strong> <%= card.type_line %></li>
+                <li><strong>Rarity:</strong> <%= card.rarity %></li>
+                <% if (card.oracle_text) { %>
+                <li><strong>Oracle Text:</strong> <%= card.oracle_text %></li>
+                <% } %>
+                <% if (card.power != null && card.toughness != null) { %>
+                <li><strong>Power/Toughness:</strong> <%= card.power %>/<%= card.toughness %></li>
+                 <% } %>
             </ul>
         </article>
         <article>

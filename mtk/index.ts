@@ -56,6 +56,17 @@ app.get("/collection", (req, res) => {
     });
   });
 
+app.get("/detail/:id", (req, res) => {
+  const cardId = req.params.id;
+  const card = cards.find(c => c.id === cardId);
+
+  if (!card) {
+    return res.status(404).send("Card not found");
+  }
+
+  res.render("detail", { card });
+});
+
 app.get("/first-time-user", (req, res) => {
     res.render("first-time-user");
 });
