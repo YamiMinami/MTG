@@ -21,7 +21,7 @@
             const imgUrl = card.image_uris?.png
             || card.card_faces?.[0]?.image_uris?.png
        %>
-         <article>
+         <article class="collection-cards" data-rarity="<%= card.rarity %>">
            <img src="<%= imgUrl %>" alt="<%= card.name %>">
          </article>
        <% }) %>

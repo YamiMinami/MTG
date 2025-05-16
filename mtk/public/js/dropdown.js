@@ -22,3 +22,21 @@ dropdowns.forEach(dropdown => {
         });
     });
 });
+
+// Trong Werkt hieraan 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const rarityColors = {
+    common:    '#737373',  
+    uncommon:  '#1d833f',  
+    rare:      '#1a65c0',  
+    mythic:    '#d97706'   
+  };
+
+    document.querySelectorAll('.collection-cards').forEach(card => {
+    const rarity = card.getAttribute('data-rarity');
+    const color  = rarityColors[rarity] || 'transparent';
+    card.style.border = `4px solid ${color}`;
+    card.style.borderRadius = '20px';
+  });
+});
