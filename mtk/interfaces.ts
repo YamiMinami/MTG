@@ -5,6 +5,8 @@ export interface User {
     email: string;
     password?: string;
     role: "ADMIN" | "USER";
+    avatar?: string;
+    username?: string;
 }
 
 export interface FlashMessage {

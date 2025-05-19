@@ -15,9 +15,19 @@ export function loginRouter() {
         const email: string = req.body.email;
         const password: string = req.body.password;
         try {
+            //Authenticate user (checks password)
             let user: User = await login(email, password);
-            delete user.password;
-            req.session.user = user;
+
+            //Fetch full user info (avatar, username, etc.)
+            const fullUser = await userCollection.findOne({ _id: user._id });
+
+            if (!fullUser) {
+                throw new Error("User data not found");
+            }
+
+            delete fullUser.password;
+
+            req.session.user = fullUser;
             req.session.message = { type: "success", message: "Login successful" };
             res.redirect("/home");
         } catch (e: any) {
@@ -49,7 +59,10 @@ export function loginRouter() {
 
         await userCollection.insertOne(newUser);
         delete newUser.password;
-        req.session.user = newUser;
+
+        // Re-fetch with _id to ensure complete session consistency
+        const registeredUser = await userCollection.findOne({ email });
+        req.session.user = registeredUser!;
         req.session.message = { type: "success", message: "Registration successful!" };
         res.redirect("/home");
     });
