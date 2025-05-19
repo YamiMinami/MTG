@@ -457,58 +457,43 @@ hr {
   align-items: center;
   justify-content: center;
 }
-
-.popup {
+/* popup deck maken*/
+#create-deck-popup{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 400px;
-  background: white;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  padding: 20px;
-}
-
-.popup.hidden {
-  display: none;
-}
-
-.popup-content {
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 10px;
+  height: 200px;
+  width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  left: 40%;
+  top: 30%;
+  background-color: var(--primary-brown);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0; 
+  transition: transform 0.3s ease, opacity 0.3s ease; 
+  z-index: 1000;
 }
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.image-options {
+.popup-content-deck{
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+.create-deck-popup.show {
+  transform: translate(-50%, -50%) scale(1); 
+  opacity: 1; 
 }
 
-.image-options img {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 4px;
+.create-deck-popup.hidden {
+  display: none; 
 }
 
-.image-options input[type="radio"]:checked + label img {
-  border-color: #007bff;
-}
+
 
 .deck img {
   max-width: 100%;
