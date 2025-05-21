@@ -9,7 +9,7 @@ export interface Card {
   }
 
   export interface user {
-    id: number;
+    id: string;
     name: string;
     deck: Decks[];
   }
