@@ -14,7 +14,7 @@ rl.question('Voer de naam van het deck in: ', (deckName) => {
         rl.close();
     });
 });
-const uri = 'mongodb://localhost:27017'; // Update with your MongoDB connection string
+const uri = 'mongodb://localhost:27017'; 
 const client = new MongoClient(uri);
 
 async function saveDeckToDatabase(deckName: string, cards: string[]) {
