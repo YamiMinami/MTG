@@ -24,4 +24,3 @@ export interface Card {
       png?: string;             
     };
   }
-  
