@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 import { Card } from "./interfaces";
 import { MongoClient } from "mongodb";
-import { connect } from "./database";
+import { connect, initAssets, loadAssets } from "./database";
 
 
 const app: Express = express();
@@ -18,15 +18,10 @@ app.set("port", process.env.PORT ?? 3000);
 
 let cards: Card[] = [];
 
-(async function () {
-    try {
-        const response = await fetch('https://raw.githubusercontent.com/s117507/WebOntwikkeling_Project/main/250Cards.json');
-        cards = await response.json(); 
-        console.log(cards[0].name); // should now correctly log the first card's name
-    } catch (error: any) {
-        console.log("Error fetching cards:", error);
-    }
-})();
+async function MTGApp() {
+    await connect();       
+    await initAssets();    
+    cards = await loadAssets(); 
 
 app.get("/", (req, res) => {
     res.render("index");
@@ -64,8 +59,13 @@ app.get("/collection", (req, res) => {
 app.get("/first-time-user", (req, res) => {
     res.render("first-time-user");
 });
+};
 
 app.listen(app.get("port"), async() => {
-    await connect();
     console.log("Server started on http://localhost:" + app.get("port"));
 });
+
+MTGApp().catch(err => {
+    console.error("Er is iets misgelopen:", err);
+    process.exit(1);
+  });
