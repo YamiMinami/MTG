@@ -8,9 +8,15 @@ export interface Card {
     };
   }
 
+  export interface user {
+    id: number;
+    name: string;
+    deck: Decks[];
+  }
+
 export interface Decks {
-    id: string;                   
+    id: number;                   
     name: string;             
-    cards: Card[][];
+    cards: string[][];
                  
   }
