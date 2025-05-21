@@ -100,7 +100,7 @@
         <article>Volgende</article>
       </section>
       <section id="create-deck-popup" class="popup hidden">
-        <div class="popup-content">
+        <div class="popup-content-deck">
         <button id="close-popup" class="close-button"><i class="fa-solid fa-xmark"></i></button>
         <h1>Maak een nieuw deck</h1>
         <form id="create-deck-form">
@@ -108,16 +108,8 @@
           <strong>Deck Naam:</strong>
           <input type="text" id="deck-name" name="deck-name" placeholder="Voer een naam in..." required />
           </label>
-          <label for="deck-image">
-          <strong>Kies een afbeelding:</strong>
-          <div class="image-options">
-            <input type="radio" id="image1" name="deck-image" value="innistrad.jpg" required />
-            <label for="image1"><img src="/assets/Innistrad.jpg" alt="Innistrad" /></label>
-            <input type="radio" id="image2" name="deck-image" value="dominaria.jpg" />
-            <label for="image2"><img src="/assets/dominaria.jpg" alt="Dominaria" /></label>
-            <input type="radio" id="image3" name="deck-image" value="theros.jpg" />
-            <label for="image3"><img src="/assets/theros.jpg" alt="Theros" /></label>
-        </div>
+          
+         
       </label>
       <button type="submit" id="save-deck-button" class="deck-buttons">Opslaan</button>
     </form>
