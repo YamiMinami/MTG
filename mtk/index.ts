@@ -4,7 +4,12 @@ import path from "path";
 import { Card } from "./interfaces";
 import { MongoClient } from "mongodb";
 import { connect, initAssets, loadAssets } from "./database";
-
+import session from "./session";
+import { secureMiddleware } from "./middleware/secureMiddleware";
+import { flashMiddleware } from "./middleware/flashMiddleware";
+import { homeRouter } from "./routers/homeRouter";
+import { loginRouter } from "./routers/loginRouter";
+dotenv.config();
 
 const app: Express = express();
 
@@ -12,10 +17,13 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(session);
+app.use(flashMiddleware);
 app.set("views", path.join(__dirname, "views"));
 
 app.set("port", process.env.PORT ?? 3000);
-
+app.use("/", loginRouter());
+app.use("/", secureMiddleware, homeRouter());
 let cards: Card[] = [];
 
 async function MTGApp() {
@@ -55,6 +63,17 @@ app.get("/collection", (req, res) => {
       totalPages,
     });
   });
+
+app.get("/detail/:id", (req, res) => {
+  const cardId = req.params.id;
+  const card = cards.find(c => c.id === cardId);
+
+  if (!card) {
+    return res.status(404).send("Card not found");
+  }
+
+  res.render("detail", { card });
+});
 
 app.get("/first-time-user", (req, res) => {
     res.render("first-time-user");
