@@ -300,7 +300,8 @@ hr {
 
 #deck-collection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 2rem;
   padding: 1rem;
   width: 100%;
@@ -334,6 +335,7 @@ hr {
 }
 
 .deck-info {
+  height: 100px;
   padding: 1.2rem;
   position: relative;
 }
