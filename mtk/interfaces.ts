@@ -20,7 +20,7 @@ export interface Card {
     rarity: 'common' | 'uncommon' | 'rare' | 'mythic'; 
     flavor_text?: string;
     oracle_text?: string;
-    color_identity?: string;         
+    color_identity?: string;       
     image_uris?: {
       png?: string;             
     };
