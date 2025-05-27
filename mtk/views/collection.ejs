@@ -27,19 +27,25 @@
           <% cards.forEach(card=> {
             const imgUrl = card.image_uris?.png
             || card.card_faces?.[0]?.image_uris?.png
-            %>
-            <article>
-              <img src="<%= imgUrl %>" alt="<%= card.name %>">
-            </article>
-            <% }) %>
-        </section>
+       %>
+         <article class="collection-cards" data-rarity="<%= card.rarity %>">
+          <a href="/detail/<%= card.id %>">
+           <img src="<%= imgUrl %>" alt="<%= card.name %>">
+          </a>
+         </article>
+       <% }) %>
+    </section>
 
-        <section class="pages">
-          <form method="get" class="pagination-form">
-            <input type="hidden" name="mana" value="<%= manaFilter %>">
-            <button type="submit" name="page" value="<%= currentPage - 1 %>" class="pagination-button" <% if
-              (currentPage <=1) { %> disabled <% } %>>
-                Terug
+    <section class="pages">
+        <form method="get" class="pagination-form">
+            <button
+              type="submit"
+              name="page"
+              value="<%= currentPage - 1 %>"
+              class="pagination-button"
+              <% if (currentPage <= 1) { %> disabled <% } %>
+            >
+              Terug
             </button>
           </form>
 
