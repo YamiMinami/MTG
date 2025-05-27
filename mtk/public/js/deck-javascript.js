@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Willekeurig genereren
   generateDeckButton?.addEventListener("click", async () => {
     const deckName = document.getElementById("deck-name").value;
-    const deckBackground = document.getElementById("deck-background").value;
+    const deckBackground = document.querySelector('input[name="deck-background"]:checked')?.value;
     if (!deckName) {
       alert("Vul eerst een decknaam in!");
       return;
