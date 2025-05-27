@@ -2,6 +2,7 @@
   "dependencies": {
     "flickity": "^3.0.0",
     "flickity-fullscreen": "^2.0.0",
-    "flickity-imagesloaded": "^2.0.0"
+    "flickity-imagesloaded": "^2.0.0",
+    "mongo": "^0.1.0"
   }
 }
