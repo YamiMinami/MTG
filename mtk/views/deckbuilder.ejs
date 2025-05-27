@@ -47,9 +47,17 @@
                                             <%= deck.name %>
                                         </h2>
                                         <div class="deck-meta">
-                                            <% deck.colors.forEach(color=> { %>
-                                                <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
-                                                    alt="<%= color %>" class="mana-icon">
+                                            <% deck.colors.forEach(color=> {
+                                                const colorName = {
+                                                'W': 'white',
+                                                'U': 'blue',
+                                                'B': 'black',
+                                                'R': 'red',
+                                                'G': 'green'
+                                                }[color.toUpperCase()]; %>
+
+                                                <img src="/assets/A_fantasy-style_<%= colorName %>_mana_symbol_from_Magic__The__transparent.png"
+                                                    alt="<%= colorName %>" class="mana-icon">
                                                 <% }); %>
                                                     <span class="card-count">
                                                         <%= deck.cards.length %>/20
