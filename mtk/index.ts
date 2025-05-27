@@ -9,6 +9,10 @@ import { secureMiddleware } from "./middleware/secureMiddleware";
 import { flashMiddleware } from "./middleware/flashMiddleware";
 import { homeRouter } from "./routers/homeRouter";
 import { loginRouter } from "./routers/loginRouter";
+import { deckRouter } from "./deckbuilder";
+import { collectionRouter } from "./collection";
+import methodOverride from 'method-override';
+
 dotenv.config();
 
 
@@ -23,8 +27,14 @@ app.use(flashMiddleware);
 app.set("views", path.join(__dirname, "views"));
 
 app.set("port", process.env.PORT ?? 3000);
+app.use(methodOverride('_method', { 
+  methods: ['POST', 'GET'] // Sta PUT/DELETE override toe via POST en GET
+}));
+
 app.use("/", loginRouter());
 app.use("/", secureMiddleware, homeRouter());
+app.use("/", secureMiddleware, deckRouter());
+app.use("/", secureMiddleware, collectionRouter());
 let cards: Card[] = [];
 async function MTGApp() {
     await connect();       
@@ -46,6 +56,7 @@ app.get("/drawcard", (req, res) => {
 app.get("/deckbuilder", (req, res) => {
     res.render("deckbuilder");
 });
+
 
 app.get("/collection", (req, res) => {
   const perPage = 10;

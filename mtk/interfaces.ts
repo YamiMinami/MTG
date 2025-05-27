@@ -29,4 +29,15 @@ export interface Card {
     image_uris?: {
       png?: string;             
     };
+    type_line?: string;
   }
+  export interface Deck {
+    _id?: ObjectId;
+    name: string;
+    colors: string[];
+    cards: string[];
+    userId: ObjectId;
+    createdAt: Date;
+    image?: string;
+    background?: string;
+}
