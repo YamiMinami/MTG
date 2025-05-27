@@ -1,33 +1,43 @@
 import express, { Request, Response, Router } from "express";
 import { ObjectId } from "mongodb";
-import {deckCollection, loadAssets } from "./database";
+import { deckCollection, loadAssets } from "./database";
 import { secureMiddleware } from "./middleware/secureMiddleware";
-import { Card,Deck } from "./interfaces";
+import { Card, Deck } from "./interfaces";
 
 export function deckRouter(): Router {
     const router = express.Router();
 
-    // Toon deckbuilder pagina met alle decks van de gebruiker
+    // Haal alle decks op met filters en paginering
     router.get("/deckbuilder", secureMiddleware, async (req: Request, res: Response) => {
         try {
             const user = req.session.user!;
-            const colorFilter = req.query.color as string;
-            
-            let query: any = { userId: user._id };
-            if (colorFilter && colorFilter !== "None") {
-                query.colors = colorFilter;
-            }
+            const { color, search, page } = req.query;
+            const currentPage = parseInt(page as string) || 1;
+            const limit = 5;
 
-            const decks = await deckCollection.find(query).toArray();
-            res.render("deckbuilder", { 
+            // Bouw query
+            const query: any = { userId: user._id };
+            if (color && color !== "None") query.colors = color;
+            if (search) query.name = { $regex: search as string, $options: "i" };
+
+            // Paginering
+            const total = await deckCollection.countDocuments(query);
+            const totalPages = Math.ceil(total / limit);
+            const decks = await deckCollection.find(query)
+                .skip((currentPage - 1) * limit)
+                .limit(limit)
+                .toArray();
+
+            res.render("deckbuilder", {
                 decks,
-                colors: ['W', 'U', 'B', 'R', 'G', 'None'],
-                currentFilter: colorFilter || "None"
+                currentPage,
+                totalPages,
+                currentFilter: color || "None",
+                searchQuery: search || "",
+                cards: await loadAssets()
             });
         } catch (error) {
-            console.error("Fout bij ophalen decks:", error);
-            req.session.message = { type: "error", message: "Kan decks niet laden" };
-            res.redirect("/home");
+            handleError(res, error, "Kan decks niet laden");
         }
     });
 
@@ -38,8 +48,7 @@ export function deckRouter(): Router {
             const { name, colors } = req.body;
             
             if (!name || name.length < 3) {
-                req.session.message = { type: "error", message: "Decknaam moet minstens 3 karakters zijn" };
-                return res.redirect("/deckbuilder");
+                throw new Error("Decknaam moet minstens 3 karakters zijn");
             }
 
             const newDeck: Deck = {
@@ -51,28 +60,25 @@ export function deckRouter(): Router {
             };
 
             await deckCollection.insertOne(newDeck);
-            req.session.message = { type: "success", message: "Deck succesvol aangemaakt!" };
+            req.session.message = { type: "success", message: "Deck aangemaakt!" };
+            res.redirect("/deckbuilder");
         } catch (error) {
-            console.error("Fout bij aanmaken deck:", error);
-            req.session.message = { type: "error", message: "Kan deck niet aanmaken" };
+            handleError(res, error, "Aanmaken mislukt");
         }
-        res.redirect("/deckbuilder");
     });
 
     // Genereer random deck
     router.post("/deck/random", secureMiddleware, async (req: Request, res: Response) => {
         try {
             const user = req.session.user!;
-            const allCards: Card[] = await loadAssets();
+            const allCards = await loadAssets();
             
-            if (allCards.length < 20) {
-                req.session.message = { type: "error", message: "Niet genoeg kaarten beschikbaar" };
-                return res.redirect("/deckbuilder");
+            if (allCards.length < 60) {
+                throw new Error("Niet genoeg kaarten beschikbaar");
             }
 
-            const randomCards = allCards
-                .sort(() => 0.5 - Math.random())
-                .slice(0, 20)
+            const randomCards = shuffle(allCards)
+                .slice(0, 60)
                 .map(card => card.id!);
 
             const newDeck: Deck = {
@@ -85,43 +91,66 @@ export function deckRouter(): Router {
 
             await deckCollection.insertOne(newDeck);
             req.session.message = { type: "success", message: "Random deck gegenereerd!" };
+            res.redirect("/deckbuilder");
         } catch (error) {
-            console.error("Fout bij genereren random deck:", error);
-            req.session.message = { type: "error", message: "Kan random deck niet genereren" };
+            handleError(res, error, "Genereren mislukt");
         }
-        res.redirect("/deckbuilder");
     });
 
     // Verwijder deck
     router.delete("/deck/:id", secureMiddleware, async (req: Request, res: Response) => {
-        try {
-            const deckId = new ObjectId(req.params.id);
-            const result = await deckCollection.deleteOne({ 
-                _id: deckId,
-                userId: req.session.user!._id 
-            });
+    try {
+        const deckId = new ObjectId(req.params.id);
+        const result = await deckCollection.deleteOne({ 
+            _id: deckId,
+            userId: req.session.user!._id 
+        });
 
-            if (result.deletedCount === 0) {
-                return res.status(404).json({ success: false, message: "Deck niet gevonden" });
-            }
-            
-            res.json({ success: true, message: "Deck verwijderd" });
-        } catch (error) {
-            console.error("Fout bij verwijderen deck:", error);
-            res.status(500).json({ success: false, message: "Serverfout" });
+        if (result.deletedCount === 0) {
+            req.session.message = { type: "error", message: "Deck niet gevonden" };
+        } else {
+            req.session.message = { type: "success", message: "Deck verwijderd!" };
         }
-    });
+        
+        res.redirect("/deckbuilder");
+    } catch (error) {
+        req.session.message = { type: "error", message: "Serverfout" };
+        res.redirect("/deckbuilder");
+    }
+});
 
-    // Update deck
+    // Bewerk deck
+
+    router.get("/deck/:id/edit", secureMiddleware, async (req: Request, res: Response) => {
+    try {
+        const deck = await deckCollection.findOne({ 
+            _id: new ObjectId(req.params.id),
+            userId: req.session.user!._id 
+        });
+        
+        if (!deck) {
+            req.session.message = { type: "error", message: "Deck niet gevonden" };
+            return res.redirect("/deckbuilder");
+        }
+        
+        res.render("edit-deck", { 
+            deck,
+            cards: await loadAssets()
+        });
+    } catch (error) {
+        req.session.message = { type: "error", message: "Serverfout" };
+        res.redirect("/deckbuilder");
+    }
+});
     router.put("/deck/:id", secureMiddleware, async (req: Request, res: Response) => {
         try {
             const deckId = new ObjectId(req.params.id);
             const { name, colors, cards } = req.body;
 
-            if (cards.length > 20) {
+            if (cards.length > 60) {
                 return res.status(400).json({ 
                     success: false, 
-                    message: "Maximaal 20 kaarten toegestaan" 
+                    message: "Maximaal 60 kaarten toegestaan" 
                 });
             }
 
@@ -140,10 +169,25 @@ export function deckRouter(): Router {
 
             res.json({ success: true, message: "Deck bijgewerkt" });
         } catch (error) {
-            console.error("Fout bij updaten deck:", error);
             res.status(500).json({ success: false, message: "Serverfout" });
         }
     });
 
     return router;
+}
+
+// Hulp functies
+function shuffle<T>(array: T[]): T[] {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function handleError(res: Response, error: unknown, message: string): void {
+    console.error(message + ":", error);
+    if (res.headersSent) return;
+    
+    if (error instanceof Error) {
+        res.status(500).json({ success: false, message: error.message });
+    } else {
+        res.status(500).json({ success: false, message: "Onbekende fout" });
+    }
 }
