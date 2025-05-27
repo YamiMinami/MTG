@@ -2,6 +2,10 @@
 
     <body>
         <main>
+            <% if (locals.message) { %>
+  <div class="flash <%= message.type %>"><%= message.message %></div>
+<% } %>
+
             <div id="main-carousel">
                 <div class="carousel-cell" style="background-image: url(/assets/fortnite.jpg);">
                     <h1>Fortnite</h1>
@@ -52,23 +56,23 @@
         <aside class="index-navbar">
             <p id="icon"><i class="fa-solid fa-gamepad"> GameHub</i></p>
             <section id="index-form-wrapper">
-                <form id="index-login" class="form" action="#">
+                <form id="index-login" class="form" method="POST" action="/login">
                     <h2 class="index-h2">Login</h2>
-                    <label for="Username">Gebruikersnaam</label>
-                    <input type="text" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" />
                     <label for="Password">Wachtwoord</label>
-                    <input type="password" required>
-                    <button class="index-aside-button">Log in</button>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <button class="index-aside-button" type="submit">Log in</button>
                     <p class="index-switch-animation">Nog geen account? <a id="index-register-a" href="#"><br>Registreer
                             hier.</a></p>
                 </form>
-                <form id="index-register" class="form" action="#">
+                <form id="index-register" class="form" method="POST" action="/register">
                     <h2 class="index-h2">Registreer</h2>
-                    <label for="Username">Gebruikersnaam</label>
-                    <input type="text" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" />
                     <label for="Password">Wachtwoord</label>
-                    <input type="password" required>
-                    <button class="index-aside-button">Registreer</button>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <button class="index-aside-button" type="submit">Registreer</button>
                     <p class="index-switch-animation">Al een account? <a href="#"><br>Log hier in.</a></p>
                 </form>
             </section>
@@ -87,11 +91,5 @@
         <script src="/js/index-animatie.js"></script>
         <script src="/js/blur.js"></script>
     </body>
-    </div>
-    <script src="/js/index-animatie.js"></script>
-    <script src="/js/blur.js"></script>
-    </body>
-
-    </html>
 
     </html>

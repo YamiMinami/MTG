@@ -31,10 +31,6 @@ async function MTGApp() {
     await initAssets();    
     cards = await loadAssets(); 
 
-app.get("/", (req, res) => {
-    res.render("index");
-});
-
 app.get("/detail", (req, res) => {
     res.render("detail");
 });
