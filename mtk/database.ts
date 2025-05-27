@@ -35,9 +35,8 @@ async function createInitialUser() {
     await userCollection.insertOne({
         email: email,
         password: await bcrypt.hash(password, saltRounds),
-        role: "ADMIN",
-        decks: []
-    });
+        role: "ADMIN"
+          });
 }
 
 export async function login(email: string, password: string) {
