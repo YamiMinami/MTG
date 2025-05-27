@@ -3,40 +3,39 @@
     <body>
         <%- include("partials/aside") %>
             <main id="deck-container">
+                <section id="deck-bar">
+                    <!-- Zoekformulier -->
+                    <form method="GET" action="/deckbuilder" class="search-form">
+                        <input id="deck-search" type="search" name="search" placeholder="Zoek decks..."
+                            value="<%= searchQuery %>">
+                        <input type="hidden" name="mana" value="<%= currentFilter %>">
+                    </form>
+
+                    <!-- Mana filters -->
+                    <section id="deck-manabar">
+                        <% ['None', 'White' , 'Blue' , 'Black' , 'Red' , 'Green' ].forEach(color=> { %>
+                            <form method="GET" action="/deckbuilder" style="display: inline;">
+                                <input type="hidden" name="search" value="<%= searchQuery %>">
+                                <input type="hidden" name="mana" value="<%= color %>">
+                                <button type="submit" class="deck-type <%= currentFilter === color ? 'active' : '' %>">
+                                    <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                                        alt="<%= color %>">
+                                </button>
+                            </form>
+                            <% }); %>
+                    </section>
+
+                    <button id="add-deck-button" class="deck-buttons">
+                        <strong>deck toevoegen</strong>
+                    </button>
+                </section>
+
                 <!-- Flash messages -->
                 <% if (message) { %>
                     <div class="flash-message <%= message.type %>">
                         <%= message.message %>
                     </div>
                     <% } %>
-
-                        <section id="deck-bar">
-                            <!-- Zoekformulier -->
-                            <form method="GET" action="/deckbuilder" class="search-form">
-                                <input id="deck-search" type="search" name="search" placeholder="Zoek decks..."
-                                    value="<%= searchQuery %>">
-                                <input type="hidden" name="mana" value="<%= currentFilter %>">
-                            </form>
-
-                            <!-- Mana filters -->
-                            <section id="deck-manabar">
-                                <% ['None', 'White' , 'Blue' , 'Black' , 'Red' , 'Green' ].forEach(color=> { %>
-                                    <form method="GET" action="/deckbuilder" style="display: inline;">
-                                        <input type="hidden" name="search" value="<%= searchQuery %>">
-                                        <input type="hidden" name="mana" value="<%= color %>">
-                                        <button type="submit"
-                                            class="deck-type <%= currentFilter === color ? 'active' : '' %>">
-                                            <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
-                                                alt="<%= color %>">
-                                        </button>
-                                    </form>
-                                    <% }); %>
-                            </section>
-
-                            <button id="add-deck-button" class="deck-buttons">
-                                <strong>deck toevoegen</strong>
-                            </button>
-                        </section>
 
                         <section id="deck-collection">
                             <% decks.forEach(deck=> { %>
@@ -49,23 +48,20 @@
                                         </h2>
                                         <div class="deck-meta">
                                             <% deck.colors.forEach(color=> { %>
-                                                <img src="/assets/<%= color %>-mana.png" alt="<%= color %>"
-                                                    class="mana-icon">
+                                                <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                                                    alt="<%= color %>" class="mana-icon">
                                                 <% }); %>
                                                     <span class="card-count">
                                                         <%= deck.cards.length %>/20
                                                     </span>
                                         </div>
                                         <div class="deck-actions">
-                                            <!-- Bewerk knop -->
-                                            <a href="/deck/<%= deck._id %>/edit" class="edit-btn">
+                                            <a href="/deck/<%= deck._id %>/edit" class="btn edit-btn">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-
-                                            <!-- Delete form -->
-                                            <form action="/deck/<%= deck._id %>?_method=DELETE" method="POST">
+                                            <form action="/deck/<%= deck._id %>" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="delete-btn">
+                                                <button type="submit" class="btn delete-btn">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
@@ -74,6 +70,7 @@
                                 </article>
                                 <% }); %>
                         </section>
+
                         <!-- Modal voor nieuwe decks -->
                         <div id="deck-modal" class="modal">
                             <div class="modal-content">
@@ -101,6 +98,7 @@
                                 </form>
                             </div>
                         </div>
+
                         <!-- Paginering -->
                         <section class="pages">
                             <form method="GET" class="pagination-form">

@@ -135,43 +135,47 @@ export function deckRouter(): Router {
         
         res.render("edit-deck", { 
             deck,
-            cards: await loadAssets()
+            message: req.session.message 
         });
+        delete req.session.message;
     } catch (error) {
         req.session.message = { type: "error", message: "Serverfout" };
         res.redirect("/deckbuilder");
     }
 });
     router.put("/deck/:id", secureMiddleware, async (req: Request, res: Response) => {
-        try {
-            const deckId = new ObjectId(req.params.id);
-            const { name, colors, cards } = req.body;
+    try {
+        const deckId = new ObjectId(req.params.id);
+        const { name, colors } = req.body;
 
-            if (cards.length > 60) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: "Maximaal 60 kaarten toegestaan" 
-                });
-            }
+        // Conversie voor checkbox values
+        const colorsArray = Array.isArray(colors) ? colors : [colors];
 
-            const result = await deckCollection.updateOne(
-                { _id: deckId, userId: req.session.user!._id },
-                { $set: { 
+        const result = await deckCollection.updateOne(
+            { 
+                _id: deckId,
+                userId: req.session.user!._id 
+            },
+            { 
+                $set: { 
                     name,
-                    colors: Array.isArray(colors) ? colors : [colors],
-                    cards 
-                }}
-            );
-
-            if (result.matchedCount === 0) {
-                return res.status(404).json({ success: false, message: "Deck niet gevonden" });
+                    colors: colorsArray.filter(c => c) // Verwijder lege values
+                } 
             }
+        );
 
-            res.json({ success: true, message: "Deck bijgewerkt" });
-        } catch (error) {
-            res.status(500).json({ success: false, message: "Serverfout" });
+        if (result.matchedCount === 0) {
+            req.session.message = { type: "error", message: "Deck niet gevonden" };
+        } else {
+            req.session.message = { type: "success", message: "Deck bijgewerkt!" };
         }
-    });
+        res.redirect("/deckbuilder");
+    } catch (error) {
+        console.error("Bewerkingsfout:", error);
+        req.session.message = { type: "error", message: "Bewerken mislukt" };
+        res.redirect("/deckbuilder");
+    }
+});
 
     return router;
 }
