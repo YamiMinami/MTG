@@ -382,6 +382,25 @@ hr {
   opacity: 1;
 }
 
+.flash-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: var(--font-p);
+  font-size: var(--p-lg);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  animation: flash-fade 3s ease-in-out forwards;
+}
+
+
+
 .delete-btn {
   background: rgba(255, 255, 255, 0.9);
   border: none;
@@ -1057,4 +1076,22 @@ color: white;
 #dc-card-track button:hover, .select:hover, #dc-draw button:hover, .menu li:hover {
   background-color: var(--secondary-brown);
   cursor: url("../assets/pointer.cur"), auto;
+}
+@keyframes flash-fade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
 }
