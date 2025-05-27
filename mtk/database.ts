@@ -24,19 +24,30 @@ async function exit() {
     process.exit(0);
 }
 async function createInitialUser() {
-    if (await userCollection.countDocuments() > 0) {
+    const count = await userCollection.countDocuments();
+    console.log(`👥 Gebruikers in DB: ${count}`);
+
+    if (count > 0) {
+        console.log("🛑 Admin user bestaat al, overslaan");
         return;
     }
-    let email : string | undefined = process.env.ADMIN_EMAIL;
-    let password : string | undefined = process.env.ADMIN_PASSWORD;
-    if (email === undefined || password === undefined) {
+
+    let email: string | undefined = process.env.ADMIN_EMAIL;
+    let password: string | undefined = process.env.ADMIN_PASSWORD;
+
+    if (!email || !password) {
         throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be set in environment");
     }
+
+    console.log(`➕ Admin user wordt toegevoegd met email: ${email}`);
+
     await userCollection.insertOne({
         email: email,
         password: await bcrypt.hash(password, saltRounds),
-        role: "ADMIN"
+        role: "ADMIN",
     });
+
+    console.log("✅ Admin user toegevoegd");
 }
 
 export async function login(email: string, password: string) {
@@ -57,19 +68,24 @@ export async function login(email: string, password: string) {
 
 export async function connect() {
     try {
-      await client.connect();
-      await createInitialUser();
-      console.log("Connected to MongoDB");
-      process.on("SIGINT", async () => {
-        await client.close();
-        console.log("Disconnected from MongoDB");
-        process.exit(0);
-      });
+        console.log("🔌 Verbinden met MongoDB...");
+        await client.connect();
+        console.log("✅ Verbonden met MongoDB");
+
+        console.log("👤 Initialiseren van admin user...");
+        await createInitialUser();
+        console.log("✅ Admin user gecheckt / aangemaakt");
+
+        process.on("SIGINT", async () => {
+            await client.close();
+            console.log("Disconnected from MongoDB");
+            process.exit(0);
+        });
     } catch (err) {
-      console.error("Mongo connection error:", err);
-      throw err;
+        console.error("❌ MongoDB connectie fout:", err);
+        throw err;
     }
-  }
+}
 
   export async function initAssets() {
     const db = client.db("MagicTheGathering");
