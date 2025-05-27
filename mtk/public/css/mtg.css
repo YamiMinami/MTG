@@ -1129,3 +1129,19 @@ input {
     cursor: url("../assets/pointer.cur"), auto;
 }
 
+#chosen-cards button {
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: none;
+  background: var(--primary-gold, #efcd69);
+  color: var(--primary-brown, #48302e);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#chosen-cards button:hover {
+  background: var(--primary-red, #d3301d);
+  color: #fff;
+}
+
