@@ -300,7 +300,8 @@ hr {
 
 #deck-collection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 2rem;
   padding: 1rem;
   width: 100%;
@@ -320,7 +321,12 @@ hr {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
+.btn-secondary{
+  display: block;
+  color: var(--primary-gold);
+  text-decoration: none;
+  margin-top: 1rem;
+}
 .deck-foto {
   width: 100%;
   height: 200px;
@@ -334,6 +340,7 @@ hr {
 }
 
 .deck-info {
+  height: 100px;
   padding: 1.2rem;
   position: relative;
 }
@@ -354,6 +361,7 @@ hr {
   align-items: flex-end;
   gap: 0.5rem;
 }
+
 .mana-icon {
   width: 28px;
   height: 28px;
@@ -378,6 +386,25 @@ hr {
 #deck-collection article:hover .deck-actions {
   opacity: 1;
 }
+
+.flash-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: var(--font-p);
+  font-size: var(--p-lg);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  animation: flash-fade 3s ease-in-out forwards;
+}
+
+
 
 .delete-btn {
   background: rgba(255, 255, 255, 0.9);
@@ -678,13 +705,36 @@ hr {
     box-shadow: 0 0 5px var(--primary-gold);
 }
 .edit-container {
+    background-image: url(../assets/wallpaper.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin:  auto;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-family: var(--font-p);
+    font-size:var(--p-xl) ;
+    color: var(--primary-gold);
+}
+.edit-deck{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
     max-width: 600px;
+    height: 80%;
     margin: 2rem auto;
     padding: 2rem;
     background: var(--clr-neutral-100);
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: var(--primary-brown);
 }
+
+
 
 .color-grid {
     display: grid;
@@ -1073,4 +1123,22 @@ color: white;
 #dc-card-track button:hover, .select:hover, #dc-draw button:hover, .menu li:hover {
   background-color: var(--secondary-brown);
   cursor: url("../assets/pointer.cur"), auto;
+}
+@keyframes flash-fade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
 }
