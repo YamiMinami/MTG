@@ -22,7 +22,6 @@ async function exit() {
     }
     process.exit(0);
 }
-
 async function createInitialUser() {
     if (await userCollection.countDocuments() > 0) {
         return;

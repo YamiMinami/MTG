@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }, 300);
     }
   });
+<<<<<<< HEAD
 
   deletePopup.querySelector("#confirm-delete-no").addEventListener("click", () => {
     deckIdToDelete = null;
@@ -158,3 +159,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await loadDecks();
 });
+=======
+}
+
+console.log("Mana button script geladen");
+
+document.querySelectorAll('.deck-type').forEach(button => {
+  button.addEventListener('click', () => {
+    const manaColor = button.id;
+    console.log(`Button clicked: ${manaColor}`);
+    const params = new URLSearchParams(window.location.search);
+    params.set('mana', manaColor);
+    window.location.search = params.toString(); // force reload
+  });
+});
+
+>>>>>>> 89278ae7d8ab1e1ef0e4aa9d7dde6e60299490de

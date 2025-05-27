@@ -22,7 +22,6 @@ async function saveDeckToDatabase(deckName: string, cards: string[]) {
         await client.connect();
         const database = client.db('mtg');
         const collection = database.collection('decks');
-
         const deck = { name: deckName, cards: cards, createdAt: new Date() };
         const result = await collection.insertOne(deck);
 
