@@ -592,6 +592,147 @@ hr {
 #create-deck-popup .close-button:hover {
   color: #fffbe6;
 }
+/* Alleen voor de deck bewerk popup */
+#edit-deck-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 420px;
+  min-height: 220px;
+  background: var(--primary-brown, #48302e);
+  border: 2px solid var(--primary-gold, #efcd69);
+  border-radius: 25px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 3000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-deck-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+#edit-deck-popup.hidden {
+  display: none;
+}
+
+.edit-deck-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 0;
+  position: relative;
+}
+
+.edit-deck-content h2 {
+  color: var(--primary-gold, #efcd69);
+  font-family: var(--font-title, 'Rye', serif);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.edit-deck-list {
+  width: 90%;
+  background: var(--secondary-brown, #322725);
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--primary-gold, #efcd69);
+  font-family: var(--font-p, 'Tinos', serif);
+  font-size: 1rem;
+}
+
+.edit-deck-list h3 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+#edit-chosen-cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+#edit-chosen-cards li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  background: rgba(239,205,105,0.07);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+#edit-chosen-cards li button {
+  background: var(--primary-red, #d3301d);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+#edit-chosen-cards li button:hover {
+  background: var(--secondary-red, #87060a);
+}
+
+.edit-deck-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.edit-deck-btn {
+  font-family: var(--font-p, 'Tinos', serif);
+  font-size: 1.05rem;
+  background: linear-gradient(
+    to bottom,
+    var(--secondary-brown, #322725),
+    var(--primary-brown, #48302e)
+  );
+  color: var(--primary-gold, #efcd69);
+  border: 1px solid var(--primary-gold, #efcd69);
+  border-radius: 12px;
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.edit-deck-btn:hover {
+  background: var(--primary-gold, #efcd69);
+  color: var(--primary-brown, #48302e);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.edit-deck-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--primary-gold, #efcd69);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.edit-deck-close:hover {
+  color: #fffbe6;
+}
 
 
 /* iPad Pro (max-width: 1366px) - Landscape Fix */

@@ -118,4 +118,18 @@ git <!DOCTYPE html>
       </section>
     </main>
   </body>
+  <section id="edit-deck-popup" class="edit-deck-popup hidden">
+    <div class="edit-deck-content">
+      <button id="close-edit-deck" class="edit-deck-close"><i class="fa-solid fa-xmark"></i></button>
+      <h2>Deck bewerken</h2>
+      <div class="edit-deck-list">
+        <h3>Geselecteerde kaarten (<span id="edit-card-count">0</span>/60)</h3>
+        <ul id="edit-chosen-cards"></ul>
+      </div>
+      <div class="edit-deck-actions">
+        <button id="save-edit-deck" class="edit-deck-btn">Opslaan</button>
+        <button id="cancel-edit-deck" class="edit-deck-btn">Annuleren</button>
+      </div>
+    </div>
+  </section>
 </html>
