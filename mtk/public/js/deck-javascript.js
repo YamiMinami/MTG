@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const closePopupButton = document.getElementById("close-popup");
   const createDeckForm = document.getElementById("create-deck-form");
   const deckCollection = document.getElementById("deck-collection");
+  const generateDeckButton = document.getElementById("generate-random-deck");
 
   // Maak een verwijder-popup aan als die nog niet bestaat
   let deletePopup = document.getElementById("delete-deck-popup");
@@ -54,6 +55,44 @@ document.addEventListener("DOMContentLoaded", async () => {
         createDeckPopup?.classList.add("hidden");
         window.location.reload();
       }, 300);
+    }
+  });
+
+  // Willekeurig genereren
+  generateDeckButton?.addEventListener("click", async () => {
+    const deckName = document.getElementById("deck-name").value;
+    if (!deckName) {
+      alert("Vul eerst een decknaam in!");
+      return;
+    }
+    // Haal alle beschikbare kaarten op
+    const res = await fetch("/api/cards/all");
+    const allCards = await res.json();
+
+    if (!Array.isArray(allCards) || allCards.length < 60) {
+      alert("Niet genoeg kaarten om een volledig deck te genereren!");
+      return;
+    }
+
+    // Shuffle en pak de eerste 60 unieke kaarten
+    const shuffled = allCards.sort(() => 0.5 - Math.random());
+    const chosen = shuffled.slice(0, 60).map(card => card.name || card);
+
+    // Maak het deck aan via de backend
+    const createRes = await fetch("/api/decks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: deckName, cards: chosen })
+    });
+
+    if (createRes.ok) {
+      createDeckPopup?.classList.remove("show");
+      setTimeout(() => {
+        createDeckPopup?.classList.add("hidden");
+        window.location.reload();
+      }, 300);
+    } else {
+      alert("Er is iets misgegaan bij het aanmaken van het deck.");
     }
   });
 
