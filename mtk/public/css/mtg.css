@@ -465,62 +465,132 @@ hr {
   justify-content: center;
 }
 /* popup deck maken*/
-#create-deck-popup{
-  position: absolute;
-  border-width: 2px;
-  border-color: black;
-  border-style: solid;
+/* Alleen pop-ups op de deckbuilderpagina */
+#delete-deck-popup,
+#create-deck-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  min-height: 180px;
+  background: var(--primary-brown, #48302e);
+  border: 2px solid var(--primary-gold, #efcd69);
   border-radius: 25px;
-  padding: 10px;
-  height: 200px;
-  width: 500px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 2000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   display: flex;
   flex-direction: column;
-  left: 40%;
-  top: 30%;
-  background-color: var(--primary-brown);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0; 
-  transition: transform 0.3s ease, opacity 0.3s ease; 
-  z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
-.popup-content-deck{
+
+#delete-deck-popup.show,
+#create-deck-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+#delete-deck-popup.hidden,
+#create-deck-popup.hidden {
+  display: none;
+}
+
+#delete-deck-popup .popup-content-deck,
+#create-deck-popup .popup-content-deck {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  position: relative;
+}
+
+#delete-deck-popup h1,
+#delete-deck-popup h2,
+#create-deck-popup h1,
+#create-deck-popup h2 {
+  color: var(--primary-gold, #efcd69);
+  font-family: var(--font-title, 'Rye', serif);
+  font-size: var(--h3, 2rem);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+#create-deck-popup label {
+  color: var(--primary-gold, #efcd69);
+  font-family: var(--font-p, 'Tinos', serif);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 30px;
-}
-.create-deck-popup.show {
-  transform: translate(-50%, -50%) scale(1); 
-  opacity: 1; 
 }
 
-.create-deck-popup.hidden {
-  display: none; 
+#create-deck-popup input[type="text"] {
+  margin-top: 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--primary-gold, #efcd69);
+  background: var(--secondary-brown, #322725);
+  color: var(--primary-gold, #efcd69);
+  font-family: var(--font-p, 'Tinos', serif);
+  font-size: 1rem;
+  outline: none;
+  width: 220px;
 }
 
-
-
-.deck img {
-  max-width: 100%;
-  object-fit: contain;
-  border-radius: 18px;
+#create-deck-popup input[type="text"]:focus {
+  border-color: var(--primary-gold, #efcd69);
+  background: #fffbe6;
+  color: var(--primary-brown, #48302e);
 }
-#delete-deck-button {
-  grid-column: 2/3;
-  margin-left: auto;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+
+#delete-deck-popup .deck-buttons,
+#create-deck-popup .deck-buttons {
+  font-family: var(--font-p, 'Tinos', serif);
+  font-size: var(--p-lg, 1.1rem);
+  background: linear-gradient(
+    to bottom,
+    var(--secondary-brown, #322725),
+    var(--primary-brown, #48302e)
+  );
+  color: var(--primary-gold, #efcd69);
+  border: 1px solid var(--primary-gold, #efcd69);
+  border-radius: 12px;
+  padding: 8px 32px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
-#close-button {
-  grid-column: 2/3;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin-left: auto;
-  border-style: none;
+
+#delete-deck-popup .deck-buttons:hover,
+#create-deck-popup .deck-buttons:hover {
+  background: var(--primary-gold, #efcd69);
+  color: var(--primary-brown, #48302e);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+#delete-deck-popup .close-button,
+#create-deck-popup .close-button {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--primary-gold, #efcd69);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#delete-deck-popup .close-button:hover,
+#create-deck-popup .close-button:hover {
+  color: #fffbe6;
 }
 
 
