@@ -28,7 +28,7 @@ app.set("port", process.env.PORT ?? 3000);
 
 // Routers
 app.use("/", loginRouter());
-app.use("/", secureMiddleware, homeRouter());
+
 app.use("/", deckRouter());
 
 // Test route
@@ -41,6 +41,7 @@ let cards: Card[] = [];
 
 // Belangrijke routes
 app.get("/", (req, res) => {
+  console.log("GET / aangeroepen");
   res.send("Homepage werkt");
 });
 
@@ -151,7 +152,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("❌ Fout opgevangen:", err.message);
   res.status(500).send("Interne serverfout");
 });
-
+app.use("/", secureMiddleware, homeRouter());
 // App starten
 async function MTGApp() {
   await connect();
