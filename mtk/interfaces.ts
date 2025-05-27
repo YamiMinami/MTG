@@ -31,9 +31,11 @@ export interface Card {
     deck: Decks[];
   }
 
-export interface Decks {
-    id: number;                   
-    name: string;             
-    cards: string[][];
-                 
-  }
+  export interface Deck {
+    id: number;
+    name: string;
+    cards: string[];
+    background?: string;
+    userId: ObjectId;
+    
+}
