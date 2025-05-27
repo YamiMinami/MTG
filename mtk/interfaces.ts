@@ -25,18 +25,11 @@ export interface Card {
       png?: string;             
     };
   }
-
-  export interface user {
-    id: string;
-    name: string;
-    deck: Decks[];
-  }
-
   export interface Deck {
-    id: number;
+    _id?: ObjectId;
     name: string;
+    colors: string[];
     cards: string[];
-    background?: string;
     userId: ObjectId;
-    
+    createdAt: Date;
 }
