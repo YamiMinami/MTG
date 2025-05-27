@@ -1,20 +1,20 @@
 <%- include("partials/header") %>
 <body id="dc-body">
 <main id="dc-main">
-    <section id="dc-dropdown">
-        <div class="dropdown">
-            <div class="select">
-                <span class="selected">Deck 1</span>
-                <div class="caret"></div>
-            </div>
-            <ul class="menu">
-                <li class="active">Deck 1</li>
-                <li>Deck 2</li>
-                <li>Deck 3</li>
-                <li>Deck 4</li>
-            </ul>
+<section id="dc-dropdown">
+    <div class="dropdown">
+        <div class="select">
+            <span class="selected"><%= decks[0]?.name || "Kies een deck" %></span>
+            <div class="caret"></div>
         </div>
-    </section>
+        <ul class="menu">
+            <% decks.forEach((deck, index) => { %>
+                <li class="<%= index === 0 ? 'active' : '' %>"><%= deck.name %></li>
+            <% }) %>
+        </ul>
+    </div>
+</section>
+
     <section id="dc-card-track">
         <input type="text" id="deck-name" placeholder="Enter card name" />
         <button id="track-deck">Track</button>

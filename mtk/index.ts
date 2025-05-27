@@ -2,8 +2,8 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { Card } from "./interfaces";
-import { MongoClient } from "mongodb";
-import { connect, initAssets, loadAssets } from "./database";
+import { MongoClient, ObjectId } from "mongodb";
+import { connect, initAssets, loadAssets, getDeckCollection } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./middleware/secureMiddleware";
 import { flashMiddleware } from "./middleware/flashMiddleware";
@@ -49,8 +49,16 @@ app.get("/home", (req, res) => {
     res.render("home");
 });
 
-app.get("/drawcard", (req, res) => {
-    res.render("drawcard");
+app.get("/drawcard", async (req, res) => {
+    const user = req.session.user;
+
+    if (!user || !user._id) {
+        return res.redirect("/");
+    }
+
+const decks = await getDeckCollection().find({ userId: new ObjectId(user._id) }).toArray();
+
+    res.render("drawcard", { decks });
 });
 
 app.get("/deckbuilder", (req, res) => {

@@ -23,6 +23,12 @@ async function exit() {
     }
     process.exit(0);
 }
+
+export function getDeckCollection() {
+  return client.db("MagicTheGathering").collection<Deck>("decks");
+}
+
+
 async function createInitialUser() {
     if (await userCollection.countDocuments() > 0) {
         return;
