@@ -735,6 +735,36 @@ hr {
 }
 
 
+/* Visuele selectie voor deck achtergrond */
+.deck-bg-select {
+  display: flex;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.deck-bg-select input[type="radio"] {
+  display: none;
+}
+
+.deck-bg-option {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 3px solid var(--primary-gold, #efcd69);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  outline: none;
+  display: inline-block;
+}
+
+.deck-bg-select input[type="radio"]:checked + .deck-bg-option {
+  border: 3px solid #fffbe6;
+  box-shadow: 0 0 0 4px var(--primary-gold, #efcd69);
+}
+
 /* iPad Pro (max-width: 1366px) - Landscape Fix */
 @media screen and (max-width: 1366px) and (orientation: landscape) {
   #main-card-container,

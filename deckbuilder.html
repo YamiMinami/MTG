@@ -79,6 +79,17 @@
             <strong>Deck Naam:</strong>
             <input type="text" id="deck-name" name="deck-name" placeholder="Voer een naam in..." required />
           </label>
+          <label>
+            <strong>Kies een achtergrond:</strong>
+            <div class="deck-bg-select">
+              <input type="radio" id="bg1" name="deck-background" value="/assets/deck-bg1.jpg" checked>
+              <label for="bg1" class="deck-bg-option" style="background-image:url('/assets/deck-bg1.jpg');"></label>
+              <input type="radio" id="bg2" name="deck-background" value="/assets/deck-bg2.jpg">
+              <label for="bg2" class="deck-bg-option" style="background-image:url('/assets/deck-bg2.jpg');"></label>
+              <input type="radio" id="bg3" name="deck-background" value="/assets/deck-bg3.jpg">
+              <label for="bg3" class="deck-bg-option" style="background-image:url('/assets/deck-bg3.jpg');"></label>
+            </div>
+          </label>
           <div style="display: flex; gap: 1em; justify-content: center; margin-top: 18px;">
             <button type="submit" id="save-deck-button" class="deck-buttons">Zelf maken</button>
             <button type="button" id="generate-random-deck" class="deck-buttons">Willekeurig genereren</button>

@@ -44,10 +44,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   createDeckForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const deckName = document.getElementById("deck-name").value;
+    const deckBackground = document.querySelector('input[name="deck-background"]:checked')?.value;
     const res = await fetch("/api/decks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: deckName })
+      body: JSON.stringify({ name: deckName, background: deckBackground })
     });
     if (res.ok) {
       createDeckPopup?.classList.remove("show");
@@ -61,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Willekeurig genereren
   generateDeckButton?.addEventListener("click", async () => {
     const deckName = document.getElementById("deck-name").value;
+    const deckBackground = document.getElementById("deck-background").value;
     if (!deckName) {
       alert("Vul eerst een decknaam in!");
       return;
@@ -69,20 +71,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     const res = await fetch("/api/cards/all");
     const allCards = await res.json();
 
-    if (!Array.isArray(allCards) || allCards.length < 60) {
-      alert("Niet genoeg kaarten om een volledig deck te genereren!");
+    if (!Array.isArray(allCards) || allCards.length === 0) {
+      alert("Geen kaarten beschikbaar om een deck te genereren!");
       return;
     }
 
-    // Shuffle en pak de eerste 60 unieke kaarten
+    // Shuffle en pak maximaal 60 unieke kaarten
     const shuffled = allCards.sort(() => 0.5 - Math.random());
-    const chosen = shuffled.slice(0, 60).map(card => card.name || card);
+    const chosen = shuffled.slice(0, Math.min(60, allCards.length)).map(card => card.name || card);
 
     // Maak het deck aan via de backend
     const createRes = await fetch("/api/decks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: deckName, cards: chosen })
+      body: JSON.stringify({ name: deckName, cards: chosen, background: deckBackground })
     });
 
     if (createRes.ok) {
@@ -106,7 +108,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const article = document.createElement("article");
       article.classList.add("deck");
       article.innerHTML = `
-        <img src="${deck.image || '/assets/default-deck.jpg'}" alt="${deck.name}" />
+        <div class="deck-bg" style="background-image:url('${deck.background || '/assets/default-deck.jpg'}')">
+          <img src="${deck.image || '/assets/default-deck.jpg'}" alt="${deck.name}" />
+        </div>
         <h2>${deck.name}</h2>
         <button class="edit-deck-btn">Bewerk</button>
         <button class="delete-deck-btn">Verwijder</button>
