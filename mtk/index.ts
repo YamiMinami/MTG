@@ -28,7 +28,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.set("port", process.env.PORT ?? 3000);
 app.use(methodOverride('_method', { 
-  methods: ['POST', 'GET'] // Sta PUT/DELETE override toe via POST en GET
+  methods: ['POST', 'GET']
 }));
 
 app.use("/", loginRouter());
