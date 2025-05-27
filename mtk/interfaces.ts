@@ -2,11 +2,10 @@ import { ObjectId } from "mongodb";
 
 export interface User {
     _id?: ObjectId;
-    email: string;
-    password?: string;
-    role: "ADMIN" | "USER";
+    username: string;
+    password: string;
     avatar?: string;
-    username?: string;
+
 }
 
 export interface FlashMessage {
