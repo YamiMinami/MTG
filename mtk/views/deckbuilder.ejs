@@ -40,7 +40,8 @@
                         <section id="deck-collection">
                             <% decks.forEach(deck=> { %>
                                 <article class="deck-card">
-                                    <img src="/assets/<%= deck.image || 'Deck' + Math.floor(Math.random() * 5 + 1) + '.jpg' %>"
+                                    <img class="deck-foto"
+                                        src="/assets/<%= deck.image || 'Deck' + Math.floor(Math.random() * 5 + 1) + '.jpg' %>"
                                         alt="<%= deck.name %>">
                                     <div class="deck-info">
                                         <h2>
