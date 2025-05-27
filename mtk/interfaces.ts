@@ -24,3 +24,16 @@ export interface Card {
       png?: string;             
     };
   }
+
+  export interface user {
+    id: string;
+    name: string;
+    deck: Decks[];
+  }
+
+export interface Decks {
+    id: number;                   
+    name: string;             
+    cards: string[][];
+                 
+  }
