@@ -12,8 +12,9 @@
                             <%= user?.username || "Username" %>
                         </h4>
                     </article>
-                    <i id="icon-exit" class="fa-solid fa-right-from-bracket"></i>
-                </section>
+                    <form action="/logout" method="POST" style="display: inline;">
+                        <button type="submit" id="icon-exit" class="fa-solid fa-right-from-bracket"></button>
+                    </form>                </section>
                 <% if (!user?.avatar) { %>
                     <div id="overlay"></div>
                     <section id="ftu-welcome-container" class="popup">
