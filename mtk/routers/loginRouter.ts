@@ -6,7 +6,7 @@ const router = Router();
 router.get("/index", (req, res) => {
   const error = req.session.errorMessage;
   delete req.session.errorMessage;
-  res.render("login", { error });
+  res.render("index", { error });
 });
 
 router.post("/index", async (req, res) => {
