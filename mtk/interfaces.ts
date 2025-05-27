@@ -25,3 +25,11 @@ export interface Card {
       png?: string;             
     };
   }
+  export interface Deck {
+    _id?: ObjectId;
+    name: string;
+    colors: string[];
+    cards: string[];
+    userId: ObjectId;
+    createdAt: Date;
+}

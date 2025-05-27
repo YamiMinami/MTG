@@ -9,6 +9,7 @@ import { secureMiddleware } from "./middleware/secureMiddleware";
 import { flashMiddleware } from "./middleware/flashMiddleware";
 import { homeRouter } from "./routers/homeRouter";
 import { loginRouter } from "./routers/loginRouter";
+import { deckRouter } from "./deckbuilder";
 dotenv.config();
 
 
@@ -25,6 +26,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("port", process.env.PORT ?? 3000);
 app.use("/", loginRouter());
 app.use("/", secureMiddleware, homeRouter());
+app.use("/", secureMiddleware, deckRouter());
 let cards: Card[] = [];
 async function MTGApp() {
     await connect();       
