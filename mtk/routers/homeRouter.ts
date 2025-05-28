@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 import { requireLogin } from "../middleware/secureMiddleware";
 import { Card } from "../interfaces";
+import { client } from "../database"; 
+import { User } from "../interfaces"; // 
 
 const router = Router();
 
@@ -10,8 +12,21 @@ router.get("/first-time-user", (req: Request, res: Response) => {
 
 router.use(requireLogin);
 
-router.get("/home", (req: Request, res: Response) => {
-  res.render("home");
+router.get("/home", async (req: Request, res: Response) => {
+  const username = req.session.username;
+  if (!username) {
+    return res.redirect("/");
+  }
+
+  const col = client.db("MagicTheGathering").collection<User>("users"); 
+  const user = await col.findOne({ username });
+
+  if (!user) {
+    req.session.errorMessage = "Gebruiker niet gevonden.";
+    return res.redirect("/");
+  }
+
+  res.render("home", { user }); 
 });
 
 router.get("/detail", (req: Request, res: Response) => {

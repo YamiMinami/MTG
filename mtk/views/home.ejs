@@ -12,7 +12,7 @@
                             <%= user?.username || "Username" %>
                         </h4>
                     </article>
-                    <i id="icon-exit" class="fa-solid fa-right-from-bracket"></i>
+                    <a href="/logout" title="Log out"><i id="icon-exit" class="fa-solid fa-right-from-bracket"></i></a>
                 </section>
                 <% if (!user?.avatar) { %>
                     <div id="overlay"></div>
