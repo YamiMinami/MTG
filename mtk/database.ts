@@ -1,6 +1,6 @@
 import { Collection, MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { User, Card } from "./interfaces";
+import { User, Card, Deck } from "./interfaces";
 import bcrypt from "bcrypt";
 dotenv.config();
 
