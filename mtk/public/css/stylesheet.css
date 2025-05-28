@@ -112,6 +112,7 @@ main.active, aside.active{
     margin-top: 30%;
     height: 34%;
     position: relative;
+    overflow: hidden;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.1);
 }
