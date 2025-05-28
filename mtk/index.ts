@@ -50,25 +50,23 @@ async function MTGApp() {
     res.render("home");
   });
 
-  // index.ts, ná connect()/initAssets()/loadAssets()
-
 // Kans berekenen
 app.post("/drawcard/probability", async (req, res) => {
   const { deckName, cardName } = req.body;
   const user = req.session.user;
   if (!user?._id) return res.status(401).json({ error: "Unauthorized" });
 
-  // 1) Haal deck op
+  //Haal deck op
   const deck = await deckCollection.findOne({
     userId: new ObjectId(user._id),
     name: deckName
   });
   if (!deck) return res.status(404).json({ error: "Deck not found" });
 
-  // 2) Laden van alle kaart‐metadata
+  //Laden van alle kaartdata
   const allCards = await loadAssets();
 
-  // 3) Filter op kaartnaam
+  //Filter op kaartnaam
   const matchCount = deck.cards.filter(id => {
     const cardObj = allCards.find(c => c.id === id);
     return cardObj?.name.toLowerCase() === cardName.toLowerCase();
@@ -84,24 +82,24 @@ app.post("/drawcard/probability", async (req, res) => {
   });
 });
 
-// Willekeurige kaart trekken
+// Random kaart trekken
 app.post("/drawcard/random", async (req, res) => {
   const { deckName } = req.body;
   const user = req.session.user;
   if (!user?._id) return res.status(401).json({ error: "Unauthorized" });
 
-  // 1) Haal deck op
+  //Haal deck op
   const deck = await deckCollection.findOne({
     userId: new ObjectId(user._id),
     name: deckName
   });
   if (!deck) return res.status(404).json({ error: "Deck not found" });
 
-  // 2) Init session.drawnCards voor dit deck
+  //Init session.drawnCards voor dit deck
   if (!req.session.drawnCards) req.session.drawnCards = {};
   if (!req.session.drawnCards[deckName]) req.session.drawnCards[deckName] = [];
 
-  // 3) Bereken welke nog over zijn
+  //Bereken kaarten die overblijven
   const remaining = deck.cards.filter(
     id => !req.session.drawnCards![deckName].includes(id)
   );
@@ -110,18 +108,17 @@ app.post("/drawcard/random", async (req, res) => {
     return res.json({ error: "Geen kaarten meer over in dit deck." });
   }
 
-  // 4) Kies er één uit de remaining
+  // kies 1 uit overblijvende kaarten
   const randId = remaining[Math.floor(Math.random() * remaining.length)];
   req.session.drawnCards[deckName].push(randId);
 
-  // 5) Laad metadata en stuur image terug
+  //Laad data en stuur image terug
   const allCards = await loadAssets();
   const cardObj = allCards.find(c => c.id === randId)!;
   res.json({ image: cardObj.image_uris?.png ?? "/assets/card1.jpg" });
 });
 
 
-// Pas daarna pas de GET /drawcard
 app.get("/drawcard", secureMiddleware, async (req, res) => {
   const user = req.session.user!;
   const decks = await getDeckCollection()

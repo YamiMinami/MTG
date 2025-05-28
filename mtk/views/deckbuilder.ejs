@@ -50,21 +50,26 @@
               <span class="card-count"><%= deck.cards.length %>/20</span>
             </div>
             <div class="deck-actions">
-              <!-- Globale Edit modal trigger -->
-              <button type="button"
-                      class="btn edit-btn"
-                      data-id="<%= deck._id %>"
-                      data-name="<%= deck.name %>"
-                      data-colors="<%= deck.colors.join(',') %>">
+              <!-- Link to separate edit page -->
+              <a href="/deck/<%= deck._id %>/edit" class="btn edit-btn">
                 <i class="fas fa-edit"></i>
-              </button>
-              <form action="/deck/<%= deck._id %>?_method=DELETE" method="POST" class="inline-form">
-                <button type="submit" class="btn delete-btn"><i class="fas fa-trash"></i></button>
+              </a>
+              <!-- Delete form -->
+              <form
+                action="/deck/<%= deck._id %>?_method=DELETE"
+                method="POST"
+                class="inline-form"
+              >
+                <button type="submit" class="btn delete-btn">
+                  <i class="fas fa-trash"></i>
+                </button>
               </form>
-              <!-- View‐cards knop -->
-              <button type="button"
-                      class="btn view-cards-btn"
-                      data-target="modal-<%= deck._id %>">
+              <!-- View-cards button -->
+              <button
+                type="button"
+                class="btn view-cards-btn"
+                data-target="modal-<%= deck._id %>"
+              >
                 <i class="fas fa-eye"></i>
               </button>
             </div>

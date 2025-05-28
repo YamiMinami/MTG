@@ -3,7 +3,7 @@ declare module 'express-session' {
   export interface SessionData {
     user?: User;
     message?: FlashMessage;
-    drawnCards?: Record<string, string[]>;  // <deckName, [cardId,…]>
+    drawnCards?: Record<string, string[]>;
   }
 }
 
