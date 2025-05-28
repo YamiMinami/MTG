@@ -670,7 +670,7 @@ hr {
     background-color: var(--secondary-brown);
     color: white;
     font-family: var(--font-p);
-    font-size: var(--p-md);
+    font-size: var(--p-xl);
 }
 
 #deck-name:focus {
@@ -894,6 +894,10 @@ input {
 /* Drawcard css */
 #dc-body{
   cursor: url("../assets/cursor.cur") 0 0, auto;
+}
+#dc-body *{
+  font:inherit;
+  font-size: var(--p-xl);
 }
 #dc-main {
   background-image: url("../assets/wallpaper.jpg");
