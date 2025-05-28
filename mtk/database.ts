@@ -3,13 +3,14 @@ import dotenv from "dotenv";
 import { User } from "./interfaces";
 import bcrypt from "bcrypt";
 dotenv.config();
-import { Card } from "./interfaces";
+import { Card, Deck } from "./interfaces";
 
 export const client = new MongoClient(process.env.MONGODB_URI || "mongodb://localhost:27017");
 
 export const MONGODB_URI = process.env.MONGODB_URI ?? "mongodb://localhost:27017";
 
 export const userCollection = client.db("MagicTheGathering").collection<User>("users");
+export const deckCollection = client.db("MagicTheGathering").collection<Deck>("decks");
 
 const saltRounds : number = 10;
 
