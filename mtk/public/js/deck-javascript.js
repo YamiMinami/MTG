@@ -1,56 +1,56 @@
-// Algemene modal handler
-function initializeModal(modalId, openButtonsSelector) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
+document.addEventListener("DOMContentLoaded", () => {
+    const openModal = modal => modal.classList.replace("hidden", "show");
+    const closeModal = modal => modal.classList.replace("show", "hidden");
 
-    const closeBtn = modal.querySelector('.close');
-    
-    // Open modal
-    document.querySelectorAll(openButtonsSelector).forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const deckCard = e.target.closest('.deck-card');
-            if(deckCard) {
-                const deckName = deckCard.querySelector('h2').textContent;
-                const deckColors = Array.from(deckCard.querySelectorAll('.mana-icon'))
-                    .map(icon => icon.alt.charAt(0));
-                
-                document.getElementById('edit-deck-name').value = deckName;
-                setColorCheckboxes(deckColors);
-            }
-            modal.style.display = 'block';
+    // Sluit modals via close-btn of backdrop
+    document.querySelectorAll(".modal-close, .close").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const modal = btn.closest(".modal-overlay");
+            if (modal) closeModal(modal);
+        });
+    });
+    document.querySelectorAll(".modal-overlay").forEach(modal => {
+        modal.addEventListener("click", e => {
+            if (e.target === modal) closeModal(modal);
         });
     });
 
-    // Sluit modal
-    const closeModal = () => modal.style.display = 'none';
-    
-    closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => {
-        if(e.target === modal) closeModal();
+    // 1) Nieuw Deck
+    const newModalBtn = document.getElementById("add-deck-button");
+    const deckModal = document.getElementById("deck-modal");
+    newModalBtn.addEventListener("click", () => openModal(deckModal));
+
+    // 2) Edit Deck
+    const editModal = document.getElementById("edit-deck-modal");
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const cardElem = btn.closest(".deck-card");
+            if (!cardElem) return;
+
+            // Vul naam
+            document.getElementById("edit-deck-name").value =
+                cardElem.querySelector("h2").textContent.trim();
+
+            // Vul kleuren
+            const selected = Array.from(cardElem.querySelectorAll(".mana-icon"))
+                .map(img => img.alt.charAt(0));
+            document.querySelectorAll(
+                "#edit-color-options input[name='colors']"
+            ).forEach(cb => cb.checked = selected.includes(cb.value));
+
+            // Update form-action
+            document.getElementById("edit-deck-form")
+                .action = `/deck/${cardElem.dataset.deckId}?_method=PUT`;
+
+            openModal(editModal);
+        });
     });
 
-    return { modal, closeModal };
-}
-
-// Checkbox handler
-function setColorCheckboxes(selectedColors) {
-    document.querySelectorAll('#edit-deck-modal input[name="colors"]').forEach(checkbox => {
-        checkbox.checked = selectedColors.includes(checkbox.value);
-    });
-}
-
-// Initialisatie
-document.addEventListener('DOMContentLoaded', () => {
-    // Add Deck Modal
-    initializeModal('deck-modal', '#add-deck-button');
-    
-    // Edit Deck Modal
-    initializeModal('edit-deck-modal', '.edit-btn');
-
-    // Globale click handler voor alle modals
-    window.addEventListener('click', (e) => {
-        document.querySelectorAll('.modal').forEach(modal => {
-            if(e.target === modal) modal.style.display = 'none';
+    // 3) View Cards
+    document.querySelectorAll(".view-cards-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const modal = document.getElementById(btn.dataset.target);
+            if (modal) openModal(modal);
         });
     });
 });

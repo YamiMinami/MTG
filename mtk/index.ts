@@ -2,8 +2,8 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { Card } from "./interfaces";
-import { MongoClient } from "mongodb";
-import { connect, initAssets, loadAssets } from "./database";
+import { MongoClient, ObjectId } from "mongodb";
+import { connect, initAssets, loadAssets, deckCollection } from "./database";
 import session from "./session";
 import { secureMiddleware } from "./middleware/secureMiddleware";
 import { flashMiddleware } from "./middleware/flashMiddleware";
@@ -86,15 +86,20 @@ async function MTGApp() {
     });
   });
 
-  app.get("/detail/:id", (req, res) => {
+  app.get("/detail/:id", secureMiddleware, async (req, res) => {
     const cardId = req.params.id;
     const card = cards.find((c) => c.id === cardId);
+    if (!card) return res.status(404).send("Card not found");
 
-    if (!card) {
-      return res.status(404).send("Card not found");
-    }
+    const userId = req.session.user!._id;
+    const decks = await deckCollection.find({ userId }).toArray();
 
-    res.render("detail", { card });
+    res.render("detail", {
+      card,
+      decks,
+      message: req.session.message,
+    });
+    delete req.session.message;
   });
 
   app.get("/first-time-user", (req, res) => {

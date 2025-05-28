@@ -1,43 +1,49 @@
 <%- include("partials/header") %>
 
-    <body>
-        <%- include("partials/aside") %>
-            <main class="edit-container">
-                <article class="edit-deck">
-                    <h1>Bewerk deck: <%= deck.name %>
-                    </h1>
+<body>
+  <%- include("partials/aside") %>
+  <main class="edit-container">
+    <article class="edit-deck">
+      <h1>Bewerk deck: <%= deck.name %></h1>
 
-                    <% if (message) { %>
-                        <div class="flash-message <%= message.type %>">
-                            <%= message.message %>
-                        </div>
-                        <% } %>
+      <% if (message) { %>
+      <div class="flash-message <%= message.type %>">
+        <%= message.message %>
+      </div>
+      <% } %>
 
-                            <form class="form-edit" action="/deck/<%= deck._id %>?_method=PUT" method="POST">
-                                <input type="hidden" name="_method" value="PUT">
+      <form
+        class="form-edit"
+        action="/deck/<%= deck._id %>?_method=PUT"
+        method="POST"
+      >
+        <input type="hidden" name="_method" value="PUT" />
 
-                                <div class="form-group">
-                                    <label>Deck naam</label>
-                                    <input type="text" name="name" value="<%= deck.name %>" required>
-                                </div>
+        <div class="form-group">
+          <label>Deck naam</label>
+          <input type="text" name="name" value="<%= deck.name %>" required />
+        </div>
 
-                                <div class="form-group">
-                                    <label>Mana kleuren</label>
-                                    <div class="color-grid">
-                                        <% ['White', 'Blue' , 'Black' , 'Red' , 'Green' ].forEach(color=> { %>
-                                            <label class="color-option">
-                                                <input type="checkbox" name="colors" value="<%= color[0] %>"
-                                                    <%=deck.colors.includes(color[0]) ? 'checked' : '' %>>
-                                                <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
-                                                    alt="<%= color %>">
-                                            </label>
-                                            <% }); %>
-                                    </div>
-                                </div>
+        <div class="form-group">
+          <label>Mana kleuren</label>
+          <div class="color-grid">
+            <% ['White', 'Blue' , 'Black' , 'Red' , 'Green' ].forEach(color=> {
+            %>
+            <label class="color-option">
+              <input type="checkbox" name="colors" value="<%= color[0] %>"
+              <%=deck.colors.includes(color[0]) ? 'checked' : '' %>>
+              <img
+                src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                alt="<%= color %>"
+              />
+            </label>
+            <% }); %>
+          </div>
+        </div>
 
-                                <button type="submit" class="btn-primary">Opslaan</button>
-                                <a href="/deckbuilder" class="btn-secondary">Annuleren</a>
-                            </form>
-                </article>
-            </main>
-    </body>
+        <button type="submit" class="btn-primary">Opslaan</button>
+        <a href="/deckbuilder" class="btn-secondary">Annuleren</a>
+      </form>
+    </article>
+  </main>
+</body>
