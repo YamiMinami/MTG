@@ -26,13 +26,7 @@ router.post("/login", async (req, res) => {
   res.redirect("/home");
 });
 
-router.get("/index", (req, res) => {
-  const error = req.session.errorMessage;
-  delete req.session.errorMessage;
-  res.render("index", { error });
-});
-
-router.post("/", async (req, res) => {
+router.post("/register", async (req, res) => {
   const { username, password, confirmPassword } = req.body;
   if (!username || !password || !confirmPassword) {
     req.session.errorMessage = "All fields are required.";
