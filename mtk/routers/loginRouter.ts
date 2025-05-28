@@ -1,83 +1,56 @@
-import express from "express";
-import bcrypt from "bcrypt";
-import { login, userCollection } from "../database";
-import { secureMiddleware } from "../middleware/secureMiddleware";
-import { User } from "../interfaces";
+import { Router, Request, Response } from "express";
+import { createUser, loginUser, userExists } from "../database";
 
-export function loginRouter() {
-  const router = express.Router();
+const router = Router();
 
-  router.get("/", async (req, res) => {
-    res.render("index");
+router.get("/", (req, res) => {
+  const error = req.session.errorMessage;
+  delete req.session.errorMessage;
+  res.render("index", { error });
+});
+
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    req.session.errorMessage = "Please provide both username and password.";
+    return res.redirect("/");
+  }
+
+  const user = await loginUser(username, password);
+  if (!user) {
+    req.session.errorMessage = "Invalid username or password.";
+    return res.redirect("/");
+  }
+
+  req.session.username = user.username;
+  res.redirect("/home");
+});
+
+router.post("/register", async (req, res) => {
+  const { username, password } = req.body as {username:string; password:string }
+  if (!username || !password ) {
+    req.session.errorMessage = "All fields are required.";
+    return res.redirect("/");
+  }
+  if (await userExists(username)) {
+    req.session.errorMessage = "Username already taken.";
+    return res.redirect("/");
+  }
+
+  try {
+    await createUser(username, password);
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    req.session.errorMessage = "Registration failed. Please try again.";
+    res.redirect("/");
+  }
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
   });
+});
 
-  router.post("/login", async (req, res) => {
-    const email: string = req.body.email;
-    const password: string = req.body.password;
-    try {
-      //Authenticate user (checks password)
-      let user: User = await login(email, password);
-
-      //Fetch full user info (avatar, username, etc.)
-      const fullUser = await userCollection.findOne({ _id: user._id });
-
-      if (!fullUser) {
-        throw new Error("User data not found");
-      }
-
-      delete fullUser.password;
-
-      req.session.user = fullUser;
-      req.session.message = { type: "success", message: "Login successful" };
-      res.redirect("/home");
-    } catch (e: any) {
-      req.session.message = { type: "error", message: e.message };
-      res.redirect("/");
-    }
-  });
-
-  router.post("/register", async (req, res) => {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      req.session.message = {
-        type: "error",
-        message: "Email and password required.",
-      };
-      return res.redirect("/");
-    }
-
-    const existingUser = await userCollection.findOne({ email });
-    if (existingUser) {
-      req.session.message = { type: "error", message: "User already exists." };
-      return res.redirect("/");
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser: User = {
-      email,
-      password: hashedPassword,
-      role: "USER",
-    };
-
-    await userCollection.insertOne(newUser);
-    delete newUser.password;
-
-    // Re-fetch with _id to ensure complete session consistency
-    const registeredUser = await userCollection.findOne({ email });
-    req.session.user = registeredUser!;
-    req.session.message = {
-      type: "success",
-      message: "Registration successful!",
-    };
-    res.redirect("/home");
-  });
-
-  router.post("/logout", secureMiddleware, async (req, res) => {
-    req.session.destroy((err) => {
-      res.redirect("/");
-    });
-  });
-
-  return router;
-}
+export default router;

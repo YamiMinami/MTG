@@ -1,42 +1,75 @@
-import express from "express";
-import { ObjectId } from "mongodb";
-import { userCollection } from "../database";
-import { Request, Response } from "express";
+// src/routers/homeRouter.ts
+import { Router, Request, Response } from "express";
+import { requireLogin } from "../middleware/secureMiddleware";
+import { client } from "../database";
+import { User, Card } from "../interfaces";
 
-export function homeRouter() {
-  const router = express.Router();
+const router = Router();
 
-  //Not used at the moment
-  router.get("/", async (req, res) => {
-    res.render("index");
-  });
+router.get("/first-time-user", (req, res) => {
+  res.render("first-time-user");
+});
 
-  //Route for saving avatar + username from the FTU popup
-  router.post("/setup-profile", async (req: Request, res: Response) => {
-    const { avatar, username } = req.body;
-    const userId = req.session.user?._id;
+router.use(requireLogin);
 
-    if (!userId) {
-      return res.status(401).send("Not logged in");
-    }
 
-    try {
-      // Update mongodb user
-      await userCollection.updateOne(
-        { _id: new ObjectId(userId) },
-        { $set: { avatar, username } }
+router.get("/home", async (req: Request, res: Response) => {
+  const username = req.session.username!;
+
+  const col = client
+    .db("MagicTheGathering")
+    .collection<User>("Users");
+  const user = await col.findOne({ username });
+  return res.render("home", { user });
+});
+
+router.get("/detail", (req: Request, res: Response) => {
+  res.render("detail");
+});
+
+router.get("/drawcard", (req: Request, res: Response) => {
+  res.render("drawcard");
+});
+
+router.get("/deckbuilder", (req: Request, res: Response) => {
+  res.render("deckbuilder");
+});
+
+router.get("/collection", (req: Request, res: Response) => {
+  const cards: Card[] = req.app.locals.cards;
+  const perPage = 10;
+  const page = parseInt(req.query.page as string) || 1;
+  const manaFilter = req.query.mana as string;
+  const validColors = ["W", "U", "B", "R", "G"];
+
+  let filtered = cards;
+  if (manaFilter && manaFilter !== "None") {
+    const letter = manaFilter[0].toUpperCase();
+    if (validColors.includes(letter)) {
+      filtered = cards.filter((c) =>
+        c.color_identity?.includes(letter)
       );
-
-      //Update session so user sees new avatar & name immediately
-      req.session.user!.avatar = avatar;
-      req.session.user!.username = username;
-
-      res.status(200).send("Profile updated");
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      res.status(500).send("Internal server error");
     }
-  });
+  }
 
-  return router;
-}
+  const totalPages = Math.ceil(filtered.length / perPage);
+  const pageCards = filtered.slice((page - 1) * perPage, page * perPage);
+
+  res.render("collection", {
+    cards: pageCards,
+    currentPage: page,
+    totalPages,
+    manaFilter,
+  });
+});
+
+router.get("/detail/:id", (req: Request, res: Response) => {
+  const cards: Card[] = req.app.locals.cards;
+  const card = cards.find((c) => c.id === req.params.id);
+  if (!card) {
+    return res.status(404).send("Card not found");
+  }
+  res.render("detail", { card });
+});
+
+export default router;
