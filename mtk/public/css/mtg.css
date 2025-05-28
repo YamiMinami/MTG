@@ -653,7 +653,7 @@ hr {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
-  justify-content: center;
+  justify-content: center; /* center the content */
   align-items: center;
 }
 
