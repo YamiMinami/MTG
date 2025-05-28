@@ -1,129 +1,154 @@
 <%- include("partials/header") %>
+<body>
+  <%- include("partials/aside") %>
+  <main id="deck-container">
 
-    <body>
-        <%- include("partials/aside") %>
-            <main id="deck-container">
-                <!-- Flash messages -->
-                <% if (message) { %>
-                    <div class="flash-message <%= message.type %>">
-                        <%= message.message %>
-                    </div>
-                    <% } %>
+    <!-- deck-bar: search, filters, new deck -->
+    <section id="deck-bar">
+      <form method="GET" action="/deckbuilder" class="search-form">
+        <input id="deck-search" type="search" name="search" placeholder="Zoek decks..."
+               value="<%= searchQuery %>">
+        <input type="hidden" name="color" value="<%= currentFilter %>">
+      </form>
 
-                        <section id="deck-bar">
-                            <!-- Zoekformulier -->
-                            <form method="GET" action="/deckbuilder" class="search-form">
-                                <input id="deck-search" type="search" name="search" placeholder="Zoek decks..."
-                                    value="<%= searchQuery %>">
-                                <input type="hidden" name="mana" value="<%= currentFilter %>">
-                            </form>
+      <section id="deck-manabar">
+        <% ['None','White','Blue','Black','Red','Green'].forEach(color=>{ %>
+          <form method="GET" action="/deckbuilder" style="display:inline">
+            <input type="hidden" name="search" value="<%= searchQuery %>">
+            <input type="hidden" name="color"  value="<%= color %>">
+            <button type="submit" class="deck-type <%= currentFilter===color?'active':''%>">
+              <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                   alt="<%= color %>">
+            </button>
+          </form>
+        <% }) %>
+      </section>
 
-                            <!-- Mana filters -->
-                            <section id="deck-manabar">
-                                <% ['None', 'White' , 'Blue' , 'Black' , 'Red' , 'Green' ].forEach(color=> { %>
-                                    <form method="GET" action="/deckbuilder" style="display: inline;">
-                                        <input type="hidden" name="search" value="<%= searchQuery %>">
-                                        <input type="hidden" name="mana" value="<%= color %>">
-                                        <button type="submit"
-                                            class="deck-type <%= currentFilter === color ? 'active' : '' %>">
-                                            <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
-                                                alt="<%= color %>">
-                                        </button>
-                                    </form>
-                                    <% }); %>
-                            </section>
+      <button id="add-deck-button" class="deck-buttons"><strong>deck toevoegen</strong></button>
+    </section>
 
-                            <button id="add-deck-button" class="deck-buttons">
-                                <strong>deck toevoegen</strong>
-                            </button>
-                        </section>
+    <!-- Flash message -->
+    <% if (message) { %>
+      <div class="flash-message <%= message.type %>"><%= message.message %></div>
+    <% } %>
 
-                        <section id="deck-collection">
-                            <% decks.forEach(deck=> { %>
-                                <article class="deck-card">
-                                    <img src="/assets/<%= deck.image || 'Deck' + Math.floor(Math.random() * 5 + 1) + '.jpg' %>"
-                                        alt="<%= deck.name %>">
-                                    <div class="deck-info">
-                                        <h2>
-                                            <%= deck.name %>
-                                        </h2>
-                                        <div class="deck-meta">
-                                            <% deck.colors.forEach(color=> { %>
-                                                <img src="/assets/<%= color %>-mana.png" alt="<%= color %>"
-                                                    class="mana-icon">
-                                                <% }); %>
-                                                    <span class="card-count">
-                                                        <%= deck.cards.length %>/20
-                                                    </span>
-                                        </div>
-                                        <div class="deck-actions">
-                                            <!-- Bewerk knop -->
-                                            <a href="/deck/<%= deck._id %>/edit" class="edit-btn">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+    <!-- Deck grid -->
+    <section id="deck-collection">
+      <% decks.forEach(deck => { %>
+        <article class="deck-card" data-deck-id="<%= deck._id %>">
+          <img class="deck-foto"
+               src="/assets/<%= deck.image || 'Deck'+(Math.floor(Math.random()*5)+1)+'.jpg' %>"
+               alt="<%= deck.name %>">
+          <div class="deck-info">
+            <h2><%= deck.name %></h2>
+            <div class="deck-meta">
+              <% deck.colors.forEach(c => {
+                   const nm = {W:'white',U:'blue',B:'black',R:'red',G:'green'}[c]; %>
+                <img src="/assets/A_fantasy-style_<%= nm %>_mana_symbol_from_Magic__The__transparent.png"
+                     class="mana-icon" alt="<%= nm %>">
+              <% }) %>
+              <span class="card-count"><%= deck.cards.length %>/20</span>
+            </div>
+            <div class="deck-actions">
+              <!-- Globale Edit modal trigger -->
+              <button type="button"
+                      class="btn edit-btn"
+                      data-id="<%= deck._id %>"
+                      data-name="<%= deck.name %>"
+                      data-colors="<%= deck.colors.join(',') %>">
+                <i class="fas fa-edit"></i>
+              </button>
+              <form action="/deck/<%= deck._id %>?_method=DELETE" method="POST" class="inline-form">
+                <button type="submit" class="btn delete-btn"><i class="fas fa-trash"></i></button>
+              </form>
+              <!-- View‐cards knop -->
+              <button type="button"
+                      class="btn view-cards-btn"
+                      data-target="modal-<%= deck._id %>">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </article>
 
-                                            <!-- Delete form -->
-                                            <form action="/deck/<%= deck._id %>?_method=DELETE" method="POST">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="delete-btn">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </article>
-                                <% }); %>
-                        </section>
-                        <!-- Modal voor nieuwe decks -->
-                        <div id="deck-modal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <form id="deck-form" action="/deck" method="POST">
-                                    <h2>Nieuw Deck</h2>
-                                    <div class="form-group">
-                                        <label for="deck-name">Deck Naam</label>
-                                        <input type="text" id="deck-name" name="name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Mana Kleuren</label>
-                                        <div class="color-grid">
-                                            <% ['White', 'Blue' , 'Black' , 'Red' , 'Green' , 'None' ].forEach(color=> {
-                                                %>
-                                                <label class="color-option">
-                                                    <input type="checkbox" name="colors" value="<%= color[0] %>">
-                                                    <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
-                                                        alt="<%= color %>">
-                                                </label>
-                                                <% }); %>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn-primary">Aanmaken</button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Paginering -->
-                        <section class="pages">
-                            <form method="GET" class="pagination-form">
-                                <input type="hidden" name="search" value="<%= searchQuery %>">
-                                <input type="hidden" name="mana" value="<%= currentFilter %>">
-                                <button type="submit" name="page" value="<%= currentPage - 1 %>"
-                                    class="pagination-button" <%=currentPage <=1 ? 'disabled' : '' %>>
-                                    Terug
-                                </button>
-                            </form>
+        <!-- Per‐deck View-Cards Modal -->
+        <div id="modal-<%= deck._id %>" class="modal-overlay hidden">
+          <div class="modal-window">
+            <button class="modal-close">&times;</button>
+            <h2>Kaarten in “<%= deck.name %>”</h2>
+            <div class="deck-cards-grid">
+              <% if (deck.cardObjects.length) { %>
+                <% deck.cardObjects.forEach(card => { %>
+                  <figure class="card-thumb">
+                    <img src="<%= card.image_uris?.small || card.card_faces?.[0]?.image_uris?.small %>"
+                         alt="<%= card.name %>">
+                    <figcaption><%= card.name %></figcaption>
+                  </figure>
+                <% }) %>
+              <% } else { %>
+                <p>Geen kaarten toegevoegd.</p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </section>
 
-                            <span class="pagination-info">Pagina <%= currentPage %> van <%= totalPages %></span>
+    <!-- Globale Nieuw-Deck Modal -->
+    <div id="deck-modal" class="modal-overlay hidden">
+      <div class="modal-window">
+        <button class="modal-close">&times;</button>
+        <form id="deck-form" action="/deck" method="POST">
+          <h2>Nieuw Deck</h2>
+          <div class="form-group">
+            <label for="deck-name">Deck Naam</label>
+            <input type="text" id="deck-name" name="name" required minlength="3">
+          </div>
+          <div class="form-group">
+            <label>Mana Kleuren</label>
+            <div class="color-grid">
+              <% ['White','Blue','Black','Red','Green','None'].forEach(color=>{ %>
+                <label class="color-option">
+                  <input type="checkbox" name="colors" value="<%= color[0] %>">
+                  <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                       alt="<%= color %>">
+                </label>
+              <% }) %>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Aanmaken</button>
+        </form>
+      </div>
+    </div>
 
-                            <form method="GET" class="pagination-form">
-                                <input type="hidden" name="search" value="<%= searchQuery %>">
-                                <input type="hidden" name="mana" value="<%= currentFilter %>">
-                                <button type="submit" name="page" value="<%= currentPage + 1 %>"
-                                    class="pagination-button" <%=currentPage>= totalPages ? 'disabled' : '' %>>
-                                    Volgende
-                                </button>
-                            </form>
-                        </section>
-            </main>
-    </body>
+    <!-- Globale Edit-Deck Modal -->
+    <div id="edit-deck-modal" class="modal-overlay hidden">
+      <div class="modal-window">
+        <button class="modal-close">&times;</button>
+        <form id="edit-deck-form" action="" method="POST">
+          <input type="hidden" name="_method" value="PUT">
+          <h2>Deck Bewerken</h2>
+          <div class="form-group">
+            <label for="edit-deck-name">Deck Naam</label>
+            <input type="text" id="edit-deck-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label>Mana Kleuren</label>
+            <div class="color-grid" id="edit-color-options">
+              <% ['White','Blue','Black','Red','Green','None'].forEach(color=>{ %>
+                <label class="color-option">
+                  <input type="checkbox" name="colors" value="<%= color[0] %>">
+                  <img src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                       alt="<%= color %>">
+                </label>
+              <% }) %>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Opslaan</button>
+        </form>
+      </div>
+    </div>
 
-    </html>
+  </main>
+</body>
+</html>

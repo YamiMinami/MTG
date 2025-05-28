@@ -4,9 +4,11 @@
 <main id="detail-container">
     <section>
         <article>
+            <a href="/collection">
             <button>
                 Terug
             </button>
+            </a>
         </article>
         <article>
             <img src="<%= card.image_uris?.large ||
@@ -37,10 +39,22 @@
             </ul>
         </article>
         <article>
-            <button>
-                Toevoegen aan deck
-            </button>
-        </article>
+  <% if (decks && decks.length) { %>
+    <% decks.forEach(deck => { %>
+      <form 
+  method="POST" 
+  action="/deck/<%= deck._id %>/cards/<%= card.id %>"
+  style="display: inline"
+>
+  <button type="submit" class="btn-primary">
+    Voeg toe aan “<%= deck.name %>”
+  </button>
+</form>
+    <% }) %>
+  <% } else { %>
+    <p>Je hebt nog geen decks. <a href="/deckbuilder">Maak er eentje aan</a>.</p>
+  <% } %>
+</article>
     </section>
 </main>
 </body>
