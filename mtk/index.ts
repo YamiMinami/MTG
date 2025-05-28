@@ -9,6 +9,10 @@ import { secureMiddleware } from "./middleware/secureMiddleware";
 import { flashMiddleware } from "./middleware/flashMiddleware";
 import { homeRouter } from "./routers/homeRouter";
 import { loginRouter } from "./routers/loginRouter";
+import { deckRouter } from "./deckbuilder";
+import { collectionRouter } from "./collection";
+import methodOverride from "method-override";
+
 dotenv.config();
 
 const app: Express = express();
@@ -22,17 +26,21 @@ app.use(flashMiddleware);
 app.set("views", path.join(__dirname, "views"));
 
 app.set("port", process.env.PORT ?? 3000);
+app.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+);
+
 app.use("/", loginRouter());
 app.use("/", secureMiddleware, homeRouter());
+app.use("/", secureMiddleware, deckRouter());
+app.use("/", secureMiddleware, collectionRouter());
 let cards: Card[] = [];
 async function MTGApp() {
   await connect();
   await initAssets();
   cards = await loadAssets();
-
-  app.get("/", (req, res) => {
-    res.render("index");
-  });
 
   app.get("/detail", (req, res) => {
     res.render("detail");

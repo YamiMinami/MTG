@@ -5,50 +5,51 @@
       <main id="main-container">
 
         <section id="deck-bar">
-          <input id="deck-search" type="search" placeholder="search..." />
-          <section id="deck-manabar">
-            <button id="White" class="deck-type"><img
-                src="/assets/A_fantasy-style_white_mana_symbol_from_Magic__The__transparent.png" alt=""></button>
-            <button id="Blue" class="deck-type"><img
-                src="/assets/A_fantasy-style_blue_mana_symbol_from_Magic__The_G_transparent.png" alt=""></button>
-            <button id="Black" class="deck-type"><img
-                src="/assets/A_fantasy-style_black_mana_symbol_from_Magic__The__transparent.png" alt=""></button>
-            <button id="Red" class="deck-type"><img
-                src="/assets/A_fantasy-style_red_mana_symbol_from_Magic__The_Ga_transparent.png" alt=""></button>
-            <button id="Green" class="deck-type"><img
-                src="/assets/A_fantasy-style_green_mana_symbol_from_Magic__The__transparent.png" alt=""></button>
-            <button id="None" class="deck-type"><img
-                src="/assets/A_fantasy-style_colorless_mana_symbol_from_Magic___transparent (1).png" alt=""></button>
-          </section>
+          <form method="GET" action="/collection" class="search-form">
+            <input type="hidden" name="mana" value="<%= manaFilter %>">
+            <input id="deck-search" type="search" name="search" placeholder="Zoek kaarten..."
+              value="<%= searchQuery || '' %>">
+            <button type="submit" hidden></button>
+          </form>
 
+          <%# Bestaande mana filters blijven hetzelfde %>
+            <section id="deck-manabar">
+              <% ['White', 'Blue' , 'Black' , 'Red' , 'Green' , 'None' ].forEach(color=> { %>
+                <form method="GET" action="/collection" style="display: inline;">
+                  <input type="hidden" name="search" value="<%= searchQuery %>">
+                  <input type="hidden" name="mana" value="<%= color %>">
+                  <button type="submit" class="deck-type" data-color="<%= color %>">
+                    <img
+                      src="/assets/A_fantasy-style_<%= color.toLowerCase() %>_mana_symbol_from_Magic__The__transparent.png"
+                      alt="<%= color %>">
+                  </button>
+                </form>
+                <% }); %>
+            </section>
         </section>
 
         <section id="main-card-container">
           <% cards.forEach(card=> {
             const imgUrl = card.image_uris?.png
             || card.card_faces?.[0]?.image_uris?.png
-       %>
-         <article class="collection-cards" data-rarity="<%= card.rarity %>">
-          <a href="/detail/<%= card.id %>">
-           <img src="<%= imgUrl %>" alt="<%= card.name %>">
-          </a>
-         </article>
-       <% }) %>
-    </section>
+            %>
+            <article class="collection-cards" data-rarity="<%= card.rarity %>">
+              <a href="/detail/<%= card.id %>">
+                <img src="<%= imgUrl %>" alt="<%= card.name %>">
+              </a>
+            </article>
+            <% }) %>
+        </section>
 
-    <section class="pages">
-        <form method="get" class="pagination-form">
-            <button
-              type="submit"
-              name="page"
-              value="<%= currentPage - 1 %>"
-              class="pagination-button"
-              <% if (currentPage <= 1) { %> disabled <% } %>
-            >
+        <section class="pages">
+          <form method="get" class="pagination-form">
+            <input type="hidden" name="mana" value="<%= manaFilter %>">
+            <input type="hidden" name="search" value="<%= searchQuery %>">
+            <button type="submit" name="page" value="<%= currentPage - 1 %>" class="pagination-button" <%=currentPage
+              <=1 ? 'disabled' : '' %>>
               Terug
             </button>
           </form>
-
 
           <button type="button" class="pagination-info" disabled>
             Pagina <%= currentPage %> van <%= totalPages %>
@@ -56,12 +57,12 @@
 
           <form method="get" class="pagination-form">
             <input type="hidden" name="mana" value="<%= manaFilter %>">
-            <button type="submit" name="page" value="<%= currentPage + 1 %>" class="pagination-button" <% if
-              (currentPage>= totalPages) { %> disabled <% } %>>
-                Volgende
+            <input type="hidden" name="search" value="<%= searchQuery %>">
+            <button type="submit" name="page" value="<%= currentPage + 1 %>" class="pagination-button" <%=currentPage>=
+              totalPages ? 'disabled' : '' %>>
+              Volgende
             </button>
           </form>
-
         </section>
       </main>
   </body>
