@@ -1,36 +1,49 @@
 <%- include("partials/header") %>
 <body id="dc-body">
-<main id="dc-main">
-<section id="dc-dropdown">
-    <div class="dropdown">
-        <div class="select">
-            <span class="selected"><%= decks[0]?.name || "Kies een deck" %></span>
-            <div class="caret"></div>
-        </div>
-        <ul class="menu">
-            <% decks.forEach((deck, index) => { %>
-                <li class="<%= index === 0 ? 'active' : '' %>"><%= deck.name %></li>
-            <% }) %>
-        </ul>
-    </div>
-</section>
+    
+    <main id="dc-main">
+        <!-- Deck selector -->
+        <section id="dc-dropdown">
+            <div class="dropdown">
+                <div class="select">
+                    <span class="selected"><%= decks[0]?.name || "Kies een deck" %></span>
+                    <div class="caret"></div>
+                </div>
+                <ul class="menu">
+                    <% decks.forEach((deck, index) => { %>
+                        <li class="<%= index === 0 ? 'active' : '' %>"><%= deck.name %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </section>
 
-    <section id="dc-card-track">
-        <input type="text" id="deck-name" placeholder="Enter card name" />
-        <button id="track-deck">Trek kaart</button>
-    </section>
-    <section id="dc-draw">
-        <article>
+        <!-- Probability tracker -->
+        <section id="dc-card-track">
+            <input type="text" id="deck-name" placeholder="Enter card name" />
+            <button id="track-deck">Track</button>
+            <section id="dc-probability-display">
+                <p id="probability-result"></p>
+            </section>
+        </section>
+
+        <!-- Draw & reset -->
+        <section id="dc-draw">
+          <!-- Deck image -->
+          <article>
             <img id="dc-deck" src="/assets/latest.png" alt="MTG Card Back">
-        </article>
-        <article>
+          </article>
+
+          <!-- draw button -->
+          <article class="dc-controls">
             <button id="dc-btn">Trek kaart</button>
-        </article>
-        <article>
-            <img id="dc-card" src="/assets/card1.jpg" alt="card">
-        </article>
-    </section>
-</main>
-<%- include("partials/aside") %>
+            <button id="reset-draw">Reset draw</button>
+          </article>
+          <article>
+            <img id="dc-card" src="/assets/card1.jpg" alt="card" style="display: none;">
+          </article>
+        </section>
+    </main>
+
+    <%- include("partials/aside") %>
 </body>
 </html>

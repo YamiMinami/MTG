@@ -1,4 +1,11 @@
 import { ObjectId } from "mongodb";
+declare module 'express-session' {
+  export interface SessionData {
+    user?: User;
+    message?: FlashMessage;
+    drawnCards?: Record<string, string[]>;  // <deckName, [cardId,…]>
+  }
+}
 
 export interface User {
   _id?: ObjectId;

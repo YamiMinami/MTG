@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const popup = document.getElementById("ftu-welcome-container");
     const overlay = document.getElementById("overlay");
 
-    // Show overlay on page load
+    
     if (overlay) {
         overlay.style.display = "block";
     }
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 if (response.ok) {
-                    window.location.reload(); // Refresh to apply avatar
+                    window.location.reload();
                 } else {
                     const errorText = await response.text();
                     alert("Fout bij opslaan profiel: " + errorText);
@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener('DOMContentLoaded', () => {
   const rarityColors = {
-    common:    '#737373',  // gray
-    uncommon:  '#1d833f',  // green
-    rare:      '#1a65c0',  // blue
-    mythic:    '#d97706'   // orange
+    common:    '#737373',
+    uncommon:  '#1d833f',
+    rare:      '#1a65c0',
+    mythic:    '#d97706'
   };
 
     document.querySelectorAll('.collection-cards').forEach(card => {
