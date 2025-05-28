@@ -63,7 +63,7 @@ export async function connect() {
 // Users
 
 export async function createUser(username: string, rawPassword: string): Promise<void> {
-  const usersCollection = () => client.db("MagicTheGathering").collection<User>("user");
+  const usersCollection = () => client.db("MagicTheGathering").collection<User>("Users");
   const hashed = await bcrypt.hash(rawPassword, saltRounds);
   await usersCollection().insertOne({ username, password: hashed });
 }

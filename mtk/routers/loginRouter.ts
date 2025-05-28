@@ -27,13 +27,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { username, password, confirmPassword } = req.body;
-  if (!username || !password || !confirmPassword) {
+  const { username, password } = req.body as {username:string; password:string }
+  if (!username || !password ) {
     req.session.errorMessage = "All fields are required.";
-    return res.redirect("/");
-  }
-  if (password !== confirmPassword) {
-    req.session.errorMessage = "Passwords do not match.";
     return res.redirect("/");
   }
   if (await userExists(username)) {
