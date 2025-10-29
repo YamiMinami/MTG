@@ -100,7 +100,7 @@ app.post("/drawcard/random", async (req, res) => {
   if (!req.session.drawnCards[deckName]) req.session.drawnCards[deckName] = [];
 
   //Bereken kaarten die overblijven
-  const remaining = deck.cards.filter(
+  const remaining = deck.cards.filter( // remaining = 10
     id => !req.session.drawnCards![deckName].includes(id)
   );
 
@@ -135,7 +135,7 @@ app.post("/drawcard/reset", (req, res) => {
   if (req.session.drawnCards) {
     delete req.session.drawnCards[deckName];
   }
-  res.json({ ok: true });
+  res.json({ ok: true});
 });
 
 
